@@ -1,10 +1,14 @@
 body {
     background: #000;
-    color: #0f0;
+    color: #0f0; /* This is the color of the digital rain, adjusting it here won't affect the rain */
     font-family: 'Courier New', Courier, monospace;
-    font-size: 10px;
+    font-size: 16px; /* Increase the base font size */
     line-height: 1.5;
     overflow: hidden;
+}
+
+h1, h2, p {
+    color: #fff; /* Change the text color to white for better contrast */
 }
 
 .matrix {
